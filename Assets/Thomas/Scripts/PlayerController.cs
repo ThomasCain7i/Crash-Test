@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Health / lives
+    public int lives = 3;
+    public int maxHealth = 3;
+    public int currentHealth = 3;
+    
+    // Movement
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public int maxJumps = 2;
     private int jumpsRemaining;
 
+    // Rigidbody
     private Rigidbody rb;
     private bool isGrounded;
 
@@ -14,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         jumpsRemaining = maxJumps;
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -31,13 +39,34 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining--;
         }
 
+        // Turn the player depending on how they move
         if (moveHorizontal < 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 270f, 0f);
         }
         else if (moveHorizontal > 0)
         {
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        else if (moveVertical < 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else if (moveVertical > 0)
+        {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        if (currentHealth <= 0)
+        {
+            //Respawn at previous checkpoint
+
+            lives -= 1;
+
+            if (lives <= 0)
+            {
+                //End game
+            }
         }
     }
 
