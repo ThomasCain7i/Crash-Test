@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Health / lives
+    // Health / lives / bones
     public int lives = 3;
     public int maxHealth = 3;
     public int currentHealth = 3;
+    public int boneCount = 0;
     
     // Movement
     public float moveSpeed = 5f;
@@ -77,5 +78,26 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpsRemaining = maxJumps;
         }
+    }
+
+    public void GainHealth()
+    {
+        if (currentHealth < maxHealth)
+        {
+            int health = 1;
+            currentHealth = currentHealth + health;
+        }
+      
+    }
+
+    public void Collectedbone()
+    {
+        boneCount = boneCount + 1;
+        if (boneCount == 10)
+        {
+            // powerup function
+       
+        }
+
     }
 }

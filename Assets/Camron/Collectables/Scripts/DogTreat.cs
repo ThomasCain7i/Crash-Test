@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPack : MonoBehaviour
+public class DogTreat : MonoBehaviour
 {
     // Start is called before the first frame update
     public int rotateSpeed;
@@ -19,9 +19,14 @@ public class HealthPack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collect HealthPack");
-        if(other.tag == "Player")
+        Debug.Log("dog got treat");
+        if (other.tag == "Player")
         {
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.GainHealth();
+            }
             Destroy(gameObject);
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class Bones : MonoBehaviour
 {
     // Start is called before the first frame update
     public int rotateSpeed;
@@ -19,9 +19,14 @@ public class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collect Powerup");
+        Debug.Log("dog got bone");
         if(other.tag == "Player")
         {
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.Collectedbone();
+            }
             Destroy(gameObject);
         }
     }
