@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
     public void Collectedbone()
     {
         boneCount = boneCount + 1;
+        //rough idea
         if (boneCount == 10)
         {
             // powerup function
