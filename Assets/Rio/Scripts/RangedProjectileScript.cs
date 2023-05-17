@@ -14,14 +14,17 @@ public class RangedProjectileScript : MonoBehaviour
     public void RangedAttack()
     {
         // Moves position it travels based on player position
+
         /*
         if (playerController.moveHorizontal < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
         else if (playerController.moveHorizontal > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
         else if (moveVertical < 0)
         {

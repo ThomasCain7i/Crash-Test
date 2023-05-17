@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
 
+    // Powerups
+    public bool speedPowerup;
+    public float speedTimer;
+    public bool rangedPowerup;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -69,6 +74,8 @@ public class PlayerController : MonoBehaviour
                 //End game
             }
         }
+
+        SuperSpeed();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -98,6 +105,41 @@ public class PlayerController : MonoBehaviour
         {
             // powerup function
        
+        }
+
+    }
+
+    public void SpeedPowerUpFunction()
+    {
+        // Activates super speed
+        speedPowerup = true;
+
+        // resets timer
+        speedTimer = 0.0f;
+
+    }
+
+    public void SuperSpeed()
+    {
+        if(speedPowerup == true)
+        {
+            Debug.Log("Speed Boost");
+
+            // Player becomes faster
+            moveSpeed = 7.5f;
+        }
+        else
+        {
+            // returns to default speed
+            moveSpeed = 5f;
+        }
+
+        speedTimer += Time.deltaTime;
+        if (speedTimer >= 20.0f)
+        {
+            // Power works for a limited time
+            speedPowerup = false;
+
         }
 
     }

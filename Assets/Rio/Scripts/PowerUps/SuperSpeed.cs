@@ -29,9 +29,12 @@ public class SuperSpeed : MonoBehaviour
             Debug.Log("Speed Boost");
 
             // Player becomes faster
-            playerController.moveSpeed = 10f;
+            PlayerController thePlayer = other.gameObject.GetComponent<PlayerController>();
 
-            
+            //collects powerup by setting the players bool to true
+            thePlayer.SpeedPowerUpFunction();
+
+            Destroy(gameObject);
         }
     }
 }
