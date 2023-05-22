@@ -22,7 +22,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-
+            playerController.SetSpawnPoint(transform.position);
         }
     }
 }

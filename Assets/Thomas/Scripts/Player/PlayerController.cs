@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public int maxHealth = 3;
     public int currentHealth = 3;
-    public bool isDead = false;
-    public float deadTimer;
     public int boneCount = 0;
     
     // Movement
@@ -72,19 +70,19 @@ public class PlayerController : MonoBehaviour
         }
 
         // If health = 0 - Thomas
-        if (currentHealth <= 0)
+        if (lives >= 1)
         {
-            //Respawn at previous checkpoint
-            isDead = true;
-            lives -= 1;
-
-            if (lives <= 0)
+            if (currentHealth <= 0)
             {
-                //End game
+                //Respawn
+                Respawn();
             }
         }
-
-        SuperSpeed();
+        else
+        {
+            //end game
+            Debug.Log("Lives = 0");
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -104,21 +102,13 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = currentHealth + 1;
         }
-      
     }
 
     public void Respawn()
     {
-        if(isDead == true)
-        {
-            deadTimer = 5f;
-            deadTimer -= Time.deltaTime;
-
-            if (deadTimer < 0)
-            {
-                //transform.position = 
-            }
-        }
+        transform.position = respawnPoint;
+        currentHealth = maxHealth;
+        lives -= 1;
     }
 
     public void SetSpawnPoint(Vector3 newPosition)
@@ -136,7 +126,6 @@ public class PlayerController : MonoBehaviour
             // powerup function
        
         }
-
     }
 
     // Speed powerup
