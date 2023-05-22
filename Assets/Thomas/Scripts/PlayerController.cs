@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public int maxHealth = 3;
     public int currentHealth = 3;
+    public bool isDead = false;
+    public float deadTimer;
     public int boneCount = 0;
     
     // Movement
@@ -23,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public float speedTimer;
     public float maxSpeedTimer;
     public bool rangedPowerup;
+
+    // Respawn point
+    public Vector3 respawnPoint;
 
     void Start()
     {
@@ -70,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             //Respawn at previous checkpoint
-
+            isDead = true;
             lives -= 1;
 
             if (lives <= 0)
@@ -100,6 +105,25 @@ public class PlayerController : MonoBehaviour
             currentHealth = currentHealth + 1;
         }
       
+    }
+
+    public void Respawn()
+    {
+        if(isDead == true)
+        {
+            deadTimer = 5f;
+            deadTimer -= Time.deltaTime;
+
+            if (deadTimer < 0)
+            {
+                //transform.position = 
+            }
+        }
+    }
+
+    public void SetSpawnPoint(Vector3 newPosition)
+    {
+        respawnPoint = newPosition;
     }
 
     // When picking up bones use this function - Thomas
