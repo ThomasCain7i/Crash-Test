@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Powerups
     public bool speedPowerup;
     public float speedTimer;
+    public float maxSpeedTimer;
     public bool rangedPowerup;
 
     void Start()
@@ -32,12 +33,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Input system movement - Thomas
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
+        // Jump with ground checker - Thomas
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining--;
         }
 
-        // Turn the player depending on how they move
+        // Turn the player depending on how they move - Thomas
         if (moveHorizontal < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 270f, 0f);
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
+        // If health = 0 - Thomas
         if (currentHealth <= 0)
         {
             //Respawn at previous checkpoint
@@ -82,21 +86,23 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            //Reset jumps and set grounded true - Thomas
             isGrounded = true;
             jumpsRemaining = maxJumps;
         }
     }
 
+    //When picking up dog treat use GainHealth to increase health by 1 - Thomas
     public void GainHealth()
     {
         if (currentHealth < maxHealth)
         {
-            int health = 1;
-            currentHealth = currentHealth + health;
+            currentHealth = currentHealth + 1;
         }
       
     }
 
+    // When picking up bones use this function - Thomas
     public void Collectedbone()
     {
         boneCount = boneCount + 1;
@@ -109,14 +115,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    // Speed powerup
     public void SpeedPowerUpFunction()
     {
         // Activates super speed
         speedPowerup = true;
 
         // resets timer
-        speedTimer = 0.0f;
-
+        speedTimer = maxSpeedTimer;
     }
 
     public void SuperSpeed()
