@@ -15,26 +15,26 @@ public class RangedProjectileScript : MonoBehaviour
     {
         // Moves position it travels based on player position
 
-        /*
-        if (playerController.moveHorizontal < 0)
+        
+        if (playerController.isFacingLeft == true)
         {
-            transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
-        else if (playerController.moveHorizontal > 0)
+        else if (playerController.isFacingRight == true)
         {
-            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
-        else if (moveVertical < 0)
+        else if (playerController.isFacingForwards == true)
         {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+           transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        else if (moveVertical > 0)
+        else if (playerController.isFacingBackwards == true)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+           transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
-        */
+        
 
 
         // Set the projectile to active

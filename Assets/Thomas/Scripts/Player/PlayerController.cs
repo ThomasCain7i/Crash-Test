@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     private MovingPlatform movingPlatform;
 
     // Direction
-    private bool isFacingLeft;
-    private bool isFacingRight;
-    private bool isFacingForwards;
-    private bool isFacingBackwards;
+    public bool isFacingLeft;
+    public bool isFacingRight;
+    public bool isFacingForwards;
+    public bool isFacingBackwards;
 
     void Start()
     {
