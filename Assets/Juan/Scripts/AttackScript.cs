@@ -55,7 +55,7 @@ public class AttackScript : MonoBehaviour
 
         if(isGrounded == false)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && isGrounded == false)
             {
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
                 var impulse = Instantiate(impulseObject, impulsePoint.position, impulsePoint.rotation);
