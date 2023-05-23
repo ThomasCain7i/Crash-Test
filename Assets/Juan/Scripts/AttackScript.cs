@@ -8,6 +8,9 @@ public class AttackScript : MonoBehaviour
     public GameObject barkBullet;
     public float barkSpeed = 5f;
 
+    public float coolDownTime;
+    public float nextBarkTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,22 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if(Time.time > nextBarkTime)
         {
-            var ability = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation);
-            ability.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed;
-           
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                var ability = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation);
+                ability.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed;
+
+
+                //COOLDOWN FOR THE ABILITY 
+                nextBarkTime = Time.time + coolDownTime;
+            }
         }
+       
     }
+
+    
 }
 
           
