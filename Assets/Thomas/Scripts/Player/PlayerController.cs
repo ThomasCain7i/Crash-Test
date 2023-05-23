@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     // Platforms
     private MovingPlatform movingPlatform;
 
+    // Direction
+    private bool isFacingLeft;
+    private bool isFacingRight;
+    private bool isFacingForwards;
+    private bool isFacingBackwards;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,6 +43,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
 
         movingPlatform = FindObjectOfType<MovingPlatform>();
+
+       
     }
 
     void Update()
@@ -60,19 +68,38 @@ public class PlayerController : MonoBehaviour
         if (moveHorizontal < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            isFacingLeft = true;
+            isFacingRight = false;
+            isFacingBackwards = false;
+            isFacingForwards = false;
         }
         else if (moveHorizontal > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            isFacingRight = true;
+            isFacingLeft = false;
+            isFacingBackwards = false;
+            isFacingForwards = false;
         }
         else if (moveVertical < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            isFacingBackwards = true;
+            isFacingRight = false;
+            isFacingLeft = false;
+            isFacingForwards = false;
         }
         else if (moveVertical > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            isFacingForwards = true;
+            isFacingRight = false;
+            isFacingBackwards = false;
+            isFacingLeft = false;
         }
+        
+        // Each direction is only active in one instance
+       
 
         // If health = 0 - Thomas
         if (lives >= 1)
@@ -93,6 +120,20 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("MovingPlatformLR"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("MovingPlatformFB"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
@@ -171,106 +212,106 @@ public class PlayerController : MonoBehaviour
 
      void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "MovingPlatform")
+        if (collision.gameObject.tag == "MovingPlatformLR")
         {
             //Player moves along the platform
-            if (movingPlatform.isMovingLR == true)
-            {
+          
                 if (movingPlatform.moveTimer <= 5.0f)
                 {
                     // Player moves right changes from direction they are facing
-                    /*
-                    if (moveHorizontal < 0)
+                    
+                    if (isFacingLeft == true)
                     {
                         transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
                     }
-                    else if (moveHorizontal > 0)
+                    else if (isFacingRight == true)
                     {
                        transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
                     }
-                    else if (moveVertical < 0)
+                    else if (isFacingBackwards == true)
                     {
                        transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveVertical > 0)
+                    else if (isFacingForwards == true)
                     {
                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));       
                     }
-                    */
+                    
                 }
                 else if (movingPlatform.moveTimer <= 10.0f)
                 {
                     // Player moves left changes from direction they are facing
-                    /*
-                    if (moveHorizontal < 0)
+                    
+                    if (isFacingLeft == true)
                     {
                         transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
                     }
-                    else if (moveHorizontal > 0)
+                    else if (isFacingRight == true)
                     {
                        transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
                     }
-                    else if (moveVertical < 0)
+                    else if (isFacingBackwards == true)
                     {
                        transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveVertical > 0)
+                    else if (isFacingForwards == true)
                     {
                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));       
                     }
-                    */
+                    
                 }
-            }
-
-            if (movingPlatform.isMovingFB == true)
-            {
+            
+           
+        }
+        else if (collision.gameObject.tag == "MovingPlatformFB")
+        {
+           
                 if (movingPlatform.moveTimer <= 5.0f)
                 {
                     // Player moves forward changes from direction they are facing
-                    /*
-                    if (moveHorizontal < 0)
+                    
+                    if (isFacingLeft == true)
                     {
                        transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveHorizontal > 0)
+                    else if (isFacingRight == true)
                     {
                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveVertical < 0)
+                    else if (isFacingBackwards == true)
                     {
                        transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
                     }
-                    else if (moveVertical > 0)
+                    else if (isFacingForwards == true)
                     {
                        transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));       
                     }
-                    */
+                    
 
                 }
                 else if (movingPlatform.moveTimer <= 10.0f)
                 {
                     // Player moves backwards changes from direction they are facing
-                    /*
-                    if (moveHorizontal < 0)
+                    
+                    if (isFacingLeft == true)
                     {
                        transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveHorizontal > 0)
+                    else if (isFacingRight == true)
                     {
                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
                     }
-                    else if (moveVertical < 0)
+                    else if (isFacingBackwards == true)
                     {
                        transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
                     }
-                    else if (moveVertical > 0)
+                    else if (isFacingForwards == true)
                     {
                        transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));       
                     }
-                    */
-
+                    
                 }
-            }   
+               
         }
     }
 }
