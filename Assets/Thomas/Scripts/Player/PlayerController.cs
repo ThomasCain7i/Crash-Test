@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth = 3;
     public int boneCount = 0;
+    public float hitTimer;
     
     // Movement
     public float moveSpeed = 5f;
@@ -128,6 +129,9 @@ public class PlayerController : MonoBehaviour
         {
            speedGlow.SetActive(false);
         }
+        
+        // Time period for player's invincibility after hit
+        hitTimer += Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -153,11 +157,30 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining = maxJumps;
         }
 
-         if (collision.gameObject.CompareTag("BreakingPlatform"))
+        if (collision.gameObject.CompareTag("BreakingPlatform"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
             jumpsRemaining = maxJumps;
+        }
+        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            
+           
+            // Player takes damage
+            if (hitTimer >= 3)
+            {
+               TakeDamage(1);
+               hitTimer = 0;
+            }
+
+            // Player is invincible after hit
+            if (hitTimer <= 3)
+            {
+                TakeDamage(0);
+            }
+           
         }
     }
 
@@ -169,6 +192,12 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = currentHealth + 1;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+       
     }
 
     public void Respawn()
