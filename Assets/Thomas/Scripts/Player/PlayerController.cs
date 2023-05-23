@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // Platforms
     private MovingPlatform movingPlatform;
+    private BreakingPlatform breakingPlatform;
 
     // Direction
     public bool isFacingLeft;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
 
         movingPlatform = FindObjectOfType<MovingPlatform>();
-
+        breakingPlatform = FindObjectOfType<BreakingPlatform>();
        
     }
 
@@ -115,6 +116,9 @@ public class PlayerController : MonoBehaviour
             //end game
             Debug.Log("Lives = 0");
         }
+ 
+        // Allows powerup to activate
+        SuperSpeed();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -134,6 +138,13 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("MovingPlatformFB"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+         if (collision.gameObject.CompareTag("BreakingPlatform"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
@@ -194,7 +205,7 @@ public class PlayerController : MonoBehaviour
             // Player becomes faster
             moveSpeed = 7.5f;
         }
-        else
+        else if (speedPowerup == false)
         {
             // returns to default speed
             moveSpeed = 5f;
@@ -312,6 +323,12 @@ public class PlayerController : MonoBehaviour
                     
                 }
                
+        }
+
+        if (collision.gameObject.tag == "BreakingPlatform")
+        {
+            // Player moves down with the platform
+            transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
         }
     }
 }
