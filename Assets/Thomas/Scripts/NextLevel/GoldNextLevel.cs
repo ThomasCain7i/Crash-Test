@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GoldNextLevel : MonoBehaviour
 {
     public PlayerController playerController;
+    public int bonesToCollect;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,7 @@ public class GoldNextLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if(playerController.boneCount >= 5)
+            if(playerController.boneCount >= bonesToCollect)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
