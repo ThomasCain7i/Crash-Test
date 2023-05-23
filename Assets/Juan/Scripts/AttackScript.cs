@@ -18,13 +18,19 @@ public class AttackScript : MonoBehaviour
     private bool isGrounded;
 
     //SMASH
-    public float smashForce; 
+    public float smashForce;
+    
+    public Rigidbody Axe;
+    public Transform axePoint; 
+
+    public float axeSpeed; 
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -35,8 +41,8 @@ public class AttackScript : MonoBehaviour
             //BARK ATTACK - JUAN
             if (Input.GetKeyDown(KeyCode.R))
             {
-                var ability = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation); //SPAWNS THE ATTACK FROM THE SPECIFIC POINT OFF THE PLAYER
-                ability.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed; //DEALS WITH THE FORCE AND SPEED OF THE BARK
+                var bark = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation); //SPAWNS THE ATTACK FROM THE SPECIFIC POINT OFF THE PLAYER
+                bark.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed; //DEALS WITH THE FORCE AND SPEED OF THE BARK
 
 
                 //COOLDOWN FOR THE BARK - JUAN
@@ -53,6 +59,13 @@ public class AttackScript : MonoBehaviour
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            
+            Axe.GetComponent<Rigidbody>().velocity = Axe.transform.forward * axeSpeed;
+        }
+        
     }
                
 
