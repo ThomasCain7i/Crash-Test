@@ -27,11 +27,16 @@ public class PlayerController : MonoBehaviour
     // Respawn point
     public Vector3 respawnPoint;
 
+    // Platforms
+    private MovingPlatform movingPlatform;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
+
+        movingPlatform = FindObjectOfType<MovingPlatform>();
     }
 
     void Update()
@@ -95,6 +100,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+   
     //When picking up dog treat use GainHealth to increase health by 1 - Thomas
     public void GainHealth()
     {
@@ -161,5 +167,110 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+     void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "MovingPlatform")
+        {
+            //Player moves along the platform
+            if (movingPlatform.isMovingLR == true)
+            {
+                if (movingPlatform.moveTimer <= 5.0f)
+                {
+                    // Player moves right changes from direction they are facing
+                    /*
+                    if (moveHorizontal < 0)
+                    {
+                        transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    }
+                    else if (moveHorizontal > 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    }
+                    else if (moveVertical < 0)
+                    {
+                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveVertical > 0)
+                    {
+                      transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));       
+                    }
+                    */
+                }
+                else if (movingPlatform.moveTimer <= 10.0f)
+                {
+                    // Player moves left changes from direction they are facing
+                    /*
+                    if (moveHorizontal < 0)
+                    {
+                        transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    }
+                    else if (moveHorizontal > 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    }
+                    else if (moveVertical < 0)
+                    {
+                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveVertical > 0)
+                    {
+                      transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));       
+                    }
+                    */
+                }
+            }
+
+            if (movingPlatform.isMovingFB == true)
+            {
+                if (movingPlatform.moveTimer <= 5.0f)
+                {
+                    // Player moves forward changes from direction they are facing
+                    /*
+                    if (moveHorizontal < 0)
+                    {
+                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveHorizontal > 0)
+                    {
+                      transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveVertical < 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    }
+                    else if (moveVertical > 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));       
+                    }
+                    */
+
+                }
+                else if (movingPlatform.moveTimer <= 10.0f)
+                {
+                    // Player moves backwards changes from direction they are facing
+                    /*
+                    if (moveHorizontal < 0)
+                    {
+                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveHorizontal > 0)
+                    {
+                      transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    }
+                    else if (moveVertical < 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    }
+                    else if (moveVertical > 0)
+                    {
+                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));       
+                    }
+                    */
+
+                }
+            }   
+        }
     }
 }
