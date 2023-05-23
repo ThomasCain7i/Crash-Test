@@ -59,9 +59,3 @@ public class AttackScript : MonoBehaviour
 
     
 }
-
-          
-
-
-
-
