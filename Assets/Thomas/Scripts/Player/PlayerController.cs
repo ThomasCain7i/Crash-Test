@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool speedPowerup;
     public float speedTimer;
     public float maxSpeedTimer;
-    public bool rangedPowerup;
+    public GameObject speedGlow;
 
     // Respawn point
     public Vector3 respawnPoint;
@@ -119,6 +119,15 @@ public class PlayerController : MonoBehaviour
  
         // Allows powerup to activate
         SuperSpeed();
+
+        if (speedPowerup == true)
+        {
+           speedGlow.SetActive(true);
+        }
+        else if (speedPowerup == false)
+        {
+           speedGlow.SetActive(false);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -200,7 +209,7 @@ public class PlayerController : MonoBehaviour
     {
         if(speedPowerup == true)
         {
-            Debug.Log("Speed Boost");
+
 
             // Player becomes faster
             moveSpeed = 7.5f;
