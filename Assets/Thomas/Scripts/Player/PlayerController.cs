@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth = 3;
     public int boneCount = 0;
+    public float hitTimer;
+    public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
     
     // Movement
     public float moveSpeed = 5f;
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour
 
         movingPlatform = FindObjectOfType<MovingPlatform>();
         breakingPlatform = FindObjectOfType<BreakingPlatform>();
-       
+        
+        damagedBarrier.SetActive(false);
     }
 
     void Update()
@@ -128,6 +131,22 @@ public class PlayerController : MonoBehaviour
         {
            speedGlow.SetActive(false);
         }
+        
+        // Time period for player's invincibility after hit
+        hitTimer += Time.deltaTime;
+       
+
+        if (hitTimer >= 3)
+        {
+              
+            damagedBarrier.SetActive(false);
+        }
+        else
+        {
+            damagedBarrier.SetActive(true);
+        }
+
+           
     }
 
     void OnCollisionEnter(Collision collision)
@@ -153,11 +172,30 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining = maxJumps;
         }
 
-         if (collision.gameObject.CompareTag("BreakingPlatform"))
+        if (collision.gameObject.CompareTag("BreakingPlatform"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
             jumpsRemaining = maxJumps;
+        }
+        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Player takes damage
+            if (hitTimer >= 3)
+            {
+               TakeDamage(1);
+               hitTimer = 0;
+               damagedBarrier.SetActive(false);
+            }
+
+            // Player is invincible after hit
+            if (hitTimer <= 3)
+            {
+                TakeDamage(0);
+                damagedBarrier.SetActive(true);
+            }
+           
         }
     }
 
@@ -169,6 +207,12 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = currentHealth + 1;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+       
     }
 
     public void Respawn()
