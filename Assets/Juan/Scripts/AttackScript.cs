@@ -21,10 +21,11 @@ public class AttackScript : MonoBehaviour
     public float smashForce;
     
     public Rigidbody Axe;
-    public Transform axePoint; 
+    public Transform impulsePoint; 
 
-    public float axeSpeed; 
-    
+    public float axeSpeed;
+    public GameObject impulseObject; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,14 +58,12 @@ public class AttackScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
+                var impulse = Instantiate(impulseObject, impulsePoint.position, impulsePoint.rotation);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            
-            Axe.GetComponent<Rigidbody>().velocity = Axe.transform.forward * axeSpeed;
-        }
+
+        
         
     }
                
