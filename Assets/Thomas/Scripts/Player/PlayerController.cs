@@ -3,42 +3,42 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Health / lives
-    public int lives = 3;
-    public int maxHealth = 3;
-    public int currentHealth = 3;
+    public int lives = 3;  // Number of lives the player has
+    public int maxHealth = 3;  // Maximum health the player can have
+    public int currentHealth = 3;  // Current health of the player
 
     // Bones
-    public int boneCount = 0;
-    
+    public int boneCount = 0;  // Number of collected bones
+
     // Movement
-    public float moveSpeed = 5f;
-    public float jumpForce = 5f;
-    public int maxJumps = 2;
-    private int jumpsRemaining;
+    public float moveSpeed = 5f;  // Movement speed of the player
+    public float jumpForce = 5f;  // Force applied when the player jumps
+    public int maxJumps = 2;  // Maximum number of jumps the player can perform
+    private int jumpsRemaining;  // Number of jumps remaining for the player
 
     // Rigidbody / Ground test
-    private Rigidbody rb;
-    private bool isGrounded;
+    private Rigidbody rb;  // Reference to the Rigidbody component of the player
+    private bool isGrounded;  // Indicates if the player is currently grounded
 
     // Powerups
-    public float speedTimer;
-    public float tripleJumpTimer;
+    public float speedTimer;  // Timer for the speed power-up
+    public float tripleJumpTimer;  // Timer for the triple jump power-up
 
     // Debuffs
-    public bool isSlowed = false;
+    public bool isSlowed = false;  // Indicates if the player is currently slowed down
 
     // Respawn point
-    public Vector3 respawnPoint;
+    public Vector3 respawnPoint;  // Position where the player respawns after dying
 
     // Platforms
-    private BreakingPlatform breakingPlatform;
+    private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
     void Start()
     {
-        //Get rigid body of player
+        // Get the Rigidbody component of the player
         rb = GetComponent<Rigidbody>();
 
-        //Set jumps and health to max
+        // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
     }
@@ -60,8 +60,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             jumpsRemaining--;
         }
-
-
 
         // Turn the player depending on how they move
         if (moveHorizontal < 0)
@@ -87,27 +85,27 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
-                //Respawn
+                // Respawn
                 Respawn();
             }
         }
         else
         {
-            //end game
+            // End game
             Debug.Log("Lives = 0");
         }
- 
+
         // POWER UPS
         // Triple jump powerup
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
 
-        if(tripleJumpTimer < 0)
+        if (tripleJumpTimer < 0)
         {
             maxJumps = 2;
-        }  
+        }
 
-        if(speedTimer < 0 && !isSlowed)
+        if (speedTimer < 0 && !isSlowed)
         {
             moveSpeed = 5;
         }
@@ -118,12 +116,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Reset jumps and set grounded true
+            // Reset jumps and set grounded true
             isGrounded = true;
             jumpsRemaining = maxJumps;
         }
     }
-   
+
     // GAINING HEALTH METHOD
     public void GainHealth()
     {
@@ -138,7 +136,6 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
     }
-
 
     // RESPAWNING METHOD
     public void Respawn()
@@ -164,7 +161,7 @@ public class PlayerController : MonoBehaviour
     // Method that controls the triple jump power up
     public void TripleJump()
     {
-        //Set timer to 10 seconds and max jumps to 3
+        // Set timer to 10 seconds and max jumps to 3
         tripleJumpTimer = 10f;
         maxJumps = 3;
     }
@@ -176,7 +173,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 8;
     }
 
-     void OnCollisionStay(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "BreakingPlatform")
         {
