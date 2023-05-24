@@ -5,12 +5,12 @@ using UnityEngine;
 public class SuperSpeed : MonoBehaviour
 {
 
-    public PlayerController playerController;
+    public PlayerControllerRIO playerController;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerControllerRIO>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class SuperSpeed : MonoBehaviour
             Debug.Log("Speed Boost");
 
             // Player becomes faster
-            PlayerController thePlayer = other.gameObject.GetComponent<PlayerController>();
+            PlayerControllerRIO thePlayer = other.gameObject.GetComponent<PlayerControllerRIO>();
 
             //collects powerup by setting the players bool to true
             thePlayer.SpeedPowerUpFunction();

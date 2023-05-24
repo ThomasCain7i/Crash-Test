@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Health / lives / bones
+    // Health / lives
     public int lives = 3;
     public int maxHealth = 3;
     public int currentHealth = 3;
+
+    // Bones
     public int boneCount = 0;
-    public float hitTimer;
-    public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
     
     // Movement
     public float moveSpeed = 5f;
@@ -16,51 +16,41 @@ public class PlayerController : MonoBehaviour
     public int maxJumps = 2;
     private int jumpsRemaining;
 
-    // Rigidbody
+    // Rigidbody / Ground test
     private Rigidbody rb;
     private bool isGrounded;
 
     // Powerups
-    public bool speedPowerup;
     public float speedTimer;
-    public float maxSpeedTimer;
-    public GameObject speedGlow;
+    public float tripleJumpTimer;
 
     // Respawn point
     public Vector3 respawnPoint;
 
     // Platforms
-    private MovingPlatform movingPlatform;
     private BreakingPlatform breakingPlatform;
-
-    // Direction
-    public bool isFacingLeft;
-    public bool isFacingRight;
-    public bool isFacingForwards;
-    public bool isFacingBackwards;
 
     void Start()
     {
+        //Get rigid body of player
         rb = GetComponent<Rigidbody>();
+
+        //Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
-
-        movingPlatform = FindObjectOfType<MovingPlatform>();
-        breakingPlatform = FindObjectOfType<BreakingPlatform>();
-        
-        damagedBarrier.SetActive(false);
     }
 
     void Update()
     {
-        // Input system movement - Thomas
+        // MOVEMENT
+        // Input system movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
-        // Jump with ground checker - Thomas
+        // Jump with ground checker
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
@@ -68,44 +58,28 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining--;
         }
 
-        // Turn the player depending on how they move - Thomas
+
+
+        // Turn the player depending on how they move
         if (moveHorizontal < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-            isFacingLeft = true;
-            isFacingRight = false;
-            isFacingBackwards = false;
-            isFacingForwards = false;
         }
         else if (moveHorizontal > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-            isFacingRight = true;
-            isFacingLeft = false;
-            isFacingBackwards = false;
-            isFacingForwards = false;
         }
         else if (moveVertical < 0)
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            isFacingBackwards = true;
-            isFacingRight = false;
-            isFacingLeft = false;
-            isFacingForwards = false;
         }
         else if (moveVertical > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            isFacingForwards = true;
-            isFacingRight = false;
-            isFacingBackwards = false;
-            isFacingLeft = false;
         }
-        
-        // Each direction is only active in one instance
-       
 
-        // If health = 0 - Thomas
+        // HEALTH / LIVES
+        // If health = 0
         if (lives >= 1)
         {
             if (currentHealth <= 0)
@@ -120,87 +94,34 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Lives = 0");
         }
  
-        // Allows powerup to activate
-        SuperSpeed();
+        // POWER UPS
+        // Triple jump powerup
+        tripleJumpTimer -= Time.deltaTime;
+        speedTimer -= Time.deltaTime;
 
-        if (speedPowerup == true)
+        if(tripleJumpTimer < 0)
         {
-           speedGlow.SetActive(true);
-        }
-        else if (speedPowerup == false)
-        {
-           speedGlow.SetActive(false);
-        }
-        
-        // Time period for player's invincibility after hit
-        hitTimer += Time.deltaTime;
-       
+            maxJumps = 2;
+        }  
 
-        if (hitTimer >= 3)
+        if(speedTimer < 0)
         {
-              
-            damagedBarrier.SetActive(false);
+            moveSpeed = 5;
         }
-        else
-        {
-            damagedBarrier.SetActive(true);
-        }
-
-           
     }
 
+    // Collision stuff
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Reset jumps and set grounded true - Thomas
+            //Reset jumps and set grounded true
             isGrounded = true;
             jumpsRemaining = maxJumps;
-        }
-
-        if (collision.gameObject.CompareTag("MovingPlatformLR"))
-        {
-            //Reset jumps and set grounded true - Thomas
-            isGrounded = true;
-            jumpsRemaining = maxJumps;
-        }
-
-        if (collision.gameObject.CompareTag("MovingPlatformFB"))
-        {
-            //Reset jumps and set grounded true - Thomas
-            isGrounded = true;
-            jumpsRemaining = maxJumps;
-        }
-
-        if (collision.gameObject.CompareTag("BreakingPlatform"))
-        {
-            //Reset jumps and set grounded true - Thomas
-            isGrounded = true;
-            jumpsRemaining = maxJumps;
-        }
-        
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // Player takes damage
-            if (hitTimer >= 3)
-            {
-               TakeDamage(1);
-               hitTimer = 0;
-               damagedBarrier.SetActive(false);
-            }
-
-            // Player is invincible after hit
-            if (hitTimer <= 3)
-            {
-                TakeDamage(0);
-                damagedBarrier.SetActive(true);
-            }
-           
         }
     }
-
    
-    //When picking up dog treat use GainHealth to increase health by 1 - Thomas
+    // GAINING HEALTH METHOD
     public void GainHealth()
     {
         if (currentHealth < maxHealth)
@@ -209,12 +130,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // TAKING DAMAGE METHOD
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-       
     }
 
+
+    // RESPAWNING METHOD
     public void Respawn()
     {
         transform.position = respawnPoint;
@@ -222,162 +145,36 @@ public class PlayerController : MonoBehaviour
         lives -= 1;
     }
 
+    // SETTING THE SPAWN POINT METHOD
     public void SetSpawnPoint(Vector3 newPosition)
     {
         respawnPoint = newPosition;
     }
 
-    // When picking up bones use this function - Thomas
+    // COLLECTING BONES METHOD
     public void Collectedbone()
     {
         boneCount = boneCount + 1;
-        //rough idea
-        if (boneCount == 10)
-        {
-            // powerup function
-       
-        }
     }
 
-    // Speed powerup
-    public void SpeedPowerUpFunction()
+    // POWER UPS
+    // Method that controls the triple jump power up
+    public void TripleJump()
     {
-        // Activates super speed
-        speedPowerup = true;
-
-        // resets timer
-        speedTimer = maxSpeedTimer;
+        //Set timer to 10 seconds and max jumps to 3
+        tripleJumpTimer = 10f;
+        maxJumps = 3;
     }
 
-    public void SuperSpeed()
+    // Method that controls the speed power up
+    public void SpeedPowerUp()
     {
-        if(speedPowerup == true)
-        {
-
-
-            // Player becomes faster
-            moveSpeed = 7.5f;
-        }
-        else if (speedPowerup == false)
-        {
-            // returns to default speed
-            moveSpeed = 5f;
-        }
-
-        speedTimer += Time.deltaTime;
-        if (speedTimer >= 20.0f)
-        {
-            // Power works for a limited time
-            speedPowerup = false;
-
-        }
-
+        speedTimer = 10f;
+        moveSpeed = 8;
     }
 
      void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "MovingPlatformLR")
-        {
-            //Player moves along the platform
-          
-                if (movingPlatform.moveTimer <= 5.0f)
-                {
-                    // Player moves right changes from direction they are facing
-                    
-                    if (isFacingLeft == true)
-                    {
-                        transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
-                    }
-                    else if (isFacingRight == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
-                    }
-                    else if (isFacingBackwards == true)
-                    {
-                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingForwards == true)
-                    {
-                      transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));       
-                    }
-                    
-                }
-                else if (movingPlatform.moveTimer <= 10.0f)
-                {
-                    // Player moves left changes from direction they are facing
-                    
-                    if (isFacingLeft == true)
-                    {
-                        transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
-                    }
-                    else if (isFacingRight == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
-                    }
-                    else if (isFacingBackwards == true)
-                    {
-                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingForwards == true)
-                    {
-                      transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));       
-                    }
-                    
-                }
-            
-           
-        }
-        else if (collision.gameObject.tag == "MovingPlatformFB")
-        {
-           
-                if (movingPlatform.moveTimer <= 5.0f)
-                {
-                    // Player moves forward changes from direction they are facing
-                    
-                    if (isFacingLeft == true)
-                    {
-                       transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingRight == true)
-                    {
-                      transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingBackwards == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
-                    }
-                    else if (isFacingForwards == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));       
-                    }
-                    
-
-                }
-                else if (movingPlatform.moveTimer <= 10.0f)
-                {
-                    // Player moves backwards changes from direction they are facing
-                    
-                    if (isFacingLeft == true)
-                    {
-                       transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingRight == true)
-                    {
-                      transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-                    }
-                    else if (isFacingBackwards == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
-                    }
-                    else if (isFacingForwards == true)
-                    {
-                       transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));       
-                    }
-                    
-                }
-               
-        }
-
         if (collision.gameObject.tag == "BreakingPlatform")
         {
             // Player moves down with the platform

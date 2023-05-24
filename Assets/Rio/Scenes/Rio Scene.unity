@@ -901,7 +901,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 848731447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7dfeb25438c81847ac88e49143b30dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0617aa8001dd92342a87981359520bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
@@ -909,6 +909,7 @@ MonoBehaviour:
   currentHealth: 3
   boneCount: 0
   hitTimer: 0
+  damagedBarrier: {fileID: 232066016}
   moveSpeed: 5
   jumpForce: 5
   maxJumps: 2
@@ -917,6 +918,7 @@ MonoBehaviour:
   maxSpeedTimer: 0
   speedGlow: {fileID: 1680465365}
   respawnPoint: {x: 0, y: 0, z: 0}
+  tripleJumpTimer: 10
   isFacingLeft: 0
   isFacingRight: 0
   isFacingForwards: 0

@@ -8,7 +8,7 @@ public class RangedProjectileScript : MonoBehaviour
     public float spawnTimer;
 
     public RangedObjectPool rangedObjectPool;
-    public PlayerController playerController;
+    public PlayerControllerRIO playerController;
 
     // Move the bullet forward
     public void RangedAttack()
@@ -51,7 +51,7 @@ public class RangedProjectileScript : MonoBehaviour
     {
         speed = 8;
         rangedObjectPool = FindObjectOfType<RangedObjectPool>();
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerControllerRIO>();
 
        
     }
