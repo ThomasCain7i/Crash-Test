@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public float speedTimer;
     public float tripleJumpTimer;
 
+    // Debuffs
+    public bool isSlowed = false;
+
     // Respawn point
     public Vector3 respawnPoint;
 
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
             maxJumps = 2;
         }  
 
-        if(speedTimer < 0)
+        if(speedTimer < 0 && !isSlowed)
         {
             moveSpeed = 5;
         }
