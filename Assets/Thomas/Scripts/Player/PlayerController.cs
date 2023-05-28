@@ -3,34 +3,47 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Health / lives
+    [Header("Health / Lives")]
     public int lives = 3;  // Number of lives the player has
     public int maxHealth = 3;  // Maximum health the player can have
-    public int currentHealth = 3;  // Current health of the player
+    public float currentHealth = 3;  // Current health of the player
+
+    // Attacks
+    [Header("Attacks")]
+    public float barkDamage;
+    public float smashDamage;
 
     // Bones
+    [Header("Bones")]
     public int boneCount = 0;  // Number of collected bones
 
     // Movement
+    [Header("Movement")]
     public float moveSpeed = 5f;  // Movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     private int jumpsRemaining;  // Number of jumps remaining for the player
 
     // Rigidbody / Ground test
+    [Header("Rigidbody / Ground Test")]
     private Rigidbody rb;  // Reference to the Rigidbody component of the player
     private bool isGrounded;  // Indicates if the player is currently grounded
 
     // Powerups
+    [Header("Power Ups")]
     public float speedTimer;  // Timer for the speed power-up
     public float tripleJumpTimer;  // Timer for the triple jump power-up
 
     // Debuffs
+    [Header("Debuffs")]
     public bool isSlowed = false;  // Indicates if the player is currently slowed down
 
     // Respawn point
+    [Header("Respawn Point")]
     public Vector3 respawnPoint;  // Position where the player respawns after dying
 
     // Platforms
+    [Header("Platforms")]
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
     void Start()
@@ -79,22 +92,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        // HEALTH / LIVES
-        // If health = 0
-        if (lives >= 1)
-        {
-            if (currentHealth <= 0)
-            {
-                // Respawn
-                Respawn();
-            }
-        }
-        else
-        {
-            // End game
-            Debug.Log("Lives = 0");
-        }
-
         // POWER UPS
         // Triple jump powerup
         tripleJumpTimer -= Time.deltaTime;
@@ -108,6 +105,27 @@ public class PlayerController : MonoBehaviour
         if (speedTimer < 0 && !isSlowed)
         {
             moveSpeed = 5;
+        }
+    }
+
+    // HEALTH / LIVES
+    // If health = 0
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+
+        if (lives >= 1)
+        {
+            if (currentHealth <= 0)
+            {
+                // Respawn
+                Respawn();
+            }
+        }
+        else
+        {
+            // End game
+            Debug.Log("Lives = 0");
         }
     }
 
@@ -164,6 +182,7 @@ public class PlayerController : MonoBehaviour
         // Set timer to 10 seconds and max jumps to 3
         tripleJumpTimer = 10f;
         maxJumps = 3;
+        jumpsRemaining = maxJumps;
     }
 
     // Method that controls the speed power up

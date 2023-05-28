@@ -1,33 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BarkScript : MonoBehaviour
 {
-    public float life = 1;
+    public float destroyTimer = 1;
+    public PlayerController playerController;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        playerController = FindObjectOfType<PlayerController>();  // Find and assign the PlayerController component in the scene
+        damage = playerController.barkDamage;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void Awake()
     {
-        Destroy(gameObject, life);
-
+        Destroy(gameObject, destroyTimer);
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 4)
+        //On collision with bullet do:
+        switch (other.gameObject.tag)
         {
-            Destroy(GameObject.Find("Wall"));
-            Destroy(gameObject);
+            // Collision with wall just destroy bullet
+            case "Wall":
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                break;
+            // Collision with enemy deal 1 damage and destory
+            case "Enemy":
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                Destroy(gameObject);
+                break;
         }
     }
 }

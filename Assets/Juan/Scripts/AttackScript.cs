@@ -31,7 +31,6 @@ public class AttackScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
     }
 
     // Update is called once per frame
@@ -60,14 +59,6 @@ public class AttackScript : MonoBehaviour
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
                 var impulse = Instantiate(impulseObject, impulsePoint.position, impulsePoint.rotation);
             }
-        }
-
-
-        
-        
+        } 
     }
-               
-
-
-    
 }

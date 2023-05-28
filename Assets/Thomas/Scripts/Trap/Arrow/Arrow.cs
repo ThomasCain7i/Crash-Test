@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public int damage = 1;
+    public float damage = 1;
     private float destoryTime = 5;
     public PlayerController playerController;
 
@@ -26,7 +26,8 @@ public class Arrow : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            playerController.currentHealth -= damage;
+            Debug.Log("Player touched the arrow");
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

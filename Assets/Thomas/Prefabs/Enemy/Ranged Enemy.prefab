@@ -142,10 +142,11 @@ GameObject:
   - component: {fileID: 2137436048545300352}
   - component: {fileID: 2137436048545300415}
   - component: {fileID: 2137436048545300356}
+  - component: {fileID: 7296681337752844054}
   - component: {fileID: 2137436048545300357}
   m_Layer: 0
   m_Name: Ranged Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,6 +270,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7296681337752844054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137436048545300413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac769a54c02e454b893c25ac53e2221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 3
+  maxHealth: 3
 --- !u!114 &2137436048545300357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,8 +304,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
-  health: 3
   speed: 4
+  damage: 1
   patrolPoints: []
   timeBetweenAttacks: 2
   projectile: {fileID: 164787254633409713, guid: 9b87a9732624cc5428e2af87dcd40c1f, type: 3}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyFollow : MonoBehaviour
+public class RangedEnemy : MonoBehaviour
 {
     [Header("References")]
     public NavMeshAgent agent;
@@ -10,8 +10,8 @@ public class EnemyFollow : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     [Header("Stats")]
-    public float health;
     public float speed;
+    public float damage;
 
     //Patrolling
     [Header("Patrolling")]
@@ -97,18 +97,6 @@ public class EnemyFollow : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()

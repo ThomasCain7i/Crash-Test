@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 69176934}
   - component: {fileID: 69176933}
   - component: {fileID: 69176932}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,21 +1210,16 @@ MonoBehaviour:
   lives: 3
   maxHealth: 3
   currentHealth: 3
+  barkDamage: 0
+  smashDamage: 0
   boneCount: 0
-  hitTimer: 0
-  damagedBarrier: {fileID: 0}
   moveSpeed: 5
   jumpForce: 5
   maxJumps: 2
-  speedPowerup: 0
   speedTimer: 0
-  maxSpeedTimer: 0
-  speedGlow: {fileID: 0}
+  tripleJumpTimer: 0
+  isSlowed: 0
   respawnPoint: {x: 0, y: 0, z: 0}
-  isFacingLeft: 0
-  isFacingRight: 0
-  isFacingForwards: 0
-  isFacingBackwards: 0
 --- !u!114 &1306961393
 MonoBehaviour:
   m_ObjectHideFlags: 0

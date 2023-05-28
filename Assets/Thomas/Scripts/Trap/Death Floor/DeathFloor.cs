@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class DeathFloor : MonoBehaviour
 {
-    public int damage;
+    public float damage;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
-            {
-                playerController.currentHealth -= damage;
-            }
+            Debug.Log("Player touched the death floor");
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int damage;
+    public float damage;
     public PlayerController playerController;
 
     void Start()
@@ -15,13 +15,10 @@ public class Spikes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player hit by spikes");
         if (other.tag == "Player")
         {
-            if (playerController != null)
-            {
-                playerController.currentHealth -= damage;
-            }
+            Debug.Log("Player touched the spikes");
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 }
