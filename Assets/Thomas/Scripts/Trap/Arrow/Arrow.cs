@@ -24,11 +24,19 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            Debug.Log("Player touched the arrow");
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
+         //On collision with bullet do:
+         switch (other.gameObject.tag)
+         {
+             // Collision with wall just destroy bullet
+             case "Wall":
+                 Destroy(gameObject);
+                 break;
+             // Collision with enemy deal 1 damage and destory
+             case "Player":
+                 Debug.Log("Player touched the arrow");
+                 other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+                 Destroy(gameObject);
+                 break;
+         }
     }
 }
