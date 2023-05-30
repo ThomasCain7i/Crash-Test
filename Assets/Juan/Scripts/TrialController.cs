@@ -19,7 +19,7 @@ public class TrialController : MonoBehaviour
 
     // Movement
     [Header("Movement")]
-    public float moveSpeed = 5f;  // Movement speed of the player
+    public float moveSpeed = 5;  // Movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     private int jumpsRemaining;  // Number of jumps remaining for the player
@@ -75,10 +75,22 @@ public class TrialController : MonoBehaviour
         // Jump with ground checker
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
         {
+            animator.SetBool("IsJumping", true);
+
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
             jumpsRemaining--;
+
+            
         }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+        }
+
+
+
+        //CHARACTER ROTATION - JUAN
 
         if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
         {
@@ -122,18 +134,18 @@ public class TrialController : MonoBehaviour
 
         // POWER UPS
         // Triple jump powerup
-        tripleJumpTimer -= Time.deltaTime;
-        speedTimer -= Time.deltaTime;
+        //tripleJumpTimer -= Time.deltaTime;
+        //speedTimer -= Time.deltaTime;
 
-        if (tripleJumpTimer < 0)
-        {
-            maxJumps = 2;
-        }
+        //if (tripleJumpTimer < 0)
+        //{
+        //    maxJumps = 2;
+        //}
 
-        if (speedTimer < 0 && !isSlowed)
-        {
-            moveSpeed = 5;
-        }
+        //if (speedTimer < 0 && !isSlowed)
+        //{
+        //    moveSpeed = 5;
+        //}
     }
 
     // HEALTH / LIVES
@@ -205,20 +217,20 @@ public class TrialController : MonoBehaviour
 
     // POWER UPS
     // Method that controls the triple jump power up
-    public void TripleJump()
-    {
-        // Set timer to 10 seconds and max jumps to 3
-        tripleJumpTimer = 10f;
-        maxJumps = 3;
-        jumpsRemaining = maxJumps;
-    }
+    //public void TripleJump()
+    //{
+    //    // Set timer to 10 seconds and max jumps to 3
+    //    tripleJumpTimer = 10f;
+    //    maxJumps = 3;
+    //    jumpsRemaining = maxJumps;
+    //}
 
-    // Method that controls the speed power up
-    public void SpeedPowerUp()
-    {
-        speedTimer = 10f;
-        moveSpeed = 8;
-    }
+    //// Method that controls the speed power up
+    //public void SpeedPowerUp()
+    //{
+    //    speedTimer = 10f;
+    //    moveSpeed = 8;
+    //}
 
     void OnCollisionStay(Collision collision)
     {

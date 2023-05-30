@@ -144,6 +144,7 @@ public class PlayerControllerRIO : MonoBehaviour
         if (speedPowerup == true)
         {
             speedGlow.SetActive(true);
+            
         }
         else if (speedPowerup == false)
         {
@@ -164,6 +165,18 @@ public class PlayerControllerRIO : MonoBehaviour
 
         // Allows powerup to activate
         MegaPower();
+        
+        // Default speed with no power
+        if (megaPowerup == false && speedPowerup == false)
+        {
+            moveSpeed = 5.0f;
+        }
+        
+        // Neutralises speed with both powers active
+        if (megaPowerup == true && speedPowerup == true)
+        {
+            moveSpeed = 5.0f;
+        }
 
         // Time period for player's invincibility after hit
         hitTimer += Time.deltaTime;
@@ -233,11 +246,18 @@ public class PlayerControllerRIO : MonoBehaviour
                 TakeDamage(0);
                 starGlow.SetActive(true);
             }
-            
-            
-           
-           
 
+        }
+
+        if (collision.gameObject.CompareTag("BouncePad"))
+        {
+            // Boost the player when they touch the bounce pad
+            rb.AddForce(Vector3.up * jumpForce * 1.25f, ForceMode.VelocityChange);
+            
+
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
         }
     }
 
@@ -370,13 +390,15 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (megaPowerup == true)
         {
-            // Doubles size
-            transform.localScale = new Vector3(2f, 2f, 2f); 
+            // Doubles size and becomes slower
+            transform.localScale = new Vector3(2f, 2f, 2f);
+            moveSpeed = 3.5f;
         }
         else if (megaPowerup == false)
         {
             // Player has standard size
             transform.localScale = new Vector3(1f, 1f, 1f);
+            
         }
 
         megaTimer += Time.deltaTime;
