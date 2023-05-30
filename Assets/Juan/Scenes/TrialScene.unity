@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88307762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36, z: 1.249}
+  m_LocalPosition: {x: 0, y: 1.36, z: 1.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -658,7 +658,7 @@ MonoBehaviour:
   smashDamage: 0
   boneCount: 0
   moveSpeed: 5
-  jumpForce: 5
+  jumpForce: 6
   maxJumps: 2
   speedTimer: 0
   tripleJumpTimer: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barkSpawn: {fileID: 88307763}
   barkBullet: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
-  barkSpeed: 7
+  barkSpeed: 10
   coolDownTime: 1
   nextBarkTime: 0
   smashForce: 12
@@ -705,7 +705,7 @@ MonoBehaviour:
   barkDamage: 0
   smashDamage: 0
   boneCount: 0
-  moveSpeed: 5
+  moveSpeed: 8
   jumpForce: 5
   maxJumps: 2
   speedTimer: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
   isSlowed: 0
   respawnPoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  rotationSpeed: 820
+  rotationSpeed: 980
 --- !u!1 &517268218
 GameObject:
   m_ObjectHideFlags: 0
