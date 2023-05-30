@@ -79,10 +79,19 @@ public class TrialController : MonoBehaviour
             isGrounded = false;
             jumpsRemaining--;
             
-        }
-        else
+        } else
+        
         {
-            animator.SetBool("IsJumping", false);
+            if (isGrounded == true)
+            {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", true);
+                animator.SetBool("IsDoubleJumping", false); 
+            }
+            if(jumpsRemaining == 0)
+            {
+                animator.SetBool("IsDoubleJumping", true); 
+            }
         }
 
         //CHARACTER ROTATION - JUAN

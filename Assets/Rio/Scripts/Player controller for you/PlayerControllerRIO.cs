@@ -257,7 +257,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
-            jumpsRemaining = maxJumps;
+            jumpsRemaining = maxJumps - 1;
         }
     }
 

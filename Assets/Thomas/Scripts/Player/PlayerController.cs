@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
     public void SpeedPowerUp()
     {
         speedTimer = 10f;
-        moveSpeed = 8;
+        moveSpeed = 8f;
     }
 
     // DEBUFFS
