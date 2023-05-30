@@ -70,8 +70,6 @@ public class TrialController : MonoBehaviour
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
 
-
-
         // Jump with ground checker
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
         {
@@ -80,15 +78,12 @@ public class TrialController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
             jumpsRemaining--;
-
             
         }
         else
         {
             animator.SetBool("IsJumping", false);
         }
-
-
 
         //CHARACTER ROTATION - JUAN
 
@@ -97,12 +92,22 @@ public class TrialController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
             animator.SetBool("IsMoving", true);
-
         }
         else
         {
             animator.SetBool("IsMoving", false);
 
+        }
+
+        //PUNCH ATTACK - JUAN
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("PUNCH ATTACK");
+            animator.SetBool("IsAttacking", true); 
+            
+        } else
+        {
+            animator.SetBool("IsAttacking", false); 
         }
 
 
@@ -114,38 +119,38 @@ public class TrialController : MonoBehaviour
         //COMMENTED FOR NOW
 
 
-        //// Turn the player depending on how they move
-        //if (moveHorizontal < 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-        //}
-        //else if (moveHorizontal > 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-        //}
-        //else if (moveVertical < 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        //}
-        //else if (moveVertical > 0)
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        //}
+            //// Turn the player depending on how they move
+            //if (moveHorizontal < 0)
+            //{
+            //    transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            //}
+            //else if (moveHorizontal > 0)
+            //{
+            //    transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            //}
+            //else if (moveVertical < 0)
+            //{
+            //    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            //}
+            //else if (moveVertical > 0)
+            //{
+            //    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            //}
 
-        // POWER UPS
-        // Triple jump powerup
-        //tripleJumpTimer -= Time.deltaTime;
-        //speedTimer -= Time.deltaTime;
+            // POWER UPS
+            // Triple jump powerup
+            //tripleJumpTimer -= Time.deltaTime;
+            //speedTimer -= Time.deltaTime;
 
-        //if (tripleJumpTimer < 0)
-        //{
-        //    maxJumps = 2;
-        //}
+            //if (tripleJumpTimer < 0)
+            //{
+            //    maxJumps = 2;
+            //}
 
-        //if (speedTimer < 0 && !isSlowed)
-        //{
-        //    moveSpeed = 5;
-        //}
+            //if (speedTimer < 0 && !isSlowed)
+            //{
+            //    moveSpeed = 5;
+            //}
     }
 
     // HEALTH / LIVES
