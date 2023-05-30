@@ -246,11 +246,18 @@ public class PlayerControllerRIO : MonoBehaviour
                 TakeDamage(0);
                 starGlow.SetActive(true);
             }
-            
-            
-           
-           
 
+        }
+
+        if (collision.gameObject.CompareTag("BouncePad"))
+        {
+            // Boost the player when they touch the bounce pad
+            rb.AddForce(Vector3.up * jumpForce * 1.25f, ForceMode.VelocityChange);
+            
+
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
         }
     }
 
