@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Movement
     [Header("Movement")]
     public float moveSpeed = 5f;  // Movement speed of the player
+    public float normalMoveSpeed = 5f;  // Movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     private int jumpsRemaining;  // Number of jumps remaining for the player
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
     // Debuffs
     [Header("Debuffs")]
     public bool isSlowed = false;  // Indicates if the player is currently slowed down
+    public bool isFrozen = false;  // Indicates if the player is currently frozen
+    public float frozenTimer; // How long the player is frozen
 
     // Respawn point
     [Header("Respawn Point")]
@@ -46,14 +49,11 @@ public class PlayerController : MonoBehaviour
     [Header("Platforms")]
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
-    //Animator
-    public Animator animator; 
-
     void Start()
     {
         // Get the Rigidbody component of the player
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); 
+
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
@@ -69,41 +69,43 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
+        if (!isFrozen)
+        {
+            // Jump with ground checker
+            if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+                isGrounded = false;
+                jumpsRemaining--;
+            }
 
-      
-
-        // Jump with ground checker
-        if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-            isGrounded = false;
-            jumpsRemaining--;
+            // Turn the player depending on how they move
+            if (moveHorizontal < 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            }
+            else if (moveHorizontal > 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            }
+            else if (moveVertical < 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            }
+            else if (moveVertical > 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
         }
 
-        // Turn the player depending on how they move
-        if (moveHorizontal < 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-        }
-        else if (moveHorizontal > 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-        }
-        else if (moveVertical < 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-        else if (moveVertical > 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
 
         // POWER UPS
         // Triple jump powerup
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
+        frozenTimer -= Time.deltaTime;
 
-        if (tripleJumpTimer < 0)
+        if (tripleJumpTimer <= 0)
         {
             maxJumps = 2;
         }
@@ -111,6 +113,20 @@ public class PlayerController : MonoBehaviour
         if (speedTimer < 0 && !isSlowed)
         {
             moveSpeed = 5;
+        }
+
+        // DEBUFFS
+        // Frozen
+        //Debuffs
+        if (frozenTimer > 0)
+        {
+            isFrozen = true;
+            moveSpeed = 0f;
+        }
+        else
+        {
+            isFrozen = false;
+            moveSpeed = normalMoveSpeed;
         }
     }
 
@@ -196,6 +212,14 @@ public class PlayerController : MonoBehaviour
     {
         speedTimer = 10f;
         moveSpeed = 8;
+    }
+
+    // DEBUFFS
+    // Frozen
+    //Debuffs
+    public void Frozen()
+    {
+        frozenTimer = 2f;
     }
 
     void OnCollisionStay(Collision collision)

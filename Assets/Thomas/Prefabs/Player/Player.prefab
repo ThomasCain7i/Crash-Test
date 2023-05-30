@@ -2926,6 +2926,7 @@ GameObject:
   - component: {fileID: 2788975347363959228}
   - component: {fileID: 2788975347363959229}
   - component: {fileID: 2788975347363959226}
+  - component: {fileID: 8317195574424267909}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3000,12 +3001,17 @@ MonoBehaviour:
   smashDamage: 0
   boneCount: 0
   moveSpeed: 5
+  normalMoveSpeed: 5
   jumpForce: 5
   maxJumps: 2
+  rotationSpeed: 0
   speedTimer: 0
   tripleJumpTimer: 10
   isSlowed: 0
+  isFrozen: 0
+  frozenTimer: 0
   respawnPoint: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
 --- !u!114 &2788975347363959226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,6 +3034,27 @@ MonoBehaviour:
   impulsePoint: {fileID: 0}
   axeSpeed: 0
   impulseObject: {fileID: 0}
+--- !u!95 &8317195574424267909
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314577727973165825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3345102767291016863
 GameObject:
   m_ObjectHideFlags: 0
