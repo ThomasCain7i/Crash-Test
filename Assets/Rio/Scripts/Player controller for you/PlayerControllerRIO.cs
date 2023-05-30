@@ -26,6 +26,10 @@ public class PlayerControllerRIO : MonoBehaviour
     public float maxSpeedTimer;
     public GameObject speedGlow;
 
+    public bool starPowerup;
+    public float starTimer;
+    public GameObject starGlow;
+
     // Respawn point
     public Vector3 respawnPoint;
 
@@ -143,19 +147,30 @@ public class PlayerControllerRIO : MonoBehaviour
             speedGlow.SetActive(false);
         }
 
+        // Allows powerup to activate
+        StarPower();
+
+        if (starPowerup == true)
+        {
+            starGlow.SetActive(true);
+        }
+        else if (starPowerup == false)
+        {
+            starGlow.SetActive(false);
+        }
+
         // Time period for player's invincibility after hit
         hitTimer += Time.deltaTime;
 
-
-        if (hitTimer >= 3)
-        {
-
-            damagedBarrier.SetActive(false);
-        }
-        else
+        if (hitTimer <= 3)
         {
             damagedBarrier.SetActive(true);
         }
+        else if (hitTimer >= 3)
+        {
+            damagedBarrier.SetActive(false);
+        }
+       
 
 
     }
@@ -193,19 +208,29 @@ public class PlayerControllerRIO : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Player takes damage
-            if (hitTimer >= 3)
+            if (hitTimer >= 3 && starPowerup == false)
             {
                 TakeDamage(1);
                 hitTimer = 0;
                 damagedBarrier.SetActive(false);
+                starGlow.SetActive(false);
             }
-
             // Player is invincible after hit
-            if (hitTimer <= 3)
+           else if (hitTimer <= 3)
             {
                 TakeDamage(0);
                 damagedBarrier.SetActive(true);
             }
+
+            if (starPowerup == true)
+            {
+                TakeDamage(0);
+                starGlow.SetActive(true);
+            }
+            
+            
+           
+           
 
         }
     }
@@ -267,6 +292,15 @@ public class PlayerControllerRIO : MonoBehaviour
         maxJumps = 3;
     }
 
+    public void StarPowerUpFunction()
+    {
+        // Activates star power
+        starPowerup = true;
+
+        // resets timer
+        starTimer = 0;
+    }
+
     public void SuperSpeed()
     {
         if (speedPowerup == true)
@@ -283,11 +317,35 @@ public class PlayerControllerRIO : MonoBehaviour
         }
 
         speedTimer += Time.deltaTime;
-        if (speedTimer >= 20.0f)
+        if (speedTimer >= 15.0f)
         {
             // Power works for a limited time
             speedPowerup = false;
 
+        }
+
+    }
+
+    public void StarPower()
+    {
+        if (starPowerup == true)
+        {
+            // Becomes invincible
+            TakeDamage(0);
+            starGlow.SetActive(true);
+            
+        }
+        else if (starPowerup == false)
+        {
+            //Player takes damage as normal
+            starGlow.SetActive(false);
+        }
+          
+        starTimer += Time.deltaTime;
+        if (starTimer >= 10.0f)
+        {
+            // Power works for a limited time
+            starPowerup = false;
         }
 
     }
