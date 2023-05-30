@@ -30,6 +30,9 @@ public class PlayerControllerRIO : MonoBehaviour
     public float starTimer;
     public GameObject starGlow;
 
+    public bool megaPowerup;
+    public float megaTimer;
+
     // Respawn point
     public Vector3 respawnPoint;
 
@@ -158,6 +161,9 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             starGlow.SetActive(false);
         }
+
+        // Allows powerup to activate
+        MegaPower();
 
         // Time period for player's invincibility after hit
         hitTimer += Time.deltaTime;
@@ -301,6 +307,16 @@ public class PlayerControllerRIO : MonoBehaviour
         starTimer = 0;
     }
 
+    public void MegaPowerUpFunction()
+    {
+        // Activates super size power
+        megaPowerup = true;
+
+        // resets timer
+        megaTimer = 0;
+    }
+
+
     public void SuperSpeed()
     {
         if (speedPowerup == true)
@@ -348,6 +364,27 @@ public class PlayerControllerRIO : MonoBehaviour
             starPowerup = false;
         }
 
+    }
+
+    public void MegaPower()
+    {
+        if (megaPowerup == true)
+        {
+            // Doubles size
+            transform.localScale = new Vector3(2f, 2f, 2f); 
+        }
+        else if (megaPowerup == false)
+        {
+            // Player has standard size
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        megaTimer += Time.deltaTime;
+        if (megaTimer >= 12.0f)
+        {
+            // Power works for a limited time
+            megaPowerup = false;
+        }
     }
 
     void OnCollisionStay(Collision collision)
