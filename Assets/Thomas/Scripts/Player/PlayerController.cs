@@ -46,11 +46,14 @@ public class PlayerController : MonoBehaviour
     [Header("Platforms")]
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
+    //Animator
+    public Animator animator; 
+
     void Start()
     {
         // Get the Rigidbody component of the player
         rb = GetComponent<Rigidbody>();
-
+        animator = GetComponent<Animator>(); 
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
@@ -65,6 +68,16 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+
+
+        if(moveSpeed <= 0)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
 
         // Jump with ground checker
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
