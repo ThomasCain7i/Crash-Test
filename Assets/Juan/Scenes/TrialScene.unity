@@ -658,11 +658,14 @@ MonoBehaviour:
   smashDamage: 0
   boneCount: 0
   moveSpeed: 5
+  normalMoveSpeed: 5
   jumpForce: 6
   maxJumps: 2
   speedTimer: 0
   tripleJumpTimer: 0
   isSlowed: 0
+  isFrozen: 0
+  frozenTimer: 0
   respawnPoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
 --- !u!114 &510114299
@@ -1412,11 +1415,14 @@ MonoBehaviour:
   smashDamage: 0
   boneCount: 0
   moveSpeed: 5
+  normalMoveSpeed: 5
   jumpForce: 5
   maxJumps: 2
   speedTimer: 0
   tripleJumpTimer: 0
   isSlowed: 0
+  isFrozen: 0
+  frozenTimer: 0
   respawnPoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
 --- !u!114 &1306961393
