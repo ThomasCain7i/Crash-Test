@@ -646,7 +646,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510114293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7dfeb25438c81847ac88e49143b30dc, type: 3}
   m_Name: 
@@ -687,6 +687,33 @@ MonoBehaviour:
   impulsePoint: {fileID: 1320147792}
   axeSpeed: 0
   impulseObject: {fileID: 0}
+--- !u!114 &510114300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510114293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcd9e187a28c894fbc44af9e37e0e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  maxHealth: 3
+  currentHealth: 3
+  barkDamage: 0
+  smashDamage: 0
+  boneCount: 0
+  moveSpeed: 5
+  jumpForce: 5
+  maxJumps: 2
+  speedTimer: 0
+  tripleJumpTimer: 0
+  isSlowed: 0
+  respawnPoint: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
+  rotationSpeed: 820
 --- !u!1 &517268218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ebc86a64c037a643959926e777b7b4d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ebc86a64c037a643959926e777b7b4d, type: 3}
       propertyPath: m_LocalPosition.x

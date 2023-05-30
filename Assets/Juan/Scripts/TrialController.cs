@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class TrialController : MonoBehaviour
 {
     // Health / lives
     [Header("Health / Lives")]
@@ -47,13 +47,13 @@ public class PlayerController : MonoBehaviour
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
     //Animator
-    public Animator animator; 
-
+    public Animator animator;
+    public float rotationSpeed;
     void Start()
     {
         // Get the Rigidbody component of the player
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
 
-      
+
 
         // Jump with ground checker
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
@@ -80,23 +80,45 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining--;
         }
 
-        // Turn the player depending on how they move
-        if (moveHorizontal < 0)
+        if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
         {
-            transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+            animator.SetBool("IsMoving", true);
+
         }
-        else if (moveHorizontal > 0)
+        else
         {
-            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            animator.SetBool("IsMoving", false);
+
         }
-        else if (moveVertical < 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-        else if (moveVertical > 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
+
+
+
+
+
+
+
+        //COMMENTED FOR NOW
+
+
+        //// Turn the player depending on how they move
+        //if (moveHorizontal < 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+        //}
+        //else if (moveHorizontal > 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+        //}
+        //else if (moveVertical < 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        //}
+        //else if (moveVertical > 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        //}
 
         // POWER UPS
         // Triple jump powerup
