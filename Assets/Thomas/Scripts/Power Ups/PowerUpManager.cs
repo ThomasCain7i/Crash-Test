@@ -7,6 +7,7 @@ public class PowerUpManager : MonoBehaviour
     [System.Serializable]
     public class PowerUpData
     {
+        public string name;
         public GameObject powerUpObject;
         public float respawnTime;
         public bool isVisible;
