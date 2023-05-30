@@ -6,7 +6,7 @@ public class DeathTreat : MonoBehaviour
 {
     // Start is called before the first frame update
     public int rotateSpeed;
-    public int damage;
+    public float damage;
     void Start()
     {
         rotateSpeed = 2;
@@ -26,7 +26,7 @@ public class DeathTreat : MonoBehaviour
             PlayerController playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                playerController.currentHealth -= damage;
+                playerController.TakeDamage(damage);
             }
             Destroy(gameObject);
         }

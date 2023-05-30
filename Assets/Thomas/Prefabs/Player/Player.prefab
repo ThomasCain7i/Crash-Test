@@ -3004,7 +3004,6 @@ MonoBehaviour:
   normalMoveSpeed: 5
   jumpForce: 5
   maxJumps: 2
-  rotationSpeed: 0
   speedTimer: 0
   tripleJumpTimer: 10
   isSlowed: 0
@@ -3044,7 +3043,7 @@ Animator:
   m_GameObject: {fileID: 3314577727973165825}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f609a1e53fc1a2448f550e08873d670, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

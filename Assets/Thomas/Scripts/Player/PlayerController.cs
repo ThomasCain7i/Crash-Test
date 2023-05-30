@@ -49,10 +49,15 @@ public class PlayerController : MonoBehaviour
     [Header("Platforms")]
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
+    // Animation
+    [Header("Animator")]
+    public Animator animator;
+
     void Start()
     {
-        // Get the Rigidbody component of the player
+        // Get the Rigidbody and animator components of the player
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
 
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
@@ -98,7 +103,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         // POWER UPS
         // Triple jump powerup
         tripleJumpTimer -= Time.deltaTime;
@@ -110,9 +114,10 @@ public class PlayerController : MonoBehaviour
             maxJumps = 2;
         }
 
-        if (speedTimer < 0 && !isSlowed)
+        if (speedTimer < 0 && !isSlowed && !isFrozen)
         {
-            moveSpeed = 5;
+            moveSpeed = normalMoveSpeed;
+            isFrozen = false;
         }
 
         // DEBUFFS
@@ -126,7 +131,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             isFrozen = false;
-            moveSpeed = normalMoveSpeed;
         }
     }
 
@@ -215,8 +219,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // DEBUFFS
-    // Frozen
-    //Debuffs
+    // Frozen method
     public void Frozen()
     {
         frozenTimer = 2f;
