@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Health / lives
+    // Health / Lives
     [Header("Health / Lives")]
     public int lives = 3;  // Number of lives the player has
     public int maxHealth = 3;  // Maximum health the player can have
@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 
     // Attacks
     [Header("Attacks")]
-    public float barkDamage;
-    public float smashDamage;
+    public float barkDamage;  // Damage caused by bark attack
+    public float smashDamage;  // Damage caused by smash attack
 
     // Bones
     [Header("Bones")]
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Movement
     [Header("Movement")]
     public float moveSpeed = 5f;  // Movement speed of the player
-    public float normalMoveSpeed = 5f;  // Movement speed of the player
+    public float normalMoveSpeed = 5f;  // Normal movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     private int jumpsRemaining;  // Number of jumps remaining for the player
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isFrozen)
         {
-            // Jump with ground checker
+            // Jump
             if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
@@ -104,11 +104,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // POWER UPS
-        // Triple jump powerup
+        // Timer Control
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
         frozenTimer -= Time.deltaTime;
 
+        // Triple jump powerup
         if (tripleJumpTimer <= 0)
         {
             maxJumps = 2;
@@ -122,7 +123,6 @@ public class PlayerController : MonoBehaviour
 
         // DEBUFFS
         // Frozen
-        //Debuffs
         if (frozenTimer > 0)
         {
             isFrozen = true;
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // HEALTH / LIVES
-    // If health = 0
+    // Decreases the player's health by the specified amount
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
@@ -144,44 +144,47 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
-                // Respawn
+                // Respawn the player
                 Respawn();
             }
         }
         else
         {
             // End game
-            Debug.Log("Lives = 0");
+            Debug.Log("Game over - Lives depleted");
         }
     }
 
-    // Collision stuff
+    // Resetting jumps when touching the ground
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // Reset jumps and set grounded true
+            // Reset jumps and set grounded to true
             isGrounded = true;
             jumpsRemaining = maxJumps;
         }
     }
 
     // GAINING HEALTH METHOD
+    // Increases the player's health by 1, up to the maximum health
     public void GainHealth()
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth = currentHealth + 1;
+            currentHealth += 1;
         }
     }
 
     // TAKING DAMAGE METHOD
+    // Decreases the player's health by the specified damage amount
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
     }
 
     // RESPAWNING METHOD
+    // Respawns the player at the designated respawn point
     public void Respawn()
     {
         transform.position = respawnPoint;
@@ -190,28 +193,29 @@ public class PlayerController : MonoBehaviour
     }
 
     // SETTING THE SPAWN POINT METHOD
+    // Sets the player's respawn point to the set position
     public void SetSpawnPoint(Vector3 newPosition)
     {
         respawnPoint = newPosition;
     }
 
     // COLLECTING BONES METHOD
-    public void Collectedbone()
+    // Increases the player's bone count by 1
+    public void CollectedBone()
     {
-        boneCount = boneCount + 1;
+        boneCount += 1;
     }
 
     // POWER UPS
-    // Method that controls the triple jump power up
-    public void TripleJump()
+    // Sets the timer and maximum jumps for the triple jump power-up
+    public void TripleJumpPowerUp()
     {
-        // Set timer to 10 seconds and max jumps to 3
         tripleJumpTimer = 10f;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
     }
 
-    // Method that controls the speed power up
+    // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
         speedTimer = 10f;
@@ -219,7 +223,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // DEBUFFS
-    // Frozen method
+    // Freezes the player for a specified duration
     public void Frozen()
     {
         frozenTimer = 2f;

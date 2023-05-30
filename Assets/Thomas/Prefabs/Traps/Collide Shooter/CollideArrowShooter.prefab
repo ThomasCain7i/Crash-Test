@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 3717617826240536200}
   - component: {fileID: 3717617826240536201}
   - component: {fileID: 3717617826240536214}
+  - component: {fileID: -4466109863551658779}
   m_Layer: 0
   m_Name: CollideArrowShooter
   m_TagString: Ground
@@ -227,3 +228,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4466109863551658779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717617826240536215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b58acc6c903ec43a2bf3c3a2ce1f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowSpawn: {fileID: 6541430396551202146}
+  arrowPrefab: {fileID: 5446703909676325149, guid: 3686a8e197de74149a1ff9baf4ab7101, type: 3}
+  arrowSpeed: 8

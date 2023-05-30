@@ -25,7 +25,7 @@ public class Bones : MonoBehaviour
             PlayerController playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                playerController.Collectedbone();
+                playerController.CollectedBone();
             }
             Destroy(gameObject);
         }

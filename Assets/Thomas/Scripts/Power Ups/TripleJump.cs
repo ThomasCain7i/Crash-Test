@@ -17,7 +17,7 @@ public class TripleJump : MonoBehaviour
         {
             powerUpManager.DeactivatePowerUp(gameObject);  // Call the DeactivatePowerUp method from the PowerUpManager, passing the current game object
 
-            playerController.TripleJump();  // Call the TripleJump method from the PlayerController
+            playerController.TripleJumpPowerUp();  // Call the TripleJump method from the PlayerController
         }
     }
 }
