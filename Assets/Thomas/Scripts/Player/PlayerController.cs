@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 
     // Attacks
     [Header("Attacks")]
-    public float barkDamage;  // Damage caused by bark attack
-    public float smashDamage;  // Damage caused by smash attack
+    public float barkDamage = 3;  // Damage caused by bark attack
+    public float smashDamage = 3;  // Damage caused by smash attack
 
     // Bones
     [Header("Bones")]
@@ -32,8 +32,13 @@ public class PlayerController : MonoBehaviour
 
     // Powerups
     [Header("Power Ups")]
-    public float speedTimer;  // Timer for the speed power-up
-    public float tripleJumpTimer;  // Timer for the triple jump power-up
+    public float normalSpeedTimer = 10f;  // The timer will be set to this after being picked up
+    public float normalTripleJumpTimer = 10f;  // The timer will be set to this after being picked up
+    public float normalTimeSlowTimer = 2.5f;  // The timer will be set to this after being picked up
+    public float timeSlow = 0.75f;
+    private float speedTimer;  // Timer for the speed power-up
+    private float tripleJumpTimer;  // Timer for the triple jump power-up
+    private float timeSlowTimer;  // Timer for the Time Slow power-up
 
     // Debuffs
     [Header("Debuffs")]
@@ -74,6 +79,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
+        // If the player isn't frozen, allow them to use movement
         if (!isFrozen)
         {
             // Jump
@@ -107,7 +113,7 @@ public class PlayerController : MonoBehaviour
         // Timer Control
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
-        frozenTimer -= Time.deltaTime;
+        timeSlowTimer -= Time.deltaTime;
 
         // Triple jump powerup
         if (tripleJumpTimer <= 0)
@@ -121,7 +127,13 @@ public class PlayerController : MonoBehaviour
             isFrozen = false;
         }
 
+        if (timeSlowTimer < 0)
+        {
+            Time.timeScale = 1f;
+        }
+
         // DEBUFFS
+        frozenTimer -= Time.deltaTime;
         // Frozen
         if (frozenTimer > 0)
         {
@@ -210,7 +222,7 @@ public class PlayerController : MonoBehaviour
     // Sets the timer and maximum jumps for the triple jump power-up
     public void TripleJumpPowerUp()
     {
-        tripleJumpTimer = 10f;
+        tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
     }
@@ -218,8 +230,15 @@ public class PlayerController : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
-        speedTimer = 10f;
+        speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
+    }
+
+    // Activates the time slow power-up for a certain duration
+    public void TimeSlowPowerUp()
+    {
+        timeSlowTimer = normalTimeSlowTimer;
+        Time.timeScale = timeSlow;
     }
 
     // DEBUFFS
