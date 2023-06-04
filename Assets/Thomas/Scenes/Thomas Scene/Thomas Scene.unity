@@ -574,6 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   player: {fileID: 0}
+  playerController: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -584,9 +585,12 @@ MonoBehaviour:
   damage: 1
   patrolPoints: []
   timeBetweenAttacks: 5
+  attackTimer: 5
+  normalAttackTimer: 5
   sniperAttackPoint: {fileID: 2137436048079394907}
+  canSee: 0
   sightRange: 20
-  attackRange: 10
+  attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1001 &437976373
@@ -4376,7 +4380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647211671597441975, guid: ab21ba5e6afd16f42b854e67878da5bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5647211671597441975, guid: ab21ba5e6afd16f42b854e67878da5bd, type: 3}
       propertyPath: m_LocalPosition.z

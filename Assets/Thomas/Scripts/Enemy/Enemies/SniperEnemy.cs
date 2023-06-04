@@ -6,6 +6,7 @@ public class SniperEnemy : MonoBehaviour
     [Header("References")]
     public NavMeshAgent agent;
     public Transform player;
+    public PlayerController playerController;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -22,7 +23,10 @@ public class SniperEnemy : MonoBehaviour
     [Header("Attacking")]
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public float attackTimer;
+    public float normalAttackTimer;
     public Transform sniperAttackPoint;
+    public bool canSee;
 
     //States
     [Header("States")]
@@ -49,6 +53,11 @@ public class SniperEnemy : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
+
     private void Update()
     {
         //Check for sight and attack range
@@ -65,11 +74,34 @@ public class SniperEnemy : MonoBehaviour
         if (playerInAttackRange)
         {
             // Set positions for the line renderer
-            if (lineRenderer != null)
+            if (lineRenderer != null && canSee)
             {
                 lineRenderer.enabled = true;
                 lineRenderer.SetPosition(0, sniperAttackPoint.position);
                 lineRenderer.SetPosition(1, player.position);
+            }
+            else
+            {
+                lineRenderer.enabled = false;
+            }
+
+            // Perform raycast
+            RaycastHit hit;
+            Vector3 direction = player.position - sniperAttackPoint.position;
+            if (Physics.Raycast(sniperAttackPoint.position, direction, out hit, attackRange))
+            {
+                // Check if the raycast hits the player
+                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Collectable"))
+                {
+                    // Player is hit, do something
+                    canSee = true;
+                }
+                else
+                {
+                    // There is an obstacle between the player and sniper, do something else
+
+                    canSee = false;
+                }
             }
         }
         else
@@ -106,10 +138,21 @@ public class SniperEnemy : MonoBehaviour
 
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        if (!alreadyAttacked && canSee)
         {
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            attackTimer -= Time.deltaTime;
+
+            if (attackTimer <= 0)
+            {
+                playerController.TakeDamage(damage);
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                attackTimer = normalAttackTimer;
+            }
+        }
+        else
+        {
+            attackTimer = normalAttackTimer;
         }
     }
 
