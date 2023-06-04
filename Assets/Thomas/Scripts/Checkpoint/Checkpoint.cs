@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public PlayerController playerController;
+    public PlayerController playerController; // Reference to the PlayerController script
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>(); // Find and assign the PlayerController component in the scene
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Called when a collider enters the trigger
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player") // Check if the collider has the "Player" tag
         {
-            playerController.SetSpawnPoint(transform.position);
+            playerController.SetSpawnPoint(transform.position); // Call the SetSpawnPoint method in PlayerController and pass the current checkpoint's position
         }
     }
 }

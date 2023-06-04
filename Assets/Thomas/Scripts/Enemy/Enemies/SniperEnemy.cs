@@ -4,48 +4,48 @@ using UnityEngine.AI;
 public class SniperEnemy : MonoBehaviour
 {
     [Header("References")]
-    public NavMeshAgent agent;
-    public Transform player;
-    public PlayerController playerController;
+    public NavMeshAgent agent; // Reference to the NavMeshAgent component
+    public Transform player; // Reference to the player's transform
+    public PlayerController playerController; // Reference to the player's controller script
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer; // Layer masks for ground and player
 
     [Header("Stats")]
-    public float speed;
-    public float damage;
+    public float speed; // Movement speed of the enemy
+    public float damage; // Damage caused by the enemy
 
-    //Patrolling
+    // Patrolling
     [Header("Patrolling")]
     public Transform[] patrolPoints; // Array of patrol points
     private int currentPatrolIndex; // Index of the current patrol point
 
-    //Attacking
+    // Attacking
     [Header("Attacking")]
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public float attackTimer;
-    public float normalAttackTimer;
-    public Transform sniperAttackPoint;
-    public bool canSee;
+    public float timeBetweenAttacks; // Time between attacks
+    bool alreadyAttacked; // Flag indicating if the enemy has already attacked
+    public float attackTimer; // Timer for attacks
+    public float normalAttackTimer; // Normal attack timer
+    public Transform sniperAttackPoint; // Attack point for the sniper enemy
+    public bool canSee; // Flag indicating if the enemy has a line of sight to the player
 
-    //States
+    // States
     [Header("States")]
-    public float sightRange;
-    public float attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange; // Range for detecting the player
+    public float attackRange; // Range for attacking the player
+    public bool playerInSightRange, playerInAttackRange; // Flags indicating if the player is within sight range and attack range
 
-    private LineRenderer lineRenderer;
+    private LineRenderer lineRenderer; // Reference to the LineRenderer component
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
+        player = GameObject.Find("Player").transform; // Find and assign the player's transform
+        agent = GetComponent<NavMeshAgent>(); // Get the NavMeshAgent component of the enemy
+        agent.speed = speed; // Set the movement speed of the enemy
 
-        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>(); // Get the LineRenderer component
         if (lineRenderer != null)
         {
-            lineRenderer.positionCount = 2;
+            lineRenderer.positionCount = 2; // Set the number of positions for the line renderer
         }
         else
         {
@@ -55,21 +55,21 @@ public class SniperEnemy : MonoBehaviour
 
     private void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>(); // Find and assign the player's controller script
     }
 
     private void Update()
     {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        // Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is within sight range
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer); // Check if the player is within attack range
 
         if (!playerInSightRange && !playerInAttackRange)
-            Patroling();
+            Patroling(); // If the player is not in sight or attack range, patrol
         else if (playerInSightRange && !playerInAttackRange)
-            ChasePlayer();
+            ChasePlayer(); // If the player is in sight range but not attack range, chase the player
         else if (playerInAttackRange && playerInSightRange)
-            AttackPlayer();
+            AttackPlayer(); // If the player is in attack range and sight range, attack the player
 
         if (playerInAttackRange)
         {
@@ -99,7 +99,6 @@ public class SniperEnemy : MonoBehaviour
                 else
                 {
                     // There is an obstacle between the player and sniper, do something else
-
                     canSee = false;
                 }
             }
@@ -110,6 +109,7 @@ public class SniperEnemy : MonoBehaviour
         }
     }
 
+    // Patrolling between points
     private void Patroling()
     {
         if (patrolPoints.Length == 0)
@@ -126,17 +126,19 @@ public class SniperEnemy : MonoBehaviour
         }
     }
 
+    // Chasing the player
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(player.position); // Set the destination to the player's position
     }
 
+    // Attacking the player
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
+        // Make sure the enemy doesn't move
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(player); // Rotate to face the player
 
         if (!alreadyAttacked && canSee)
         {
@@ -144,7 +146,7 @@ public class SniperEnemy : MonoBehaviour
 
             if (attackTimer <= 0)
             {
-                playerController.TakeDamage(damage);
+                playerController.TakeDamage(damage); // Call the TakeDamage method of the player controller to damage the player
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 attackTimer = normalAttackTimer;
@@ -156,6 +158,7 @@ public class SniperEnemy : MonoBehaviour
         }
     }
 
+    // Reset the attack flag
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -164,8 +167,8 @@ public class SniperEnemy : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange); // Draw a wire sphere representing the attack range
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(transform.position, sightRange); // Draw a wire sphere representing the sight range
     }
 }
