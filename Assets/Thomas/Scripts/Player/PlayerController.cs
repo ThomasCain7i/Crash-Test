@@ -50,19 +50,24 @@ public class PlayerController : MonoBehaviour
     [Header("Respawn Point")]
     public Vector3 respawnPoint;  // Position where the player respawns after dying
 
-    // Platforms
-    [Header("Platforms")]
-    private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
-
     // Animation
     [Header("Animator")]
     public Animator animator;
+
+    // References
+    [Header("References")]
+    public UIManager uiManager;  // Reference to the UIManager script
+    private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
     void Start()
     {
         // Get the Rigidbody and animator components of the player
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
+
+        //Health UI
+        uiManager.healthText.text = "Health: " + currentHealth.ToString();
 
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
@@ -151,6 +156,8 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+
+        uiManager.HealthUpdate();
 
         if (lives >= 1)
         {
