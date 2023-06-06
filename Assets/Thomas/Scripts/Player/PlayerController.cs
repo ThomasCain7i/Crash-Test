@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     private int jumpsRemaining;  // Number of jumps remaining for the player
+    public float rotationSpeed;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -54,14 +55,10 @@ public class PlayerController : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
 
-<<<<<<< Updated upstream
     // References
     [Header("References")]
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
-=======
-    public float rotationSpeed; 
->>>>>>> Stashed changes
 
     void Start()
     {
@@ -116,17 +113,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
-            /// JUAN COMMENTED IT
-            //// Jump
-            //if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
-            //{
-            //    rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-            //    isGrounded = false;
-            //    jumpsRemaining--;
-            //}
-            //CHARACTER ROTATION - JUAN
-
             if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
             {
                 Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
@@ -150,25 +136,6 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("IsAttacking", false);
             }
-
-            /// JUAN COMMENTED IT
-            //// Turn the player depending on how they move
-            //if (moveHorizontal < 0)
-            //{
-            //    transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-            //}
-            //else if (moveHorizontal > 0)
-            //{
-            //    transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-            //}
-            //else if (moveVertical < 0)
-            //{
-            //    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            //}
-            //else if (moveVertical > 0)
-            //{
-            //    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            //}
         }
 
         // POWER UPS
