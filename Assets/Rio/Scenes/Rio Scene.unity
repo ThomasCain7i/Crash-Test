@@ -6515,9 +6515,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8236fcc43184eb44ae27c8b00a2e5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRotatingX: 0
-  isRotatingY: 1
-  isRotatingZ: 0
+  isRotatingX1: 0
+  isRotatingX2: 0
+  isRotatingY1: 1
+  isRotatingY2: 0
+  isRotatingZ1: 0
+  isRotatingZ2: 0
+  rotateSpeed: 20
 --- !u!65 &1156900127
 BoxCollider:
   m_ObjectHideFlags: 0
