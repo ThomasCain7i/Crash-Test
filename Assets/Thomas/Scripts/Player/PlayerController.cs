@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= amount;
 
-        uiManager.HealthUpdate();
+        uiManager.HealthUI();
 
         if (lives >= 1)
         {
@@ -229,6 +229,7 @@ public class PlayerController : MonoBehaviour
     // Sets the timer and maximum jumps for the triple jump power-up
     public void TripleJumpPowerUp()
     {
+        uiManager.TripleJumpUI();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -237,6 +238,7 @@ public class PlayerController : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
+        uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
     }
@@ -244,6 +246,7 @@ public class PlayerController : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
+        uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;
     }
