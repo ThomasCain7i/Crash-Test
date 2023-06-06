@@ -518,5 +518,23 @@ public class PlayerControllerRIO : MonoBehaviour
             // Player moves down with the platform
             transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
         }
+
+        if (collision.gameObject.tag == "RotatingPlatformX")
+        {
+            // Player moves with the platform
+            // Rotates in a forwards and backwards circle motion
+        }
+
+        if (collision.gameObject.tag == "RotatingPlatformY")
+        {
+            // Player moves with the platform
+            // Rotates in a flat circle motion
+        }
+
+        if (collision.gameObject.tag == "RotationPlatformZ")
+        {
+            // Player moves with the platform
+            // Rotates in a left to right circle motion
+        }
     }
 }
