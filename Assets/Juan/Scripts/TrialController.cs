@@ -88,7 +88,7 @@ public class TrialController : MonoBehaviour
                 animator.SetBool("IsFalling", true);
                 animator.SetBool("IsDoubleJumping", false); 
             }
-            if(jumpsRemaining == 0)
+            if (jumpsRemaining == 0)
             {
                 animator.SetBool("IsDoubleJumping", true); 
             }
