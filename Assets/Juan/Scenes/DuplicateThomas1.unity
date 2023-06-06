@@ -943,6 +943,11 @@ Transform:
   m_Father: {fileID: 1248732452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &865792788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3314577727973165825, guid: d29f06efaf59f964d9477864eedf2b4b, type: 3}
+  m_PrefabInstance: {fileID: 2111117736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &930479766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2723,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2788975347363959227, guid: d29f06efaf59f964d9477864eedf2b4b, type: 3}
   m_PrefabInstance: {fileID: 2111117736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1888073102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865792788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcd9e187a28c894fbc44af9e37e0e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  maxHealth: 3
+  currentHealth: 3
+  barkDamage: 0
+  smashDamage: 0
+  boneCount: 0
+  moveSpeed: 5
+  jumpForce: 5
+  maxJumps: 2
+  speedTimer: 0
+  tripleJumpTimer: 0
+  isSlowed: 0
+  respawnPoint: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
+  rotationSpeed: 0
 --- !u!1 &1917439415
 GameObject:
   m_ObjectHideFlags: 0
