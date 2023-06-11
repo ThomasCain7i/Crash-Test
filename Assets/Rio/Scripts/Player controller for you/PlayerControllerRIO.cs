@@ -15,6 +15,7 @@ public class PlayerControllerRIO : MonoBehaviour
     public float jumpForce = 5f;
     public int maxJumps = 2;
     private int jumpsRemaining;
+    public float rotationSpeed;
 
     // Rigidbody
     private Rigidbody rb;
@@ -25,6 +26,12 @@ public class PlayerControllerRIO : MonoBehaviour
     public float speedTimer;
     public float maxSpeedTimer;
     public GameObject speedGlow;
+
+    // Debuffs
+    [Header("Debuffs")]
+    public bool isSlowed = false;  // Indicates if the player is currently slowed down
+    public bool isFrozen = false;  // Indicates if the player is currently frozen
+    public float frozenTimer; // How long the player is frozen
 
     public bool starPowerup;
     public float starTimer;
@@ -50,9 +57,15 @@ public class PlayerControllerRIO : MonoBehaviour
     public bool isFacingForwards;
     public bool isFacingBackwards;
 
+    // Animation
+    [Header("Animator")]
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
 
@@ -71,12 +84,57 @@ public class PlayerControllerRIO : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
-        // Jump with ground checker - Thomas
-        if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
+        // If the player isn't frozen, allow them to use movement
+        if (!isFrozen)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-            isGrounded = false;
-            jumpsRemaining--;
+            // Jump with ground checker
+            if (Input.GetButtonDown("Jump") && (isGrounded || jumpsRemaining > 0))
+            {
+                animator.SetBool("IsJumping", true);
+
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+                isGrounded = false;
+                jumpsRemaining--;
+
+            }
+            else
+
+            {
+                if (isGrounded == true)
+                {
+                    animator.SetBool("IsJumping", false);
+                    animator.SetBool("IsFalling", true);
+                    animator.SetBool("IsDoubleJumping", false);
+                }
+                if (jumpsRemaining == 0)
+                {
+                    animator.SetBool("IsDoubleJumping", true);
+                }
+            }
+
+            if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
+            {
+                Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+                animator.SetBool("IsMoving", true);
+            }
+            else
+            {
+                animator.SetBool("IsMoving", false);
+
+            }
+
+            //PUNCH ATTACK - JUAN
+            if (Input.GetMouseButton(0))
+            {
+                Debug.Log("PUNCH ATTACK");
+                animator.SetBool("IsAttacking", true);
+
+            }
+            else
+            {
+                animator.SetBool("IsAttacking", false);
+            }
         }
 
         tripleJumpTimer -= Time.deltaTime;
