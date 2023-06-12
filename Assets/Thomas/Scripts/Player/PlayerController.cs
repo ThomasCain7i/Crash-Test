@@ -137,6 +137,10 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsAttacking", false);
             }
         }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
 
         // POWER UPS
         // Timer Control
