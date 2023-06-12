@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // GAINING HEALTH METHOD
+    // GAINING HEALTH METHOD- Camron
     // Increases the player's health by 1, up to the maximum health
     public void GainHealth()
     {
@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
         respawnPoint = newPosition;
     }
 
-    // COLLECTING BONES METHOD
+    // COLLECTING BONES METHOD- Camron
     // Increases the player's bone count by 1
     public void CollectedBone()
     {
