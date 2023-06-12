@@ -24,13 +24,15 @@ public class AttackScript : MonoBehaviour
     public Transform impulsePoint; 
 
     public float axeSpeed;
-    public GameObject impulseObject; 
+    public GameObject impulseObject;
 
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,12 +43,19 @@ public class AttackScript : MonoBehaviour
             //BARK ATTACK - JUAN
             if (Input.GetKeyDown(KeyCode.R))
             {
+                animator.SetBool("IsBarking", true);
                 var bark = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation); //SPAWNS THE ATTACK FROM THE SPECIFIC POINT OFF THE PLAYER
                 bark.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed; //DEALS WITH THE FORCE AND SPEED OF THE BARK
 
 
                 //COOLDOWN FOR THE BARK - JUAN
                 nextBarkTime = Time.time + coolDownTime;
+
+                
+            }
+            else
+            {
+                animator.SetBool("IsBarking", false);
             }
         }
        

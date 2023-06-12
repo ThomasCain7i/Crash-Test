@@ -118,10 +118,13 @@ public class PlayerController : MonoBehaviour
                 Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
+                
             }
             else
             {
                 animator.SetBool("IsMoving", false);
+                animator.SetBool("IsAttacking", false);
+                animator.SetBool("IsBarking", false);
 
             }
 
@@ -130,12 +133,13 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
+                //animator.SetTrigger("Attack"); 
 
             }
-            else
-            {
-                animator.SetBool("IsAttacking", false);
-            }
+            //else
+            //{
+            //    animator.SetBool("IsAttacking", false);
+            //}
         }
         else
         {
