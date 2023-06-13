@@ -182,10 +182,10 @@ MonoBehaviour:
   patrolPoints: []
   timeBetweenAttacks: 3
   projectile: {fileID: 164787254633409713, guid: fbbbb8833957567428e4772cc0dc23b4, type: 3}
-  projectileSpeed: 8
+  projectileSpeed: 16
   rangedAttackPoint: {fileID: 34050905387915971}
-  sightRange: 30
-  attackRange: 20
+  sightRange: 15
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &34050905387915968
