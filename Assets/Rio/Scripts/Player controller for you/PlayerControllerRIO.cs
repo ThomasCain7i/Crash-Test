@@ -27,18 +27,18 @@ public class PlayerControllerRIO : MonoBehaviour
     public float maxSpeedTimer;
     public GameObject speedGlow;
 
-    // Debuffs
-    [Header("Debuffs")]
-    public bool isSlowed = false;  // Indicates if the player is currently slowed down
-    public bool isFrozen = false;  // Indicates if the player is currently frozen
-    public float frozenTimer; // How long the player is frozen
-
     public bool starPowerup;
     public float starTimer;
     public GameObject starGlow;
 
     public bool megaPowerup;
     public float megaTimer;
+
+    // Debuffs
+    [Header("Debuffs")]
+    public bool isSlowed = false;  // Indicates if the player is currently slowed down
+    public bool isFrozen = false;  // Indicates if the player is currently frozen
+    public float frozenTimer; // How long the player is frozen
 
     // Respawn point
     public Vector3 respawnPoint;
