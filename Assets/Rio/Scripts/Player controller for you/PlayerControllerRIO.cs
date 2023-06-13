@@ -9,6 +9,7 @@ public class PlayerControllerRIO : MonoBehaviour
     public int boneCount = 0;
     public float hitTimer;
     public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
+    public Transform PlayerDog;
 
     // Movement
     public float moveSpeed = 5f;
@@ -46,6 +47,13 @@ public class PlayerControllerRIO : MonoBehaviour
     // Platforms
     private MovingPlatform movingPlatform;
     private BreakingPlatform breakingPlatform;
+
+    public GameObject rotatePlatformX1;
+    public GameObject rotatePlatformX2;
+    public GameObject rotatePlatformY1;
+    public GameObject rotatePlatformY2;
+    public GameObject rotatePlatformZ1;
+    public GameObject rotatePlatformZ2;
 
     // Power Ups
     public float tripleJumpTimer;
@@ -593,6 +601,8 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             // Player moves with the platform
             // Rotates in a flat circle motion
+
+           // PlayerDog.transform.parent = rotatePlatformY1.transform;
         }
 
         if (collision.gameObject.tag == "RotatingPlatformY2")

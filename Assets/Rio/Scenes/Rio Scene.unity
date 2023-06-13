@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 220895097}
   - component: {fileID: 220895096}
   - component: {fileID: 220895095}
+  - component: {fileID: 220895100}
   m_Layer: 0
   m_Name: MovingPlatform2
   m_TagString: MovingPlatformFB
@@ -571,6 +572,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &220895100
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220895094}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 220895097}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 220895097}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 220895097}
+  m_Enabled: 1
 --- !u!1 &232066016
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +936,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 290426132}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.2501948
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 290426132}
@@ -1174,7 +1202,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 344741859}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.0345489
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 344741859}
@@ -1307,7 +1335,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 421894199}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.14481826
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 421894199}
@@ -1325,6 +1353,7 @@ GameObject:
   - component: {fileID: 452335737}
   - component: {fileID: 452335736}
   - component: {fileID: 452335740}
+  - component: {fileID: 452335741}
   m_Layer: 0
   m_Name: BreakingPlatform
   m_TagString: BreakingPlatform
@@ -1429,6 +1458,33 @@ MonoBehaviour:
   player: {fileID: 0}
   isOn: 0
   isOff: 0
+--- !u!205 &452335741
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452335734}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 452335737}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 452335737}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 452335737}
+  m_Enabled: 1
 --- !u!1001 &467663338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1568,6 +1624,7 @@ GameObject:
   - component: {fileID: 502626946}
   - component: {fileID: 502626945}
   - component: {fileID: 502626944}
+  - component: {fileID: 502626949}
   m_Layer: 0
   m_Name: MovingPlatform1
   m_TagString: MovingPlatformLR
@@ -1668,6 +1725,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &502626949
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502626943}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 502626946}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 502626946}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 502626946}
+  m_Enabled: 1
 --- !u!1 &621415755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,7 +2281,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 818643402}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.2501948
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 818643402}
@@ -2699,15 +2783,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.6
+  - screenRelativeHeight: 0.96117836
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1124403339}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.9240859
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1124403339}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.9240859
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1124403339}
@@ -7728,6 +7812,7 @@ GameObject:
   - component: {fileID: 1156900128}
   - component: {fileID: 1156900127}
   - component: {fileID: 1156900126}
+  - component: {fileID: 1156900131}
   m_Layer: 0
   m_Name: RotatingPlatform
   m_TagString: Untagged
@@ -7832,6 +7917,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1156900131
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156900125}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1156900128}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1156900128}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1156900128}
+  m_Enabled: 1
 --- !u!1001 &1245590191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8440,7 +8552,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1481485646}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.13940135
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1481485646}
@@ -8565,15 +8677,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.6
+  - screenRelativeHeight: 0.942541
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1494038196}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.905813
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1494038196}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.83454436
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1494038196}
@@ -8690,6 +8802,7 @@ GameObject:
   - component: {fileID: 1640300764}
   - component: {fileID: 1640300763}
   - component: {fileID: 1640300762}
+  - component: {fileID: 1640300766}
   m_Layer: 0
   m_Name: BouncePad
   m_TagString: BouncePad
@@ -8775,6 +8888,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1640300766
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640300760}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1640300763}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1640300763}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1640300763}
+  m_Enabled: 1
 --- !u!1 &1678002446
 GameObject:
   m_ObjectHideFlags: 0
@@ -9024,15 +9164,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.6
+  - screenRelativeHeight: 0.905813
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1709323081}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.87874556
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1709323081}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.87874556
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1709323081}
@@ -9161,11 +9301,11 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1717491660}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.5323531
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1717491660}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.4616597
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1717491660}
@@ -9298,7 +9438,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1736109138}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.257423
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1736109138}
@@ -9427,11 +9567,11 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1859233849}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.47473782
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1859233849}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.38109514
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1859233849}
@@ -9791,7 +9931,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1954508949}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.0894301
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1954508949}
@@ -9808,6 +9948,7 @@ GameObject:
   - component: {fileID: 1968462605}
   - component: {fileID: 1968462604}
   - component: {fileID: 1968462603}
+  - component: {fileID: 1968462607}
   m_Layer: 0
   m_Name: BouncePad (1)
   m_TagString: BouncePad
@@ -9893,6 +10034,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1968462607
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968462602}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1968462604}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1968462604}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1968462604}
+  m_Enabled: 1
 --- !u!1001 &2067251064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10150,11 +10318,11 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2091226239}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.5463881
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2091226239}
-  - screenRelativeHeight: 0.2
+  - screenRelativeHeight: 0.43605036
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2091226239}
