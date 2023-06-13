@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Health / Lives
+    // Health / Lives / Armor
     [Header("Health / Lives")]
     public int lives = 3;  // Number of lives the player has
     public int maxHealth = 3;  // Maximum health the player can have
     public float currentHealth = 3;  // Current health of the player
+    public int Armour = 0;
 
     // Attacks
     [Header("Attacks")]
@@ -187,9 +188,15 @@ public class PlayerController : MonoBehaviour
     // Decreases the player's health by the specified amount
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
-
-        uiManager.HealthUI();
+        if (Armour < 1)
+        {
+            currentHealth -= amount;
+            uiManager.HealthUI();
+        }
+        else
+        {
+            Armour = 0;
+        }
 
         if (lives >= 1)
         {
