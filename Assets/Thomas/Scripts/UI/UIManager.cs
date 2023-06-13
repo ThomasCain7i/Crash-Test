@@ -10,11 +10,12 @@ public class UIManager : MonoBehaviour
     // Health
     [Header("Health")]
     public Text healthText;
-    private float healthTimer;
+    [SerializeField]
+    private float healthTimer, armourTimer;
     [SerializeField]
     private float normalHealthTimer;
     [SerializeField]
-    private GameObject healthCanvas;
+    private GameObject healthCanvas, armourCanvas;
 
     // Power Ups
     [Header("Power Ups")]
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
         speedTimer -= Time.deltaTime;
         tripleJumpTimer -= Time.deltaTime;
         slowMoTimer -= Time.deltaTime;
+        armourTimer -= Time.deltaTime;
 
         // Text
         healthText.text = playerController.currentHealth.ToString();
@@ -51,6 +53,15 @@ public class UIManager : MonoBehaviour
         else
         {
             healthCanvas.SetActive(false);
+        }
+
+        if (armourTimer > 0)
+        {
+            armourCanvas.SetActive(true);
+        }
+        else
+        {
+            armourCanvas.SetActive(false);
         }
 
         // SPEED
@@ -102,5 +113,14 @@ public class UIManager : MonoBehaviour
     public void SlowMoUI()
     {
         slowMoTimer = playerController.normalTimeSlowTimer;
+    }
+
+    public void ArmourUIon()
+    {
+        armourTimer = normalHealthTimer;
+    }
+    public void ArmourUIoff()
+    {
+        armourTimer = 0;
     }
 }
