@@ -192,11 +192,12 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth -= amount;
             uiManager.ArmourUIoff();
+            uiManager.HealthUI();
         }
         else
         {
             Armour = 0;
-            uiManager.ArmourUIon();
+            uiManager.ArmourBrokenUI();
         }
 
         if (lives >= 1)

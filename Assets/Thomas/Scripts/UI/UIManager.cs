@@ -11,11 +11,11 @@ public class UIManager : MonoBehaviour
     [Header("Health")]
     public Text healthText;
     [SerializeField]
-    private float healthTimer, armourTimer;
+    private float healthTimer, armourTimer, armourBrokenTimer;
     [SerializeField]
     private float normalHealthTimer;
     [SerializeField]
-    private GameObject healthCanvas, armourCanvas;
+    private GameObject healthCanvas, armourCanvas, armourBrokenCanvas;
 
     // Power Ups
     [Header("Power Ups")]
@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
         tripleJumpTimer -= Time.deltaTime;
         slowMoTimer -= Time.deltaTime;
         armourTimer -= Time.deltaTime;
+        armourBrokenTimer -= Time.deltaTime;
 
         // Text
         healthText.text = playerController.currentHealth.ToString();
@@ -55,6 +56,7 @@ public class UIManager : MonoBehaviour
             healthCanvas.SetActive(false);
         }
 
+        // ARMOUR
         if (armourTimer > 0)
         {
             armourCanvas.SetActive(true);
@@ -62,6 +64,15 @@ public class UIManager : MonoBehaviour
         else
         {
             armourCanvas.SetActive(false);
+        }
+
+        if (armourBrokenTimer > 0)
+        {
+            armourBrokenCanvas.SetActive(true);
+        }
+        else
+        {
+            armourBrokenCanvas.SetActive(false);
         }
 
         // SPEED
@@ -119,8 +130,15 @@ public class UIManager : MonoBehaviour
     {
         armourTimer = normalHealthTimer;
     }
+
+    public void ArmourBrokenUI()
+    {
+        armourBrokenTimer = normalHealthTimer;
+    }
+
     public void ArmourUIoff()
     {
         armourTimer = 0;
+        armourBrokenTimer = 0;
     }
 }
