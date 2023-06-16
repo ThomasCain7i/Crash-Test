@@ -1,73 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    //BARK STUFF (POINT OF SPAWN, SPEED ETC..)
-    public Transform barkSpawn;
-    public GameObject barkBullet;
-    public float barkSpeed = 5f;
+    // Elemental Buffs
+    [Header("Elemental Buffs")]
+    public bool fire = false;    // Indicates if the fire buff is active
+    public bool snow = false;    // Indicates if the snow buff is active
+    public bool sand = false;    // Indicates if the sand buff is active
+    public bool water = false;   // Indicates if the water buff is active
 
-    //COOLDOWN
-    public float coolDownTime;
-    public float nextBarkTime;
+    // Elemental Prefabs
+    [Header("Elemental Prefabs")]
+    public GameObject firePrefab;    // Prefab for the fire attack
+    public GameObject snowPrefab;    // Prefab for the snow attack
+    public GameObject sandPrefab;    // Prefab for the sand attack
+    public GameObject waterPrefab;   // Prefab for the water attack
+
+    // Bark Stuff (Point of Spawn, Speed, etc.)
+    [Header("Bark")]
+    public Transform barkSpawn;      // The spawn point for the bark attack
+    public GameObject barkPrefab;    // Prefab for the bark attack
+    public float barkSpeed = 5f;     // The speed at which the bark attack travels
+
+    // Cooldown
+    [Header("Bark Cooldowns")]
+    public float coolDownTime;       // The cooldown time between bark attacks
+    public float nextBarkTime;       // The time when the next bark attack can occur
 
     // Rigidbody
-    private Rigidbody rb;
-    private bool isGrounded;
+    private Rigidbody rb;            // The Rigidbody component of the character
+    private bool isGrounded;         // Indicates if the character is grounded
 
-    //SMASH
-    public float smashForce;
-    
-    public Rigidbody Axe;
-    public Transform impulsePoint; 
+    // Smash
+    [Header("Smash")]
+    public float smashForce;         // The force applied for the smash attack
+    public Transform smashPoint;   // The point where the impulse object spawns
+    public GameObject smashObject; // The object spawned for the smash attack
+    private bool smashing = false;
 
-    public float axeSpeed;
-    public GameObject impulseObject;
-
-    public Animator animator;
+    public Animator animator;        // The Animator component for controlling animations
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();   // Get the Rigidbody component from the character
+        animator = GetComponent<Animator>();  // Get the Animator component from the character
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > nextBarkTime)
+        // Check elemental buffs and assign appropriate prefab
+        if (fire == true)
         {
-            //BARK ATTACK - JUAN
+            barkPrefab = firePrefab;   // Assign the fire prefab to the bark prefab
+        }
+        // Add other elemental buffs and assignments here
+
+        // Check if it's time for the next bark attack
+        if (Time.time > nextBarkTime)
+        {
+            // Bark Attack - Juan
             if (Input.GetKeyDown(KeyCode.R))
             {
-                animator.SetBool("IsBarking", true);
-                var bark = Instantiate(barkBullet, barkSpawn.position, barkSpawn.rotation); //SPAWNS THE ATTACK FROM THE SPECIFIC POINT OFF THE PLAYER
-                bark.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed; //DEALS WITH THE FORCE AND SPEED OF THE BARK
+                animator.SetBool("IsBarking", true);  // Set the "IsBarking" parameter in the animator to true
+                // Spawn the bark attack from the specific point off the player
+                var bark = Instantiate(barkPrefab, barkSpawn.position, barkSpawn.rotation);
+                // Apply force and speed to the bark
+                bark.GetComponent<Rigidbody>().velocity = barkSpawn.forward * barkSpeed;
 
-
-                //COOLDOWN FOR THE BARK - JUAN
-                nextBarkTime = Time.time + coolDownTime;
-
-                
+                // Cooldown for the bark attack - Juan
+                nextBarkTime = Time.time + coolDownTime;   // Set the time when the next bark attack can occur
             }
             else
             {
-                animator.SetBool("IsBarking", false);
+                animator.SetBool("IsBarking", false); // Set the "IsBarking" parameter in the animator to false
             }
         }
-       
-        //SMASH ATTACK - JUAN
 
-        if(isGrounded == false)
+        // Smash Attack - Juan
+        // Check if the player is not grounded and perform the smash attack
+        if (isGrounded == false)
         {
             if (Input.GetKeyDown(KeyCode.E) && isGrounded == false)
             {
+                smashing = true;
+                // Apply downward force to perform the smash attack
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
-                var impulse = Instantiate(impulseObject, impulsePoint.position, impulsePoint.rotation);
             }
-        } 
+        }
+    }
+
+    // Detect collision with the ground
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && smashing == true)
+        {
+            // Spawn the impulse object at the specified point
+            var impulse = Instantiate(smashObject, smashPoint.position, smashPoint.rotation);
+        }
     }
 }
