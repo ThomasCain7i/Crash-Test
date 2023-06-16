@@ -5823,6 +5823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2137436048545300415, guid: 2e5169437f8b7dc489766af4d704de5e, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e5169437f8b7dc489766af4d704de5e, type: 3}
 --- !u!1 &1566463045
@@ -9429,6 +9433,14 @@ PrefabInstance:
     - target: {fileID: 7308714837545036663, guid: ddaec64711c29df4d8e0b510c8c8e08f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614650985132976583, guid: ddaec64711c29df4d8e0b510c8c8e08f, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614650985132976583, guid: ddaec64711c29df4d8e0b510c8c8e08f, type: 3}
+      propertyPath: smashDamage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7937055339655983565, guid: ddaec64711c29df4d8e0b510c8c8e08f, type: 3}
       propertyPath: m_RootOrder

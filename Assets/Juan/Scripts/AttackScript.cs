@@ -35,9 +35,11 @@ public class AttackScript : MonoBehaviour
     [Header("Smash")]
     public float smashForce;         // The force applied for the smash attack
     public Transform smashPoint;   // The point where the impulse object spawns
-    public GameObject smashObject; // The object spawned for the smash attack
-    private bool smashing = false;
+    public GameObject smashPrefab; // The object spawned for the smash attack
+    [SerializeField]
+    private bool smashing = false; // Is the player smashing
 
+    [Header("Animator")]
     public Animator animator;        // The Animator component for controlling animations
 
     // Start is called before the first frame update
@@ -55,7 +57,10 @@ public class AttackScript : MonoBehaviour
         {
             barkPrefab = firePrefab;   // Assign the fire prefab to the bark prefab
         }
-        // Add other elemental buffs and assignments here
+        if (snow == true)
+        {
+            smashPrefab = snowPrefab;
+        }
 
         // Check if it's time for the next bark attack
         if (Time.time > nextBarkTime)
@@ -97,7 +102,8 @@ public class AttackScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && smashing == true)
         {
             // Spawn the impulse object at the specified point
-            var impulse = Instantiate(smashObject, smashPoint.position, smashPoint.rotation);
+            var impulse = Instantiate(smashPrefab, smashPoint.position, smashPoint.rotation);
+            smashing = false;
         }
     }
 }
