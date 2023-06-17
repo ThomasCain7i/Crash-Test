@@ -36,8 +36,10 @@ public class AttackScript : MonoBehaviour
     public float smashForce;         // The force applied for the smash attack
     public Transform smashPoint;   // The point where the impulse object spawns
     public GameObject smashPrefab; // The object spawned for the smash attack
-    [SerializeField]
-    private bool smashing = false; // Is the player smashing
+    public bool smashing = false; // Is the player smashing
+
+    // Smash Upgrade
+    public bool platform = false;
 
     [Header("Animator")]
     public Animator animator;        // The Animator component for controlling animations
@@ -56,10 +58,6 @@ public class AttackScript : MonoBehaviour
         if (fire == true)
         {
             barkPrefab = firePrefab;   // Assign the fire prefab to the bark prefab
-        }
-        if (snow == true)
-        {
-            smashPrefab = snowPrefab;
         }
 
         // Check if it's time for the next bark attack
@@ -93,6 +91,12 @@ public class AttackScript : MonoBehaviour
                 // Apply downward force to perform the smash attack
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
             }
+        }
+
+        if (snow == true && smashing == true && Input.GetKeyDown(KeyCode.Space) && platform == false)
+        {
+            platform = true;
+            Instantiate(snowPrefab, smashPoint.position, smashPoint.rotation);
         }
     }
 

@@ -16,12 +16,7 @@ public class SmashProjectile : MonoBehaviour
 
     private void Update()
     {
-        destroyTimer -= Time.deltaTime;
-
-        if (destroyTimer < 0)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, destroyTimer);
     }
 
     private void OnTriggerEnter(Collider other)

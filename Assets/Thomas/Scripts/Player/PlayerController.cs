@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     // References
     [Header("References")]
+    private AttackScript attackScript;
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
+        attackScript = GetComponent<AttackScript>();   
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -100,7 +102,6 @@ public class PlayerController : MonoBehaviour
 
             }
             else
-
             {
                 if (isGrounded == true)
                 {
@@ -223,6 +224,14 @@ public class PlayerController : MonoBehaviour
             // Reset jumps and set grounded to true
             isGrounded = true;
             jumpsRemaining = maxJumps;
+            attackScript.platform = false;
+        }
+
+        if (collision.gameObject.CompareTag("SnowGround"))
+        {
+            isGrounded = true;
+            jumpsRemaining += 1;
+            attackScript.smashing = false;
         }
     }
 
