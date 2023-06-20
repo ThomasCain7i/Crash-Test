@@ -1,3 +1,5 @@
+// Rio
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,10 +29,10 @@ public class StarPower : MonoBehaviour
         {
             Debug.Log("Invincible");
 
-            // Player becomes invincible
+            // Player becomes invincible - Rio
             PlayerControllerRIO thePlayer = other.gameObject.GetComponent<PlayerControllerRIO>();
 
-            //collects powerup by setting the players bool to true
+            //collects powerup by setting the players bool to true - Rio
             thePlayer.StarPowerUpFunction();
 
             Destroy(gameObject);
