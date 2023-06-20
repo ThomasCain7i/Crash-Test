@@ -4,10 +4,11 @@ public class AttackScript : MonoBehaviour
 {
     // Elemental Buffs
     [Header("Elemental Buffs")]
-    public bool fire = false;    // Indicates if the fire buff is active
-    public bool snow = false;    // Indicates if the snow buff is active
-    public bool sand = false;    // Indicates if the sand buff is active
-    public bool water = false;   // Indicates if the water buff is active
+    public int fire = 0;    // Indicates if the fire buff is active
+    public int snow = 0;    // Indicates if the snow buff is active
+    public int sand = 0;    // Indicates if the sand buff is active
+    public int water = 0;   // Indicates if the water buff is active
+
 
     // Elemental Prefabs
     [Header("Elemental Prefabs")]
@@ -55,7 +56,7 @@ public class AttackScript : MonoBehaviour
     void Update()
     {
         // Check elemental buffs and assign appropriate prefab
-        if (fire == true)
+        if (fire > 0)
         {
             barkPrefab = firePrefab;   // Assign the fire prefab to the bark prefab
         }
@@ -93,7 +94,7 @@ public class AttackScript : MonoBehaviour
             }
         }
 
-        if (snow == true && smashing == true && Input.GetKeyDown(KeyCode.Space) && platform == false)
+        if (snow > 0 && smashing == true && Input.GetKeyDown(KeyCode.Space) && platform == false)
         {
             platform = true;
             Instantiate(snowPrefab, smashPoint.position, smashPoint.rotation);
