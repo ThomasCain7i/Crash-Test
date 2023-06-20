@@ -1,3 +1,5 @@
+// Rio
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +9,7 @@ public class BreakingPlatform : MonoBehaviour
     public float fallSpeed;
     public float fallTimer;
 
+    // Changes colour when player has or has not activated platform
     public Material on, off;
     Renderer r;
 
@@ -38,7 +41,7 @@ public class BreakingPlatform : MonoBehaviour
             if (fallTimer >= 0.5)
             {
                 r.material = on;
-                //Platform falls down
+                //Platform falls down - Rio
                 transform.Translate(new Vector3(0, -1 * fallSpeed *Time.deltaTime, 0));
 
 
@@ -71,14 +74,14 @@ public class BreakingPlatform : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        // Stops from descending
+        // Stops from descending - Rio
         if (fallTimer <= 0.5)
         {
           isOn = false;
           isOff = true;
           fallTimer = 0;
         }
-         // Will descend and break after a small period when the player steps on the platform
+        // Will descend and break after a small period when the player steps on the platform - Rio
         else if (fallTimer >= 0.5)
         {
             isOn = true;
