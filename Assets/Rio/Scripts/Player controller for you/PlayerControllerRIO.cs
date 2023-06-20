@@ -252,8 +252,6 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             damagedBarrier.SetActive(false);
         }
-       
-
 
     }
 
@@ -722,11 +720,11 @@ public class PlayerControllerRIO : MonoBehaviour
             // Player moves with the platform
             // Rotates in a flat circle motion
 
-           // PlayerDog.transform.parent = rotatePlatformY1.transform;
-
-            PlayerDog.transform.Rotate(new Vector3(0, 1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
-
+            Vector3 point = new Vector3(4.6f,-0.4f,8.8f); // Based on position of rotating platform
+            Vector3 axis =  new Vector3(0,1f,0);
+            transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
            
+            
         }
 
         if (collision.gameObject.tag == "RotateAnti-ClockwiseFlatSpin")
@@ -734,9 +732,9 @@ public class PlayerControllerRIO : MonoBehaviour
             // Player moves with the platform
             // Rotates in a flat circle motion
 
-           // PlayerDog.transform.parent = rotatePlatformY1.transform;
-
-            PlayerDog.transform.Rotate(new Vector3(0, -1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
+            Vector3 point = new Vector3(4.5f,0f,18.6f); // Based on position of rotating platform
+            Vector3 axis =  new Vector3(0,-1f,0);
+            transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
         }
 
        
