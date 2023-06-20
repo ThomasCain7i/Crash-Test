@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     // Bones
     [Header("Bones")]
-    public int boneCount = 0;  // Number of collected bones
+    public int bonusCount = 0;  // Number of collected bones
 
     // Movement
     [Header("Movement")]
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     // References
     [Header("References")]
-    private AttackScript attackScript;
+    private AttackScript attackScript; // Reference to the Attack script 
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
 
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
     // Increases the player's bone count by 1
     public void CollectedBone()
     {
-        boneCount += 1;
+        bonusCount += 1;
     }
 
     // POWER UPS

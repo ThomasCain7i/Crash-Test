@@ -17,7 +17,7 @@ public class GoldNextLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if(playerController.boneCount >= bonesToCollect)
+            if(playerController.bonusCount >= bonesToCollect)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
