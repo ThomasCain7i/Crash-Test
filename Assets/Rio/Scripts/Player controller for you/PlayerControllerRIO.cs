@@ -214,7 +214,7 @@ public class PlayerControllerRIO : MonoBehaviour
             speedGlow.SetActive(false);
         }
 
-        // Allows powerup to activate
+        // Allows powerup to activate - Rio
         StarPower();
 
         if (starPowerup == true)
@@ -226,22 +226,22 @@ public class PlayerControllerRIO : MonoBehaviour
             starGlow.SetActive(false);
         }
 
-        // Allows powerup to activate
+        // Allows powerup to activate - Rio
         MegaPower();
         
-        // Default speed with no power
+        // Default speed with no power - Rio
         if (megaPowerup == false && speedPowerup == false)
         {
             moveSpeed = 5.0f;
         }
         
-        // Neutralises speed with both powers active
+        // Neutralises speed with both powers active - Rio
         if (megaPowerup == true && speedPowerup == true)
         {
             moveSpeed = 5.0f;
         }
 
-        // Time period for player's invincibility after hit
+        // Time period for player's invincibility after hit - Rio
         hitTimer += Time.deltaTime;
 
         if (hitTimer <= 3)
@@ -329,7 +329,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Player takes damage
+            // Player takes damage - Rio
             if (hitTimer >= 3 && starPowerup == false)
             {
                 TakeDamage(1);
@@ -337,7 +337,7 @@ public class PlayerControllerRIO : MonoBehaviour
                 damagedBarrier.SetActive(false);
                 starGlow.SetActive(false);
             }
-            // Player is invincible after hit
+            // Player is invincible after hit - Rio
            else if (hitTimer <= 3)
             {
                 TakeDamage(0);
@@ -354,7 +354,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BouncePad"))
         {
-            // Boost the player when they touch the bounce pad
+            // Boost the player when they touch the bounce pad - Rio
             rb.AddForce(Vector3.up * jumpForce * 1.25f, ForceMode.VelocityChange);
             
 
@@ -406,10 +406,10 @@ public class PlayerControllerRIO : MonoBehaviour
     // Speed powerup
     public void SpeedPowerUpFunction()
     {
-        // Activates super speed
+        // Activates super speed - Rio
         speedPowerup = true;
 
-        // resets timer
+        // resets timer - Rio
         speedTimer = maxSpeedTimer;
     }
 
@@ -423,19 +423,19 @@ public class PlayerControllerRIO : MonoBehaviour
 
     public void StarPowerUpFunction()
     {
-        // Activates star power
+        // Activates star power - Rio
         starPowerup = true;
 
-        // resets timer
+        // resets timer - Rio
         starTimer = 0;
     }
 
     public void MegaPowerUpFunction()
     {
-        // Activates super size power
+        // Activates super size power - Rio
         megaPowerup = true;
 
-        // resets timer
+        // resets timer - Rio
         megaTimer = 0;
     }
 
@@ -444,21 +444,19 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (speedPowerup == true)
         {
-
-
-            // Player becomes faster
+            // Player becomes faster - Rio
             moveSpeed = 7.5f;
         }
         else if (speedPowerup == false)
         {
-            // returns to default speed
+            // returns to default speed - Rio
             moveSpeed = 5f;
         }
 
         speedTimer += Time.deltaTime;
         if (speedTimer >= 15.0f)
         {
-            // Power works for a limited time
+            // Power works for a limited time - Rio
             speedPowerup = false;
 
         }
@@ -469,21 +467,21 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (starPowerup == true)
         {
-            // Becomes invincible
+            // Becomes invincible - Rio
             TakeDamage(0);
             starGlow.SetActive(true);
             
         }
         else if (starPowerup == false)
         {
-            //Player takes damage as normal
+            //Player takes damage as normal - Rio
             starGlow.SetActive(false);
         }
           
         starTimer += Time.deltaTime;
         if (starTimer >= 10.0f)
         {
-            // Power works for a limited time
+            // Power works for a limited time - Rio
             starPowerup = false;
         }
 
@@ -493,13 +491,13 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (megaPowerup == true)
         {
-            // Doubles size and becomes slower
+            // Doubles size and becomes slower - Rio
             transform.localScale = new Vector3(2f, 2f, 2f);
             moveSpeed = 3.5f;
         }
         else if (megaPowerup == false)
         {
-            // Player has standard size
+            // Player has standard size - Rio
             transform.localScale = new Vector3(1f, 1f, 1f);
             
         }
@@ -507,7 +505,7 @@ public class PlayerControllerRIO : MonoBehaviour
         megaTimer += Time.deltaTime;
         if (megaTimer >= 12.0f)
         {
-            // Power works for a limited time
+            // Power works for a limited time - Rio
             megaPowerup = false;
         }
     }
@@ -516,11 +514,11 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (collision.gameObject.tag == "MovingPlatformLR")
         {
-            //Player moves along the platform
+            //Player moves along the platform - Rio
 
             if (movingPlatform.moveTimer <= 5.0f)
             {
-                // Player moves right changes from direction they are facing
+                // Player moves right changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
@@ -542,7 +540,7 @@ public class PlayerControllerRIO : MonoBehaviour
             }
             else if (movingPlatform.moveTimer <= 10.0f)
             {
-                // Player moves left changes from direction they are facing
+                // Player moves left changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
@@ -570,7 +568,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
             if (movingPlatform.moveTimer <= 5.0f)
             {
-                // Player moves forward changes from direction they are facing
+                // Player moves forward changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
@@ -593,7 +591,7 @@ public class PlayerControllerRIO : MonoBehaviour
             }
             else if (movingPlatform.moveTimer <= 10.0f)
             {
-                // Player moves backwards changes from direction they are facing
+                // Player moves backwards changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
@@ -618,14 +616,14 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "BreakingPlatform")
         {
-            // Player moves down with the platform
+            // Player moves down with the platform - Rio
             transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
         }
 
         if (collision.gameObject.tag == "RotateLeftSideSpin")
         {
-            // Player moves with the platform
-            // Rotates in a left to right circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a left to right circle motion - Rio
 
            if (isFacingLeft == true)
             {
@@ -647,8 +645,8 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "RotateRightSideSpin")
         {
-            // Player moves with the platform
-            // Rotates in a right to left circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a right to left circle motion - Rio
 
            if (isFacingLeft == true)
             {
@@ -671,8 +669,8 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "RotateFrontSpin")
         {
-            // Player moves with the platform
-            // Rotates in a forwards to backwards circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a forwards to backwards circle motion - Rio
 
             if (isFacingLeft == true)
             {
@@ -694,8 +692,8 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "RotateBackSpin")
         {
-            // Player moves with the platform
-            // Rotates in a backwards to forwards circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a backwards to forwards circle motion - Rio
 
             if (isFacingLeft == true)
             {
@@ -717,10 +715,10 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "RotateClockwiseFlatSpin")
         {
-            // Player moves with the platform
-            // Rotates in a flat circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a flat circle motion - Rio
 
-            Vector3 point = new Vector3(4.6f,-0.4f,8.8f); // Based on position of rotating platform
+            Vector3 point = new Vector3(4.6f,-0.4f,8.8f); // Based on position of rotating platform - RIo
             Vector3 axis =  new Vector3(0,1f,0);
             transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
            
@@ -729,10 +727,10 @@ public class PlayerControllerRIO : MonoBehaviour
 
         if (collision.gameObject.tag == "RotateAnti-ClockwiseFlatSpin")
         {
-            // Player moves with the platform
-            // Rotates in a flat circle motion
+            // Player moves with the platform - Rio
+            // Rotates in a flat circle motion - Rio
 
-            Vector3 point = new Vector3(4.5f,0f,18.6f); // Based on position of rotating platform
+            Vector3 point = new Vector3(6.5f,0f,18.6f); // Based on position of rotating platform - Rio
             Vector3 axis =  new Vector3(0,-1f,0);
             transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
         }

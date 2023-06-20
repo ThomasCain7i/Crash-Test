@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5909832607231711869}
   - component: {fileID: 5909832607231711870}
   - component: {fileID: 5909832607231711871}
+  - component: {fileID: 8074150668307872546}
   m_Layer: 0
   m_Name: RotatingPlatformFrontSpin
   m_TagString: RotateBackSpin
@@ -118,3 +119,30 @@ MonoBehaviour:
   isRotatingZ1: 0
   isRotatingZ2: 0
   rotateSpeed: 20
+--- !u!205 &8074150668307872546
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909832607231711864}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.000000059604645, y: 0, z: -0.00000011920929}
+  m_Size: 2.0000005
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5909832607231711869}
+  - screenRelativeHeight: 0.4813452
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5909832607231711869}
+  - screenRelativeHeight: 0.39599022
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5909832607231711869}
+  m_Enabled: 1

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2208053590527424657}
   - component: {fileID: 2208053590527424656}
   - component: {fileID: 2208053590527424659}
+  - component: {fileID: 5837388222950812304}
   m_Layer: 0
   m_Name: RotatingPlatformSideSpin
   m_TagString: RotateRightSideSpin
@@ -118,3 +119,30 @@ MonoBehaviour:
   isRotatingZ1: 0
   isRotatingZ2: 0
   rotateSpeed: 20
+--- !u!205 &5837388222950812304
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2208053590527424658}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00000029802322, y: -0.0000009536743, z: -0.00000011920929}
+  m_Size: 2.0000014
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2208053590527424657}
+  - screenRelativeHeight: 0.498063
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2208053590527424657}
+  - screenRelativeHeight: 0.39599022
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2208053590527424657}
+  m_Enabled: 1

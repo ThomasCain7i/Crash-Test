@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotatingObject : MonoBehaviour
 {
-    // Bools to rotate in different directions
+    // Bools to rotate in different directions - Rio
     
     public bool isRotatingX1;
     public bool isRotatingX2;
@@ -15,7 +15,7 @@ public class RotatingObject : MonoBehaviour
     public bool isRotatingZ1;
     public bool isRotatingZ2;
 
-    // Changeable value for different objects;
+    // Changeable value for different objects - Rio
     public float rotateSpeed;
 
 
@@ -28,38 +28,38 @@ public class RotatingObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Rotates in a forwards and backwards circle motion
-        if (isRotatingX1)
-        {
-           transform.Rotate (new Vector3 (1* rotateSpeed, 0, 0) * Time.deltaTime);
-        }
+      // Rotates in a forwards and backwards circle motion - Rio
+      if (isRotatingX1)
+      {
+         transform.Rotate (new Vector3 (1* rotateSpeed, 0, 0) * Time.deltaTime);
+      }
 
-        if (isRotatingX2)
-        {
-           transform.Rotate (new Vector3 (-1* rotateSpeed, 0, 0) * Time.deltaTime);
-        }
+      if (isRotatingX2)
+      {
+         transform.Rotate (new Vector3 (-1* rotateSpeed, 0, 0) * Time.deltaTime);
+      }
         
-        // Rotates in a flat circle motion
-        if (isRotatingY1)
-        {
-           transform.Rotate (new Vector3 (0, 1* rotateSpeed, 0) * Time.deltaTime);
-        }
+      // Rotates in a flat circle motion - Rio
+      if (isRotatingY1)
+      {
+         transform.Rotate (new Vector3 (0, 1* rotateSpeed, 0) * Time.deltaTime);
+      }
 
-        if (isRotatingY2)
-        {
-           transform.Rotate (new Vector3 (0, -1* rotateSpeed, 0) * Time.deltaTime);
-        }
+      if (isRotatingY2)
+      {
+         transform.Rotate (new Vector3 (0, -1* rotateSpeed, 0) * Time.deltaTime);
+      }
 
-        // Rotates in a left and right circle motion
-        if (isRotatingZ1)
-        {
-           transform.Rotate (new Vector3 (0, 0, 1* rotateSpeed) * Time.deltaTime);
-        }
+      // Rotates in a left and right circle motion - Rio
+      if (isRotatingZ1)
+      {
+         transform.Rotate (new Vector3 (0, 0, 1* rotateSpeed) * Time.deltaTime);
+      }
 
-        if (isRotatingZ2)
-        {
-           transform.Rotate (new Vector3 (0, 0, -1* rotateSpeed) * Time.deltaTime);
-        }
+      if (isRotatingZ2)
+      {
+         transform.Rotate (new Vector3 (0, 0, -1* rotateSpeed) * Time.deltaTime);
+      }
 
     }
 }
