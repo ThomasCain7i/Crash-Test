@@ -9,7 +9,7 @@ public class PlayerControllerRIO : MonoBehaviour
     public int boneCount = 0;
     public float hitTimer;
     public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
-    public Transform PlayerDog;
+    public GameObject PlayerDog;
 
     // Movement
     public float moveSpeed = 5f;
@@ -47,13 +47,6 @@ public class PlayerControllerRIO : MonoBehaviour
     // Platforms
     private MovingPlatform movingPlatform;
     private BreakingPlatform breakingPlatform;
-
-    public GameObject rotatePlatformX1;
-    public GameObject rotatePlatformX2;
-    public GameObject rotatePlatformY1;
-    public GameObject rotatePlatformY2;
-    public GameObject rotatePlatformZ1;
-    public GameObject rotatePlatformZ2;
 
     public RotatingObject rotatingObject;
 
@@ -316,6 +309,20 @@ public class PlayerControllerRIO : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("RotateBackSpin"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateClockwiseFlatSpin"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateAnti-ClockwiseFlatSpin"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
@@ -718,6 +725,8 @@ public class PlayerControllerRIO : MonoBehaviour
            // PlayerDog.transform.parent = rotatePlatformY1.transform;
 
             PlayerDog.transform.Rotate(new Vector3(0, 1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
+
+           
         }
 
         if (collision.gameObject.tag == "RotateAnti-ClockwiseFlatSpin")
@@ -727,7 +736,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
            // PlayerDog.transform.parent = rotatePlatformY1.transform;
 
-            PlayerDog.transform.Rotate(new Vector3(0, 1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
+            PlayerDog.transform.Rotate(new Vector3(0, -1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
         }
 
        
