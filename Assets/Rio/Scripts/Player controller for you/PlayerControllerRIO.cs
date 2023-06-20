@@ -55,6 +55,8 @@ public class PlayerControllerRIO : MonoBehaviour
     public GameObject rotatePlatformZ1;
     public GameObject rotatePlatformZ2;
 
+    public RotatingObject rotatingObject;
+
     // Power Ups
     public float tripleJumpTimer;
 
@@ -81,6 +83,8 @@ public class PlayerControllerRIO : MonoBehaviour
         breakingPlatform = FindObjectOfType<BreakingPlatform>();
 
         damagedBarrier.SetActive(false);
+
+        rotatingObject = FindObjectOfType<RotatingObject>();
     }
 
     void Update()
@@ -284,6 +288,34 @@ public class PlayerControllerRIO : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("BreakingPlatform"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateLeftSideSpin"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateRightSideSpin"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateFrontSpin"))
+        {
+            //Reset jumps and set grounded true - Thomas
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+        }
+
+        if (collision.gameObject.CompareTag("RotateBackSpin"))
         {
             //Reset jumps and set grounded true - Thomas
             isGrounded = true;
@@ -585,42 +617,119 @@ public class PlayerControllerRIO : MonoBehaviour
             transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
         }
 
-        if (collision.gameObject.tag == "RotatingPlatformX1")
+        if (collision.gameObject.tag == "RotateLeftSideSpin")
         {
             // Player moves with the platform
-            // Rotates in a forwards and backwards circle motion
+            // Rotates in a left to right circle motion
+
+           if (isFacingLeft == true)
+            {
+                transform.Translate(new Vector3(0, 0, 1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+            else if (isFacingRight == true)
+            {
+               transform.Translate(new Vector3(0, 0, -1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+             else if (isFacingBackwards == true)
+            {
+                transform.Translate(new Vector3(1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+           }
+            else if (isFacingForwards == true)
+            {
+                transform.Translate(new Vector3(-1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
         }
 
-        if (collision.gameObject.tag == "RotatingPlatformX2")
+        if (collision.gameObject.tag == "RotateRightSideSpin")
         {
             // Player moves with the platform
-            // Rotates in a forwards and backwards circle motion
+            // Rotates in a right to left circle motion
+
+           if (isFacingLeft == true)
+            {
+                transform.Translate(new Vector3(0, 0, -1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+            else if (isFacingRight == true)
+            {
+                transform.Translate(new Vector3(0, 0, 1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+            else if (isFacingBackwards == true)
+            {
+                transform.Translate(new Vector3(-1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
+            else if (isFacingForwards == true)
+            {
+                transform.Translate(new Vector3(1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
         }
 
-        if (collision.gameObject.tag == "RotatingPlatformY1")
+
+        if (collision.gameObject.tag == "RotateFrontSpin")
+        {
+            // Player moves with the platform
+            // Rotates in a forwards to backwards circle motion
+
+            if (isFacingLeft == true)
+            {
+                transform.Translate(new Vector3(1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
+            else if (isFacingRight == true)
+            {
+                transform.Translate(new Vector3(-1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
+            else if (isFacingBackwards == true)
+            {
+                transform.Translate(new Vector3(0, 0, -1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+            else if (isFacingForwards == true)
+            {
+                transform.Translate(new Vector3(0, 0, 1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+        }
+
+        if (collision.gameObject.tag == "RotateBackSpin")
+        {
+            // Player moves with the platform
+            // Rotates in a backwards to forwards circle motion
+
+            if (isFacingLeft == true)
+            {
+                transform.Translate(new Vector3(-1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
+            else if (isFacingRight == true)
+            {
+                transform.Translate(new Vector3(1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime, 0, 0));
+            }
+            else if (isFacingBackwards == true)
+            {
+                transform.Translate(new Vector3(0, 0, 1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+            else if (isFacingForwards == true)
+            {
+                transform.Translate(new Vector3(0, 0, -1 * rotatingObject.rotateSpeed * 0.1f * Time.deltaTime));
+            }
+        }
+
+        if (collision.gameObject.tag == "RotateClockwiseFlatSpin")
         {
             // Player moves with the platform
             // Rotates in a flat circle motion
 
            // PlayerDog.transform.parent = rotatePlatformY1.transform;
+
+            PlayerDog.transform.Rotate(new Vector3(0, 1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
         }
 
-        if (collision.gameObject.tag == "RotatingPlatformY2")
+        if (collision.gameObject.tag == "RotateAnti-ClockwiseFlatSpin")
         {
             // Player moves with the platform
             // Rotates in a flat circle motion
+
+           // PlayerDog.transform.parent = rotatePlatformY1.transform;
+
+            PlayerDog.transform.Rotate(new Vector3(0, 1 * rotatingObject.rotateSpeed, 0) * Time.deltaTime);
         }
 
-        if (collision.gameObject.tag == "RotationPlatformZ1")
-        {
-            // Player moves with the platform
-            // Rotates in a left and right circle motion
-        }
-
-        if (collision.gameObject.tag == "RotationPlatformZ2")
-        {
-            // Player moves with the platform
-            // Rotates in a left and right circle motion
-        }
+       
     }
 }
