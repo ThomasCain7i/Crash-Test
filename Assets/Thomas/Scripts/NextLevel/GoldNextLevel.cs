@@ -1,10 +1,12 @@
+// Thomas
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GoldNextLevel : MonoBehaviour
 {
     public PlayerController playerController;
-    public int bonesToCollect;
+    public int bonusToCollect;
 
     // Start is called before the first frame update
     void Start()
@@ -12,12 +14,11 @@ public class GoldNextLevel : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            if(playerController.bonusCount >= bonesToCollect)
+            if(playerController.bonusCount >= bonusToCollect)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }

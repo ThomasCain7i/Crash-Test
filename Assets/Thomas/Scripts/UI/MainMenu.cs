@@ -1,13 +1,41 @@
+// Thomas
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject optionsMenu, mainMenu;
-    public void PlayGame()
+    public GameObject optionsMenu, mainMenu, playMenu;
+    public GameManager gameManager;
+
+    public void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    public void ContinueGame()
+    {
+        gameManager.LoadSettings();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void NewGame()
+    {
+        gameManager.ResetProgress();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void OpenPlayGame()
+    {
+        playMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void ClosePlayGame()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        playMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void OpenOptions()

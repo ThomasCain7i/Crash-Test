@@ -1,3 +1,5 @@
+// Juan Thomas
+
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
