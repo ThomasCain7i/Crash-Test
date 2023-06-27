@@ -1068,6 +1068,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0f609a1e53fc1a2448f550e08873d670, type: 2}
+    - target: {fileID: 4456342131497013283, guid: 560c1ca5daf4c1e4793dfa614e3f8aff, type: 3}
+      propertyPath: barkPrefab
+      value: 
+      objectReference: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560c1ca5daf4c1e4793dfa614e3f8aff, type: 3}
 --- !u!1 &963194225
@@ -1309,7 +1313,7 @@ MonoBehaviour:
   Armour: 0
   barkDamage: 0
   smashDamage: 0
-  boneCount: 0
+  bonusCount: 0
   moveSpeed: 5
   normalMoveSpeed: 5
   jumpForce: 5
