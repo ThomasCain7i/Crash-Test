@@ -24,7 +24,10 @@ public class PlayerController : MonoBehaviour
     public float normalMoveSpeed = 5f;  // Normal movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
-    private int jumpsRemaining;  // Number of jumps remaining for the player
+    [SerializeField]
+    private int jumpsRemaining = 2;  // Number of jumps remaining for the player
+    [SerializeField]
+    private bool jumpsLeft = true;
     public float rotationSpeed;
 
     // Rigidbody / Ground test
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
-        attackScript = GetComponent<AttackScript>();   
+        attackScript = GetComponent<AttackScript>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -98,8 +101,7 @@ public class PlayerController : MonoBehaviour
 
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 isGrounded = false;
-                jumpsRemaining--;
-
+                jumpsRemaining --;
             }
             else
             {
@@ -113,6 +115,12 @@ public class PlayerController : MonoBehaviour
                 {
                     animator.SetBool("IsDoubleJumping", true);
                 }
+            }
+
+            if (jumpsRemaining <= 0 && attackScript.snow >= 1 && Input.GetButtonDown("Jump") && attackScript.platform == false)
+            {
+                attackScript.platform = true;
+                Instantiate(attackScript.snowPrefab, attackScript.smashPoint.position, attackScript.smashPoint.rotation);
             }
 
             if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
