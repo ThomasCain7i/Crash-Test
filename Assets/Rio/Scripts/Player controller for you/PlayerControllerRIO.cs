@@ -720,7 +720,7 @@ public class PlayerControllerRIO : MonoBehaviour
             // Player moves with the platform - Rio
             // Rotates in a flat circle motion - Rio
 
-            Vector3 point = new Vector3(4.6f,-0.4f,8.8f); // Based on position of rotating platform - RIo
+            Vector3 point = new Vector3(-12.92f,8.61f,100.08f); // Based on position of rotating platform - Rio
             Vector3 axis =  new Vector3(0,1f,0);
             transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
            
