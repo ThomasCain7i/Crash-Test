@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject optionsMenu, mainMenu, playMenu;
+    public GameObject optionsMenu, mainMenu, playMenu, creditsMenu;
     public GameManager gameManager;
 
     public void Start()
@@ -45,10 +45,17 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
+    public void OpenCredits()
+    {
+        creditsMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
     public void CloseOptions()
     {
         //Set control menu to false, main menu to true and current button to play
         optionsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9037049670746382770
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SandDunes
+  m_Shader: {fileID: -6465566751694194690, guid: 40ef5cdd2da8ac34797c00a4b50a4747, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
+    - _DistortAmplitude: 2
+    - _DistortNoisePeriod: 4
+    - _FresnelPower: 6
+    - _GrainColourBlend: 0.5
+    - _GrainPeriod: 5
+    - _GrainShineStrength: 1
+    - _NoiseScale: 150
+    - _NormalStrength: 3
+    - _PolygonSides: 7
+    - _ScrollSpeed: 0.003
+    - _ShineDuneHeightMap: 0.5
+    - _ShineThreshold: 0.9
+    - _SineAmplitude: 0
+    - _SineFreq: 1
+    - _SineRotation: 90
+    - _Smoothness: 0.5
+    - _SubstrateDuneHeightMap: 1
+    - _SubstrateGrainHeightMap: 1
+    - _SubstrateTightening: 1
+    - _UVScale: 1
+    m_Colors:
+    - _InnerColour: {r: 1, g: 1, b: 1, a: 0}
+    - _OuterColour: {r: 1, g: 0, b: 0, a: 0}
+    - _SandHighColour: {r: 0.9150943, g: 0.9024043, b: 0.43596473, a: 0}
+    - _SandLowColour: {r: 1, g: 0.84931326, b: 0, a: 0}
+    - _ShineColour: {r: 1, g: 1, b: 1, a: 0}
+    - _SubstrateColour: {r: 0, g: 0, b: 0, a: 0}
+    - _UVTiling: {r: 2, g: 2, b: 0, a: 0}
+  m_BuildTextureStacks: []
