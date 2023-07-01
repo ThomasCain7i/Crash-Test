@@ -9,19 +9,28 @@ public class TimedArrowShooter : MonoBehaviour
 
     //Cooldown
     public float coolDownTime;
+    public float startCoolDownTime;
 
     // Update is called once per frame
     void Update()
     {
-        coolDownTime -= Time.deltaTime;
-
-        if (coolDownTime <= 0)
+        if (startCoolDownTime > 0)
         {
-            var ability = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation);
-            ability.GetComponent<Rigidbody>().velocity = arrowSpawn.forward * arrowSpeed;
-
-            //COOLDOWN FOR THE ABILITY 
-            coolDownTime = 5f;
+            startCoolDownTime -= Time.deltaTime;
         }
+        else
+        {
+            coolDownTime -= Time.deltaTime;
+
+            if (coolDownTime <= 0)
+            {
+                var ability = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation);
+                ability.GetComponent<Rigidbody>().velocity = arrowSpawn.forward * arrowSpeed;
+
+                //COOLDOWN FOR THE ABILITY 
+                coolDownTime = 5f;
+            }
+        }
+
     }
 }
