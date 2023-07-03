@@ -26,8 +26,6 @@ public class PlayerController : MonoBehaviour
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     [SerializeField]
     private int jumpsRemaining = 2;  // Number of jumps remaining for the player
-    [SerializeField]
-    private bool jumpsLeft = true;
     public float rotationSpeed;
 
     // Rigidbody / Ground test
