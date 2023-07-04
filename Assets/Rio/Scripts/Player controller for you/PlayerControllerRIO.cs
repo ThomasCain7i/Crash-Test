@@ -817,4 +817,31 @@ public class PlayerControllerRIO : MonoBehaviour
             
         
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "EnergyBeam")
+        {
+             // Player takes damage - Rio
+            if (hitTimer >= 3 && starPowerup == false)
+            {
+                TakeDamage(1);
+                hitTimer = 0;
+                damagedBarrier.SetActive(false);
+                starGlow.SetActive(false);
+            }
+            // Player is invincible after hit - Rio
+            if (hitTimer <= 3)
+            {
+                TakeDamage(0);
+                damagedBarrier.SetActive(true);
+            }
+
+            if (starPowerup == true)
+            {
+                TakeDamage(0);
+                starGlow.SetActive(true);
+            }
+        }
+    }
 }
