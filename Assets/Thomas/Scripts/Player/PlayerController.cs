@@ -105,13 +105,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (isGrounded == true)
                 {
-                    animator.SetBool("IsJumping", false);
+                    //animator.SetBool("IsJumping", false);
                     animator.SetBool("IsFalling", true);
                     animator.SetBool("IsDoubleJumping", false);
                 }
                 if (jumpsRemaining == 0)
                 {
-                    animator.SetBool("IsDoubleJumping", true);
+                    //animator.SetBool("IsDoubleJumping", true);
                 }
             }
 
