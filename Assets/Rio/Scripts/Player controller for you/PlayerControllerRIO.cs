@@ -19,6 +19,8 @@ public class PlayerControllerRIO : MonoBehaviour
     public int maxJumps = 2;
     private int jumpsRemaining;
     public float rotationSpeed;
+    public bool isBouncing;
+    public float bounceTimer;
 
     // Rigidbody
     private Rigidbody rb;
@@ -112,11 +114,14 @@ public class PlayerControllerRIO : MonoBehaviour
                     animator.SetBool("IsJumping", false);
                     animator.SetBool("IsFalling", true);
                     animator.SetBool("IsDoubleJumping", false);
+                    isBouncing = false;
+                    
                 }
                 if (jumpsRemaining == 0)
                 {
                     animator.SetBool("IsDoubleJumping", true);
                 }
+                
             }
 
             if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
@@ -255,6 +260,20 @@ public class PlayerControllerRIO : MonoBehaviour
             damagedBarrier.SetActive(false);
         }
 
+        if (isBouncing == true)
+        {
+            animator.SetBool("IsJumping", true);
+           
+            
+            
+        }
+
+       if (isBouncing == false && isGrounded == true)
+       {
+           animator.SetBool("IsFalling", true);
+           
+       }
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -354,16 +373,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("BouncePad"))
-        {
-            // Boost the player when they touch the bounce pad - Rio
-            rb.AddForce(Vector3.up * jumpForce * 1.25f, ForceMode.VelocityChange);
-            
-
-            //Reset jumps and set grounded true - Thomas
-            isGrounded = true;
-            jumpsRemaining = maxJumps - 1;
-        }
+       
     }
 
 
@@ -514,6 +524,25 @@ public class PlayerControllerRIO : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.CompareTag("BouncePad"))
+        {
+           
+            bounceTimer += Time.deltaTime;
+
+            if(bounceTimer >= 0.15)
+            {
+                // Boost the player when they touch the bounce pad for a brief moment - Rio
+                rb.AddForce(Vector3.up * jumpForce * 1.05f, ForceMode.VelocityChange);
+                jumpsRemaining = maxJumps - 1;
+            }
+
+            //Reset jumps and set grounded true - Thomas
+
+            isGrounded = true;
+            isBouncing = false;
+            
+        }
+
         if (collision.gameObject.tag == "MovingPlatformLR")
         {
             //Player moves along the platform - Rio
@@ -738,5 +767,20 @@ public class PlayerControllerRIO : MonoBehaviour
         }
 
        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "BouncePad")
+        {
+            // Makes the player jump after being on the platform for a brief moment - Rio
+            isBouncing = true;
+            isGrounded = false;
+
+            // Resets timer so that the player doesn't intantly bounce on the bounce pad - Rio
+            bounceTimer = 0;
+        }
+            
+        
     }
 }

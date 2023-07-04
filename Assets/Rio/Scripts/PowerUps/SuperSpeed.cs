@@ -33,7 +33,7 @@ public class SuperSpeed : MonoBehaviour
             // Player becomes faster - Rio
             PlayerControllerRIO thePlayer = other.gameObject.GetComponent<PlayerControllerRIO>();
 
-            //collects powerup by setting the players bool to true -Rio
+            //collects powerup by setting the players bool to true - Rio
             thePlayer.SpeedPowerUpFunction();
 
             Destroy(gameObject);
