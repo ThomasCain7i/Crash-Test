@@ -10,6 +10,7 @@ public class SquashTrap : MonoBehaviour
     public float returnSpeed = 1f; // Speed at which the wall moves
 
     public float delay = 2f; // Delay in seconds before moving back to the start position
+    public float startDelay; // Delay in seconds before moving back to the start position
     public float smashingDuration = 2f; // Duration of the smashing animation
 
     private bool isMoving = false; // Flag to check if the wall is currently moving
@@ -26,7 +27,9 @@ public class SquashTrap : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving)
+        startDelay -= Time.deltaTime;
+
+        if (isMoving && startDelay <= 0)
         {
             if (!isReturning)
             {
