@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (jumpsRemaining == 0)
                 {
-                    //animator.SetBool("IsDoubleJumping", true);
+                    animator.SetBool("IsDoubleJumping", true);
                 }
             }
 
