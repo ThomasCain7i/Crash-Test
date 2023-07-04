@@ -15,6 +15,8 @@ public class PlayerControllerRIO : MonoBehaviour
 
     // Movement
     public float moveSpeed = 5f;
+    public float runTimer;
+    public bool isRunning;
     public float jumpForce = 5f;
     public int maxJumps = 2;
     private int jumpsRemaining;
@@ -82,6 +84,8 @@ public class PlayerControllerRIO : MonoBehaviour
         damagedBarrier.SetActive(false);
 
         rotatingObject = FindObjectOfType<RotatingObject>();
+
+       
     }
 
     void Update()
@@ -115,6 +119,8 @@ public class PlayerControllerRIO : MonoBehaviour
                     animator.SetBool("IsFalling", true);
                     animator.SetBool("IsDoubleJumping", false);
                     isBouncing = false;
+                    isRunning = true;
+
                     
                 }
                 if (jumpsRemaining == 0)
@@ -129,11 +135,17 @@ public class PlayerControllerRIO : MonoBehaviour
                 Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
+
+                if(isRunning == true)
+                {
+                    runTimer += Time.deltaTime;
+                }
+                
             }
             else
             {
                 animator.SetBool("IsMoving", false);
-
+                runTimer = 0;
             }
 
             //PUNCH ATTACK - JUAN
@@ -267,18 +279,33 @@ public class PlayerControllerRIO : MonoBehaviour
             damagedBarrier.SetActive(false);
         }
 
+        // Player jumps everytime they bounce;
         if (isBouncing == true)
         {
             animator.SetBool("IsJumping", true);
-           
-            
             
         }
 
        if (isBouncing == false && isGrounded == true)
-       {
+        {
            animator.SetBool("IsFalling", true);
            
+        }
+
+        // Player becomes faster after running slighty - Rio
+        if (runTimer >= 2.5f)
+        {
+            SpeedBoost(2);
+        }
+        else if (runTimer <= 2.5f)
+        {
+            SpeedBoost(0);
+        }
+
+        // stops run timer until the player is on ground - Rio
+        if (isGrounded == false)
+        {
+            isRunning = false;
         }
 
     }
@@ -396,6 +423,11 @@ public class PlayerControllerRIO : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+    }
+
+    public void SpeedBoost(int speedBoost)
+    {
+        moveSpeed += speedBoost;
     }
 
     public void Respawn()
@@ -568,6 +600,12 @@ public class PlayerControllerRIO : MonoBehaviour
                 // Boost the player when they touch the bounce pad for a brief moment - Rio
                 rb.AddForce(Vector3.up * jumpForce * 0.9f, ForceMode.VelocityChange);
                 jumpsRemaining = maxJumps - 1;
+            }
+
+            if (bounceTimer >= 0.05)
+            {
+                isGrounded = false;
+                isBouncing = true;
             }
 
             //Reset jumps and set grounded true - Thomas
