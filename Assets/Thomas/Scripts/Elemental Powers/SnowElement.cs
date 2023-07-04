@@ -7,6 +7,14 @@ public class SnowElement : MonoBehaviour
     public AttackScript attackScript;  // Reference to the PlayerController script
     public GameManager gameManager;
 
+    [SerializeField]
+    private float speed;
+
+    private void Update()
+    {
+        transform.Rotate(0f, speed * Time.deltaTime, 0f, Space.Self);
+    }
+
     void Start()
     {
         attackScript = FindObjectOfType<AttackScript>();  // Find and assign the PlayerController component in the scene
