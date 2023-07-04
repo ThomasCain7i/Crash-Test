@@ -1819,7 +1819,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 470468190}
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.21117127
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 470468190}
@@ -2299,6 +2299,8 @@ MonoBehaviour:
   jumpForce: 5
   maxJumps: 2
   rotationSpeed: 0
+  isBouncing: 0
+  bounceTimer: 0
   speedPowerup: 0
   speedTimer: 0
   maxSpeedTimer: 0
@@ -11142,5 +11144,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5a8eb8738b1403240ad8173266802e78, type: 2}
+    - target: {fileID: 8074150668307872546, guid: bf696df4b860e1142b5b34419bea7f82, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.2822577
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf696df4b860e1142b5b34419bea7f82, type: 3}

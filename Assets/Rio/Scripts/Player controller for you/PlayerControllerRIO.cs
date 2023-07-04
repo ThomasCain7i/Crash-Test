@@ -210,15 +210,21 @@ public class PlayerControllerRIO : MonoBehaviour
 
         // Allows powerup to activate
         SuperSpeed();
-
+         
+       
         if (speedPowerup == true)
         {
             speedGlow.SetActive(true);
-            
+            damagedBarrier.SetActive(false);
         }
         else if (speedPowerup == false)
         {
             speedGlow.SetActive(false);
+        }
+        
+        if (hitTimer <= 3 && starPowerup == true)
+        {
+            damagedBarrier.SetActive(false);
         }
 
         // Allows powerup to activate - Rio
@@ -227,6 +233,7 @@ public class PlayerControllerRIO : MonoBehaviour
         if (starPowerup == true)
         {
             starGlow.SetActive(true);
+            damagedBarrier.SetActive(false);
         }
         else if (starPowerup == false)
         {
@@ -272,7 +279,7 @@ public class PlayerControllerRIO : MonoBehaviour
        {
            animator.SetBool("IsFalling", true);
            
-       }
+        }
 
     }
 
@@ -359,7 +366,7 @@ public class PlayerControllerRIO : MonoBehaviour
                 starGlow.SetActive(false);
             }
             // Player is invincible after hit - Rio
-           else if (hitTimer <= 3)
+            if (hitTimer <= 3)
             {
                 TakeDamage(0);
                 damagedBarrier.SetActive(true);
@@ -489,6 +496,8 @@ public class PlayerControllerRIO : MonoBehaviour
             // Becomes invincible - Rio
             TakeDamage(0);
             starGlow.SetActive(true);
+            damagedBarrier.SetActive(false);
+
             
         }
         else if (starPowerup == false)
@@ -499,7 +508,7 @@ public class PlayerControllerRIO : MonoBehaviour
         }
           
         
-        if (starTimer >= 10.0f)
+        if (starTimer >= 15.0f)
         {
             // Power works for a limited time - Rio
             starPowerup = false;
@@ -519,13 +528,12 @@ public class PlayerControllerRIO : MonoBehaviour
             {
                 transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);   
             }
-            
+
+            // Doubles size and becomes slower - Rio
             if (megaTimer >= 0.35f)
             {
-                // Doubles size and becomes slower - Rio
                 transform.localScale = new Vector3(2f, 2f, 2f);
             }
-           
             moveSpeed = 3.5f;
         }
         else if (megaPowerup == false)
@@ -536,16 +544,15 @@ public class PlayerControllerRIO : MonoBehaviour
             
         }
 
-        if (megaTimer >= 11.85f)
+        if (megaTimer >= 14.85f)
         {
             transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
 
-        if (megaTimer >= 12.0f)
+        if (megaTimer >= 15.0f)
         {
             // Power works for a limited time - Rio
-            megaPowerup = false;
-            
+            megaPowerup = false; 
         }
     }
 
@@ -556,10 +563,10 @@ public class PlayerControllerRIO : MonoBehaviour
            
             bounceTimer += Time.deltaTime;
 
-            if(bounceTimer >= 0.15)
+            if(bounceTimer >= 0.1)
             {
                 // Boost the player when they touch the bounce pad for a brief moment - Rio
-                rb.AddForce(Vector3.up * jumpForce * 1.05f, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * jumpForce * 0.9f, ForceMode.VelocityChange);
                 jumpsRemaining = maxJumps - 1;
             }
 
