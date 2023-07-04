@@ -37,7 +37,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _DistortAmplitude: 2
+    - _DistortAmplitude: 1
     - _DistortNoisePeriod: 7
     - _FresnelPower: 6
     - _GrainColourBlend: 0.5
@@ -45,14 +45,14 @@ Material:
     - _GrainShineStrength: 1
     - _NoiseScale: 150
     - _NormalStrength: 3
-    - _PolygonSides: 7
+    - _PolygonSides: 8
     - _ScrollSpeed: 0.003
     - _ShineDuneHeightMap: 0.5
-    - _ShineThreshold: 0.9
+    - _ShineThreshold: 0.95
     - _SineAmplitude: 0
     - _SineFreq: 1
     - _SineRotation: 90
-    - _Smoothness: 0.5
+    - _Smoothness: 0.4
     - _SubstrateDuneHeightMap: 1
     - _SubstrateGrainHeightMap: 1
     - _SubstrateTightening: 1
