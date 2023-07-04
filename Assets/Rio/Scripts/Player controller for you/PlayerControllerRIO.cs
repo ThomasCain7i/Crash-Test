@@ -456,6 +456,9 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (speedPowerup == true)
         {
+            // When power activates the timer starts - Rio
+            speedTimer += Time.deltaTime;
+
             // Player becomes faster - Rio
             moveSpeed = 7.5f;
         }
@@ -463,9 +466,10 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             // returns to default speed - Rio
             moveSpeed = 5f;
+            speedTimer = 0;
         }
 
-        speedTimer += Time.deltaTime;
+        
         if (speedTimer >= 15.0f)
         {
             // Power works for a limited time - Rio
@@ -479,6 +483,9 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (starPowerup == true)
         {
+            // When power activates the timer starts - Rio
+            starTimer += Time.deltaTime;
+
             // Becomes invincible - Rio
             TakeDamage(0);
             starGlow.SetActive(true);
@@ -488,9 +495,10 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             //Player takes damage as normal - Rio
             starGlow.SetActive(false);
+            starTimer = 0;
         }
           
-        starTimer += Time.deltaTime;
+        
         if (starTimer >= 10.0f)
         {
             // Power works for a limited time - Rio
@@ -503,22 +511,41 @@ public class PlayerControllerRIO : MonoBehaviour
     {
         if (megaPowerup == true)
         {
-            // Doubles size and becomes slower - Rio
-            transform.localScale = new Vector3(2f, 2f, 2f);
+            // When power activates the timer starts - Rio
+            megaTimer += Time.deltaTime;
+            
+            // Shows the player growing slightly - Rio
+            if (megaTimer >= 0.1f)
+            {
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);   
+            }
+            
+            if (megaTimer >= 0.35f)
+            {
+                // Doubles size and becomes slower - Rio
+                transform.localScale = new Vector3(2f, 2f, 2f);
+            }
+           
             moveSpeed = 3.5f;
         }
         else if (megaPowerup == false)
         {
             // Player has standard size - Rio
             transform.localScale = new Vector3(1f, 1f, 1f);
+            megaTimer = 0;
             
         }
 
-        megaTimer += Time.deltaTime;
+        if (megaTimer >= 11.85f)
+        {
+            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        }
+
         if (megaTimer >= 12.0f)
         {
             // Power works for a limited time - Rio
             megaPowerup = false;
+            
         }
     }
 
