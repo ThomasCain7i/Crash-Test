@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (isGrounded == true)
                 {
-                    //animator.SetBool("IsJumping", false);
+                    animator.SetBool("IsJumping", false);
                     animator.SetBool("IsFalling", true);
                     animator.SetBool("IsDoubleJumping", false);
                 }
@@ -141,13 +141,13 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
-                //animator.SetTrigger("Attack"); 
+                animator.SetTrigger("Attack");
 
             }
-            //else
-            //{
-            //    animator.SetBool("IsAttacking", false);
-            //}
+            else
+            {
+                animator.SetBool("IsAttacking", false);
+            }
         }
         else
         {
