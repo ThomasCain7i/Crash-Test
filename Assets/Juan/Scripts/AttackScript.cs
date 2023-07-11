@@ -86,7 +86,7 @@ public class AttackScript : MonoBehaviour
 
         // Smash Attack - Juan
         // Check if the player is not grounded and perform the smash attack
-        if (isGrounded == false)
+        if (isGrounded == false && !smashing)
         {
             if (Input.GetKeyDown(KeyCode.E) && isGrounded == false)
             {
