@@ -67,7 +67,7 @@ public class AttackScript : MonoBehaviour
         if (Time.time > nextBarkTime)
         {
             // Bark Attack - Juan
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 animator.SetBool("IsBarking", true);  // Set the "IsBarking" parameter in the animator to true
                 // Spawn the bark attack from the specific point off the player
