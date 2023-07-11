@@ -16,7 +16,6 @@ public class AttackScript : MonoBehaviour
     [Header("Elemental Prefabs")]
     public GameObject firePrefab;    // Prefab for the fire attack
     public GameObject snowPrefab;    // Prefab for the snow attack
-    public GameObject sandPrefab;    // Prefab for the sand attack
     public GameObject waterPrefab;   // Prefab for the water attack
 
     // Bark Stuff (Point of Spawn, Speed, etc.)
@@ -67,7 +66,7 @@ public class AttackScript : MonoBehaviour
         if (Time.time > nextBarkTime)
         {
             // Bark Attack - Juan
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 animator.SetBool("IsBarking", true);  // Set the "IsBarking" parameter in the animator to true
                 // Spawn the bark attack from the specific point off the player

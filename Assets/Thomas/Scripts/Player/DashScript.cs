@@ -1,40 +1,65 @@
 using UnityEngine;
+using System.Collections;
 
 public class DashScript : MonoBehaviour
 {
-    public Rigidbody rb;
-    public float dashSpeed, dashTime;
-    bool isDashing;
+    public PlayerController playerController;
+    public AttackScript attackScript;
+    public float dashTime, dashSpeed, dashCooldown, dashCooldownNormal;
+    public GameObject dashParticle;
+    public Transform dashParticlePos;
+    private bool isDashing;
 
-    public GameObject dashEffect;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        attackScript = GetComponent<AttackScript>();
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown <= 0 && attackScript.sand > 0)
         {
-            isDashing = true;
+            StartCoroutine(Dash());
+        }
+
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
         }
     }
 
-    private void FixedUpdate()
+    IEnumerator Dash()
     {
-        if (isDashing)
-            Dashing();
-    }
+        isDashing = true;
+        float startTime = Time.time;
 
-    private void Dashing()
-    {
-        rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
+        // Instantiate the dash particle system
+        GameObject particleSystemObject = Instantiate(dashParticle, dashParticlePos.position, dashParticlePos.rotation);
+        particleSystemObject.transform.SetParent(transform);
+
+        ParticleSystem particleSystem = particleSystemObject.GetComponent<ParticleSystem>();
+
+        while (Time.time < startTime + dashTime)
+        {
+            transform.Translate(Vector3.forward * dashSpeed * Time.deltaTime);
+            Debug.Log("Dashing");
+
+            yield return null;
+        }
+
         isDashing = false;
+        dashCooldown = dashCooldownNormal;
 
-        GameObject effect = Instantiate(dashEffect, Camera.main.transform.position, dashEffect.transform.rotation);
-        effect.transform.parent = Camera.main.transform;
-        effect.transform.LookAt(transform);
+        // Stop emitting new particles
+        particleSystem.Stop();
+
+        // Wait for the remaining particles to finish
+        yield return new WaitForSeconds(particleSystem.main.duration);
+
+        // Destroy the dash particle system
+        Destroy(particleSystemObject);
     }
 }
