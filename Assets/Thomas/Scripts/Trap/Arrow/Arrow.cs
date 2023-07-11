@@ -28,10 +28,10 @@ public class Arrow : MonoBehaviour
          switch (other.gameObject.tag)
          {
              // Collision with wall just destroy bullet
-             case "Wall":
+             case "UnbreakableWall":
                  Destroy(gameObject);
                  break;
-             // Collision with enemy deal 1 damage and destory
+             // Collision with player deal 1 damage and destory
              case "Player":
                  Debug.Log("Player touched the arrow");
                  other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);

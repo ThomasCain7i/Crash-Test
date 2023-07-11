@@ -13,7 +13,9 @@ public class SquashTrap : MonoBehaviour
     public float startDelay; // Delay in seconds before moving back to the start position
     public float smashingDuration = 2f; // Duration of the smashing animation
 
+    [SerializeField]
     private bool isMoving = false; // Flag to check if the wall is currently moving
+    [SerializeField]
     private bool isReturning = false; // Flag to check if the wall is currently moving
 
     private PlayerController playerController;
@@ -68,7 +70,7 @@ public class SquashTrap : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !isReturning) 
         {
             Debug.Log("Player touched closing walls");
             playerController.Armour = 0;
