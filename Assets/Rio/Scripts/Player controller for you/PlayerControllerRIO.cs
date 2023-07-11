@@ -5,15 +5,17 @@ using UnityEngine;
 public class PlayerControllerRIO : MonoBehaviour
 {
     // Health / lives / bones
+    [Header("Health")]
     public int lives = 3;
     public int maxHealth = 3;
     public int currentHealth = 3;
     public int boneCount = 0;
     public float hitTimer;
     public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
-    public GameObject PlayerDog;
+    public GameObject PlayerLechie;
 
     // Movement
+    [Header("Movement")]
     public float moveSpeed = 5f;
     public float runTimer;
     public bool isRunning;
@@ -25,10 +27,12 @@ public class PlayerControllerRIO : MonoBehaviour
     public float bounceTimer;
 
     // Rigidbody
+    [Header("Rigidbody")]
     private Rigidbody rb;
     private bool isGrounded;
 
     // Powerups
+    [Header("Powerups")]
     public bool speedPowerup;
     public float speedTimer;
     public float maxSpeedTimer;
@@ -48,9 +52,11 @@ public class PlayerControllerRIO : MonoBehaviour
     public float frozenTimer; // How long the player is frozen
 
     // Respawn point
+    [Header("RespwanPoint")]
     public Vector3 respawnPoint;
 
     // Platforms
+    [Header("Platforms")]
     private MovingPlatform movingPlatform;
     private BreakingPlatform breakingPlatform;
 
@@ -61,6 +67,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
 
     // Direction
+    [Header("Direction")]
     public bool isFacingLeft;
     public bool isFacingRight;
     public bool isFacingForwards;
@@ -292,7 +299,7 @@ public class PlayerControllerRIO : MonoBehaviour
            
         }
 
-        // Player becomes faster after running slighty - Rio
+        // Player runs for a few seconds and starts dashing - Rio
         if (runTimer >= 2.5f)
         {
             SpeedBoost(2);
@@ -558,27 +565,27 @@ public class PlayerControllerRIO : MonoBehaviour
             // Shows the player growing slightly - Rio
             if (megaTimer >= 0.1f)
             {
-                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);   
+                transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);   
             }
 
             // Doubles size and becomes slower - Rio
             if (megaTimer >= 0.35f)
             {
-                transform.localScale = new Vector3(2f, 2f, 2f);
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             }
             moveSpeed = 3.5f;
         }
         else if (megaPowerup == false)
         {
             // Player has standard size - Rio
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             megaTimer = 0;
             
         }
 
         if (megaTimer >= 14.85f)
         {
-            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
         }
 
         if (megaTimer >= 15.0f)
