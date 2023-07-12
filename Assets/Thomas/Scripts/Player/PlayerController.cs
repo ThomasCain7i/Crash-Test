@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
 
     // Bones
     [Header("Bones")]
-    public int bonusCount = 0;  // Number of collected bones
+    public int SandBonusCount = 0;  // Number of collected bones
+    public int WaterBonusCount = 0;  // Number of collected bones
+    public int SnowBonusCount = 0;  // Number of collected bones
+    public int FireBonusCount = 0;  // Number of collected bones
 
     // Movement
     [Header("Movement")]
@@ -290,9 +293,21 @@ public class PlayerController : MonoBehaviour
 
     // COLLECTING BONES METHOD- Camron
     // Increases the player's bone count by 1
-    public void CollectedBone()
+    public void SandCollectedBonus()
     {
-        bonusCount += 1;
+        SandBonusCount += 1;
+    }
+    public void WaterCollectedBonus()
+    {
+        WaterBonusCount += 1;
+    }
+    public void FireCollectedBonus()
+    {
+        FireBonusCount += 1;
+    }
+    public void SnowCollectedBonus()
+    {
+        SnowBonusCount += 1;
     }
 
     // POWER UPS

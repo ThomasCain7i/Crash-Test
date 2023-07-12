@@ -33,7 +33,10 @@ public class GameManager : MonoBehaviour
 
     public void SaveCollectables()
     {
-        PlayerPrefs.SetInt(bonusKey, playerController.bonusCount);
+        PlayerPrefs.SetInt(bonusKey, playerController.SandBonusCount);
+        PlayerPrefs.SetInt(bonusKey, playerController.WaterBonusCount);
+        PlayerPrefs.SetInt(bonusKey, playerController.FireBonusCount);
+        PlayerPrefs.SetInt(bonusKey, playerController.SnowBonusCount);
         PlayerPrefs.Save();
     }
 
@@ -43,7 +46,10 @@ public class GameManager : MonoBehaviour
         attackScript.fire = PlayerPrefs.GetInt("elementSnow");
         attackScript.fire = PlayerPrefs.GetInt("elementWater");
         attackScript.fire = PlayerPrefs.GetInt("elementSand");
-        playerController.bonusCount = PlayerPrefs.GetInt("bonusCollected");
+        playerController.SandBonusCount = PlayerPrefs.GetInt("bonusCollected");
+        playerController.FireBonusCount = PlayerPrefs.GetInt("bonusCollected");
+        playerController.WaterBonusCount = PlayerPrefs.GetInt("bonusCollected");
+        playerController.SnowBonusCount = PlayerPrefs.GetInt("bonusCollected");
     }
 
     public void ResetProgress()
