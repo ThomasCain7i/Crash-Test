@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &609558584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609558585}
+  m_Layer: 3
+  m_Name: Punch Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609558585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609558584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 20, z: 13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8261111820746959885}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1091713996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1091713997}
+  m_Layer: 3
+  m_Name: WaterWallPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1091713997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091713996}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 15, z: 30}
+  m_LocalScale: {x: 6, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8261111820746959885}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143589033422369794
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +365,7 @@ Transform:
   - {fileID: 8535688356160585467}
   - {fileID: 5231409652898101847}
   m_Father: {fileID: 45344164770900304}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652964602088103772
 GameObject:
@@ -439,6 +501,7 @@ GameObject:
   - component: {fileID: 516683852824315881}
   - component: {fileID: 516683852824315882}
   - component: {fileID: 7530351593841459862}
+  - component: {fileID: 566443620}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -459,11 +522,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7204915728332160285}
-  - {fileID: 5544294579982830020}
+  - {fileID: 8261111820746959885}
   - {fileID: 1500965358417173015}
-  - {fileID: 2235626716876732178}
-  - {fileID: 7530351594621568438}
-  - {fileID: 7530351595350274818}
+  - {fileID: 5544294579982830020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -536,6 +597,9 @@ MonoBehaviour:
   Armour: 0
   barkDamage: 3
   smashDamage: 1
+  punchDamage: 3
+  punchPrefab: {fileID: 347686843956605273, guid: fd30895dc1e6b264994762551786f34f, type: 3}
+  punchPos: {fileID: 609558585}
   bonusCount: 0
   moveSpeed: 5
   normalMoveSpeed: 5
@@ -553,6 +617,7 @@ MonoBehaviour:
   respawnPoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   uiManager: {fileID: 0}
+  thirdJump: 0
 --- !u!114 &516683852824315882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,9 +631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: 0
-  snow: 0
+  snow: 1
   sand: 0
-  water: 0
+  water: 1
   firePrefab: {fileID: 3207441660266906599, guid: dab3d0f085201f44d9f61dbfe5412abb, type: 3}
   snowPrefab: {fileID: 7526792519714545252, guid: 899ad40cae314774c9828b2c5a71c9e7, type: 3}
   waterPrefab: {fileID: 0}
@@ -603,6 +668,59 @@ MonoBehaviour:
   dashCooldownNormal: 4
   dashParticle: {fileID: 7141153890326628683, guid: 2d98bdcdd77ca66438e1551c38a5b366, type: 3}
   dashParticlePos: {fileID: 7530351595350274818}
+--- !u!114 &566443620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858719592950674410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ecff42015752442a29c985c3b5632a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterWall: {fileID: 4161812592812162489, guid: 360037990c537f3488dbad1d32379cb6, type: 3}
+  wallTransform: {fileID: 1091713997}
+  wallCooldown: 0
+  wallCooldownNormal: 10
+  attackScript: {fileID: 0}
+--- !u!1 &1027149699307941648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8261111820746959885}
+  m_Layer: 3
+  m_Name: Positions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8261111820746959885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027149699307941648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2235626716876732178}
+  - {fileID: 7530351594621568438}
+  - {fileID: 7530351595350274818}
+  - {fileID: 1091713997}
+  - {fileID: 609558585}
+  m_Father: {fileID: 45344164770900304}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105395316098451597
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,9 +986,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2235626716876732178}
   m_Layer: 0
-  m_Name: Bark spawn point
+  m_Name: Bark Pos
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -881,13 +999,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2296563647662375758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 21.63, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 45344164770900304}
-  m_RootOrder: 3
+  m_Father: {fileID: 8261111820746959885}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2356306627249376438
 GameObject:
@@ -3738,9 +3856,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7530351594621568438}
   m_Layer: 0
-  m_Name: Smash Point
+  m_Name: Smash Pos
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3751,13 +3869,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7530351594621568439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 45344164770900304}
-  m_RootOrder: 4
+  m_Father: {fileID: 8261111820746959885}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7530351595350274819
 GameObject:
@@ -3782,13 +3900,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7530351595350274819}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 45344164770900304}
-  m_RootOrder: 5
+  m_Father: {fileID: 8261111820746959885}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7587790494716271434
 GameObject:
