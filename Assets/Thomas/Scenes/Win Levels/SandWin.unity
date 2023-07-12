@@ -4300,18 +4300,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422315eeca77ffe4fa36c893a921a731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sand: 1
   collectableTimer1: 1
   collectableTimer2: 2
   collectableTimer3: 3
   collectableTimer4: 4
   collectableTimer5: 5
   SceneTimer: 0
-  collectable1: {fileID: 378520054}
-  collectable2: {fileID: 622304370}
-  collectable3: {fileID: 690760901}
-  collectable4: {fileID: 541889820}
-  collectable5: {fileID: 1453797808}
-  hubWorldButton: {fileID: 0}
+  gameObjects:
+  - {fileID: 378520054}
+  - {fileID: 622304370}
+  - {fileID: 690760901}
+  - {fileID: 541889820}
+  - {fileID: 1453797808}
+  c1: {fileID: 0}
+  c2: {fileID: 0}
+  c3: {fileID: 0}
+  c4: {fileID: 0}
+  c5: {fileID: 0}
+  sandCollectables: 0
 --- !u!1 &905910082
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,8 +6164,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191078115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.31, y: 7.6, z: 29.03}
+  m_LocalRotation: {x: 0.12218282, y: 0.000004850922, z: -0.0000005971736, w: 0.99250764}
+  m_LocalPosition: {x: 15.540399, y: 4.4100084, z: 53.194187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
