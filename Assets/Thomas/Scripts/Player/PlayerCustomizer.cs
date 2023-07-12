@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCustomizer : MonoBehaviour
 {
+    [Header("AttackScript")]
     [SerializeField]
     private AttackScript attackScript;
 
+    [Header("Body Parts")]
     [SerializeField]
-    private Material material, material2, material3, material4, material5, material6, material7, material8, material9, material10;
+    private GameObject[] bodyParts;
+
+    [Header("Materials")]
+    [SerializeField]
+    private Material[] materials;
 
     // Update is called once per frame
     void Update()
     {
         if (attackScript.snow == 1)
         {
-
+            
         }
 
         if (attackScript.fire == 1)

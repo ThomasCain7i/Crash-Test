@@ -3,15 +3,23 @@ using UnityEngine;
 public class WaterWall : MonoBehaviour
 {
     [SerializeField]
-    private float Timer, speed;
+    private float Timer, speed = .1f;
 
     [SerializeField]
     private float damage;
+
+    [SerializeField]
+    private bool moving;
 
     // Update is called once per frame
     void Update()
     {
         Destroy(gameObject, Timer);
+
+        while (moving)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
     
     private void OnTriggerEnter(Collider other)
@@ -20,7 +28,8 @@ public class WaterWall : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Punch":
-                this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                Debug.Log("punched");
+                moving = true;
                 Timer += 3;
                 break;
             // Collision with wall will destroy enemy bullets

@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int jumpsRemaining = 2;  // Number of jumps remaining for the player
     public float rotationSpeed;
+    private bool thirdJump = false;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -67,8 +68,6 @@ public class PlayerController : MonoBehaviour
     private AttackScript attackScript; // Reference to the Attack script 
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
-
-    public bool thirdJump = false;
 
     void Start()
     {
