@@ -21,7 +21,7 @@ public class NextLevel : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        bonus = playerController.bonusCount;
+        bonus = playerController.BonusCount;
     }
 
     private void OnTriggerEnter(Collider other)

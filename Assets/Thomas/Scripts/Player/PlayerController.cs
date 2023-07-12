@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     // Bones
     [Header("Bones")]
+    public int BonusCount = 0;  // Number of collected bones
     public int SandBonusCount = 0;  // Number of collected bones
     public int WaterBonusCount = 0;  // Number of collected bones
     public int SnowBonusCount = 0;  // Number of collected bones
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
+        BonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
     }
 
     void Update()

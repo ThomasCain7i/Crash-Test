@@ -19,11 +19,17 @@ public class WinManager : MonoBehaviour
 
     [SerializeField]
     private int sandCollectables;
+    private int fireCollectables;
+    private int waterCollectables;
+    private int snowCollectables;
 
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>(); // Assign the PlayerController component to the playerController variable
         sandCollectables = playerController.SandBonusCount;
+        fireCollectables = playerController.FireBonusCount;
+        waterCollectables = playerController.WaterBonusCount;
+        snowCollectables = playerController.SnowBonusCount;
     }
 
     // Update is called once per frame
@@ -37,48 +43,55 @@ public class WinManager : MonoBehaviour
 
         if (sand)
         {
-            if (sandCollectables >= 0 && sandCollectables < gameObjects.Length)
+            if (sandCollectables >= 0 && sandCollectables <= 5)
             {
-                for (int i = 0; i <= sandCollectables; i++)
+                for (int i = 0; i < sandCollectables; i++)
                 {
                     gameObjects[i].SetActive(true);
                 }
 
-                for (int i = sandCollectables + 1; i < gameObjects.Length; i++)
+                for (int i = sandCollectables; i < gameObjects.Length; i++)
+                {
+                    gameObjects[i].SetActive(false);
+                }
+            }
+            else if (sandCollectables == 0)
+            {
+                for (int i = 0; i < gameObjects.Length; i++)
                 {
                     gameObjects[i].SetActive(false);
                 }
             }
         }
 
-        if (collectableTimer1 <= 0 && playerController.SandBonusCount > 0)
+        if (collectableTimer1 <= 0)
         {
             c1.SetActive(true);
         }
 
-        if (collectableTimer2 <= 0 && playerController.SandBonusCount > 1)
+        if (collectableTimer2 <= 0)
         {
             c2.SetActive(true);
         }
 
-        if (collectableTimer3 <= 0 && playerController.SandBonusCount > 2)
+        if (collectableTimer3 <= 0)
         {
             c3.SetActive(true);
         }
 
-        if (collectableTimer4 <= 0 && playerController.SandBonusCount > 3)
+        if (collectableTimer4 <= 0)
         {
             c4.SetActive(true);
         }
 
-        if (collectableTimer5 <= 0 && playerController.SandBonusCount > 4)
+        if (collectableTimer5 <= 0)
         {
             c5.SetActive(true);
         }
 
         if (SceneTimer <= 0)
         {
-            hubWorldButton.SetActive(true);
+            //hubWorldButton.SetActive(true);
         }
     }
 }
