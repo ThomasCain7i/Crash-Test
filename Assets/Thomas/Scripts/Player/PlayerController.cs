@@ -157,7 +157,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
                 animator.SetTrigger("Attack");
-                Instantiate(punchPrefab, punchPos.position, punchPos.rotation);
             }
             else
             {

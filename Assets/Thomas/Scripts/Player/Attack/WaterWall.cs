@@ -12,16 +12,16 @@ public class WaterWall : MonoBehaviour
     private bool moving;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Destroy(gameObject, Timer);
 
-        while (moving)
+        if (moving)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         //On collision with bullet do:
