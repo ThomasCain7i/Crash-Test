@@ -94,12 +94,6 @@ public class AttackScript : MonoBehaviour
                 rb.AddForce(Vector3.down * smashForce, ForceMode.VelocityChange);
             }
         }
-
-        if (snow > 0 && smashing == true && Input.GetKeyDown(KeyCode.Space) && platform == false)
-        {
-            platform = true;
-            Instantiate(snowPrefab, smashPoint.position, smashPoint.rotation);
-        }
     }
 
     // Detect collision with the ground

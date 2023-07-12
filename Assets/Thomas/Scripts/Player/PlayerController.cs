@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     [Header("Attacks")]
     public float barkDamage = 3;  // Damage caused by bark attack
     public float smashDamage = 3;  // Damage caused by smash attack
+    public float punchDamage = 3;  // Damage caused by smash attack
+    [SerializeField]
+    private GameObject punchPrefab;  // Speed for punch
+    [SerializeField]
+    private Transform punchPos; // Location of Punch
 
     // Bones
     [Header("Bones")]
@@ -62,6 +67,8 @@ public class PlayerController : MonoBehaviour
     private AttackScript attackScript; // Reference to the Attack script 
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
+
+    public bool thirdJump = false;
 
     void Start()
     {
@@ -115,10 +122,19 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (jumpsRemaining <= 0 && attackScript.snow >= 1 && Input.GetButtonDown("Jump") && attackScript.platform == false)
+            if (attackScript.snow == 1 && Input.GetButtonDown("Jump") && attackScript.platform == false && thirdJump == true)
             {
                 attackScript.platform = true;
                 Instantiate(attackScript.snowPrefab, attackScript.smashPoint.position, attackScript.smashPoint.rotation);
+            }
+
+            if (jumpsRemaining == 0)
+            {
+                thirdJump = true;
+            }
+            else
+            {
+                thirdJump = false;
             }
 
             if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
@@ -137,12 +153,12 @@ public class PlayerController : MonoBehaviour
             }
 
             //PUNCH ATTACK - JUAN
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
                 animator.SetTrigger("Attack");
-
+                Instantiate(punchPrefab, punchPos.position, punchPos.rotation);
             }
             else
             {

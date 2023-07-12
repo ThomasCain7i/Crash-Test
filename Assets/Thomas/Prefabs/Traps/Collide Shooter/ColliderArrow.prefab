@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 6845096418417624782}
   - component: {fileID: 3095051013019172488}
   - component: {fileID: 6034460654742101663}
-  - component: {fileID: 1823985404865639880}
+  - component: {fileID: -3291312123916721203}
   m_Layer: 0
-  m_Name: SpearTrap
+  m_Name: ColliderArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1823985404865639880
+--- !u!114 &-3291312123916721203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,11 +125,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7095377399472269884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78350522795ef5842bd0061d6c98cd7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 09b58acc6c903ec43a2bf3c3a2ce1f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   arrowSpawn: {fileID: 559569253271602171}
   arrowPrefab: {fileID: 6230766462489641870, guid: 3686a8e197de74149a1ff9baf4ab7101, type: 3}
-  arrowSpeed: 8
-  coolDownTime: 0.32864562
-  startCoolDownTime: 0
+  arrowSpeed: 20

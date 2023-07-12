@@ -10594,9 +10594,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb40cfedff9dc264b81651ca598af54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  threeD: 1
+  twoD: 0
   target: {fileID: 1629083547}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 2, z: -8}
+  threeOffset: {x: 0, y: 0, z: 0}
+  twoOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1629083546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1389013388623941173, guid: 77646d5d5b2b53c4ebcdd899b08d762a, type: 3}
