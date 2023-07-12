@@ -95,7 +95,9 @@ public class PlayerControllerCam : MonoBehaviour
         float speed = inputMagnitude * moveSpeed;
         movementDirection.Normalize();
         Vector3 velocity = movementDirection * speed;
-        rb.velocity = new Vector3(movementDirection.x, rb.velocity.y, movementDirection.z);
+        
+
+        rb.velocity = new Vector3(movementDirection.x, velocity.y, movementDirection.z);
 
         // If the player isn't frozen, allow them to use movement
         if (!isFrozen)
