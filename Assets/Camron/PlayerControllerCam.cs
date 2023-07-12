@@ -133,7 +133,7 @@ public class PlayerControllerCam : MonoBehaviour
 
             if (movementDirection != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
             {
-                Quaternion toRotation = Quaternion.LookRotation(movem, Vector3.up);
+                Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
                 
