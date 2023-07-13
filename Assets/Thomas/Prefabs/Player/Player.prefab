@@ -614,7 +614,7 @@ MonoBehaviour:
   Armour: 0
   barkDamage: 3
   smashDamage: 1
-  punchDamage: 3
+  punchDamage: 2
   punchPrefab: {fileID: 347686843956605273, guid: fd30895dc1e6b264994762551786f34f, type: 3}
   punchPos: {fileID: 609558585}
   BonusCount: 0
@@ -651,12 +651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: 0
-  snow: 1
+  snow: 0
   sand: 0
-  water: 1
+  water: 0
   firePrefab: {fileID: 3207441660266906599, guid: dab3d0f085201f44d9f61dbfe5412abb, type: 3}
   snowPrefab: {fileID: 7526792519714545252, guid: 899ad40cae314774c9828b2c5a71c9e7, type: 3}
-  waterPrefab: {fileID: 0}
+  waterPrefab: {fileID: 4161812592812162489, guid: 360037990c537f3488dbad1d32379cb6, type: 3}
   barkSpawn: {fileID: 2235626716876732178}
   barkPrefab: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
   barkSpeed: 7
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   attackScript: {fileID: 0}
-  dashTime: 0.25
+  dashTime: 0.5
   dashSpeed: 15
   dashCooldown: 0
   dashCooldownNormal: 3
@@ -742,12 +742,7 @@ MonoBehaviour:
   - {fileID: 3265485061490197758}
   - {fileID: 6208402925049746035}
   - {fileID: 5428632309260994302}
-  materials:
-  - {fileID: 2100000, guid: 4b0c56472653f3544bf00bf250b66c6a, type: 2}
-  - {fileID: -3846018093981099296, guid: 4b3d14da98ea476408a911d75f09ff38, type: 3}
-  - {fileID: 2100000, guid: b5a131a35b3a9534995a8153645c6b0f, type: 2}
-  - {fileID: 2100000, guid: 33fa091da113e3740a3f287a49e2bafd, type: 2}
-  - {fileID: -354735261257320667, guid: 4b3d14da98ea476408a911d75f09ff38, type: 3}
+  materials: []
 --- !u!1 &1027149699307941648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,7 +1806,7 @@ GameObject:
   - component: {fileID: 3243635778493502589}
   - component: {fileID: 2133678433546685981}
   m_Layer: 0
-  m_Name: Outer Scraf
+  m_Name: Outer Scarf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1830,7 +1825,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740647475602973726}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2133678433546685981
 SkinnedMeshRenderer:
@@ -2979,7 +2974,7 @@ GameObject:
   - component: {fileID: 1571691952242218079}
   - component: {fileID: 2776543446628661201}
   m_Layer: 0
-  m_Name: Hood Inner
+  m_Name: Hood Inner & Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3194,7 +3189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8740647475602973726}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7284862315989241043
 SkinnedMeshRenderer:
@@ -4574,9 +4569,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9421e53899827ae4093ee8ef63db58b6, type: 2}
-  - {fileID: 2100000, guid: 9421e53899827ae4093ee8ef63db58b6, type: 2}
-  - {fileID: 2100000, guid: 9421e53899827ae4093ee8ef63db58b6, type: 2}
+  - {fileID: 2100000, guid: 4b0c56472653f3544bf00bf250b66c6a, type: 2}
+  - {fileID: -8693172909504858975, guid: 4b3d14da98ea476408a911d75f09ff38, type: 3}
+  - {fileID: -354735261257320667, guid: 4b3d14da98ea476408a911d75f09ff38, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4906,8 +4901,8 @@ Transform:
   m_Children:
   - {fileID: 7444908729948395594}
   - {fileID: 2088281610467253942}
-  - {fileID: 3243635778493502589}
   - {fileID: 1183732282231244870}
+  - {fileID: 3243635778493502589}
   - {fileID: 1382341750794819196}
   m_Father: {fileID: 1500965358417173015}
   m_RootOrder: 3
