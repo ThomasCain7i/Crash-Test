@@ -12,9 +12,9 @@ public class NextLevel : MonoBehaviour
 
     [Header("Bools")]
     [SerializeField]
-    private bool Fire;
+    private bool hub;
     [SerializeField]
-    private bool Water, Sand, Snow, Bonus;
+    private bool water, sand, snow, fire, waterWin, sandWin, snowWin, fireWin, bonusLevel, bonusWin;
 
 
     // Start is called before the first frame update
@@ -28,29 +28,54 @@ public class NextLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (Fire)
+            if (hub)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(1);
             }
 
-            if (Water)
+            if (water)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+                SceneManager.LoadScene(2);
             }
 
-            if (Snow)
+            if (waterWin)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+                SceneManager.LoadScene(3);
             }
 
-            if (Sand)
+            if (sand)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
+                SceneManager.LoadScene(4);
             }
 
-            if (Bonus && bonus > bonusToCollect)
+            if (sandWin)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
+                SceneManager.LoadScene(5);
+            }
+
+            if (snow)
+            {
+                SceneManager.LoadScene(6);
+            }
+
+            if (snowWin)
+            {
+                SceneManager.LoadScene(7);
+            }
+
+            if (fire)
+            {
+                SceneManager.LoadScene(8);
+            }
+
+            if (fireWin)
+            {
+                SceneManager.LoadScene(9);
+            }
+
+            if (bonusLevel && bonus == bonusToCollect)
+            {
+                SceneManager.LoadScene(10);
             }
         }
     }

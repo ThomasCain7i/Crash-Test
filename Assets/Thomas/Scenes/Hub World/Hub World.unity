@@ -538,6 +538,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1786807861905112345, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
+      propertyPath: fire
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1786807862197127814, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
       propertyPath: m_Name
       value: Fire Door
@@ -620,6 +624,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
+    - target: {fileID: 135951703082119444, guid: 3e326b3654291584d996912c30104c14, type: 3}
+      propertyPath: water
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 135951703082119450, guid: 3e326b3654291584d996912c30104c14, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -737,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sand Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4679343355974162608, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
+      propertyPath: sand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4679343355974162622, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -758,6 +770,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
+    - target: {fileID: 8150518061403389589, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
+      propertyPath: snow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150518061403389589, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
+      propertyPath: snowWin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8150518061403389594, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
       propertyPath: m_Size.x
       value: 0.67
@@ -838,6 +858,10 @@ PrefabInstance:
     - target: {fileID: 7275164474529503477, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
       propertyPath: m_Size.y
       value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275164474529503482, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
+      propertyPath: bonusLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7275164475358408548, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
       propertyPath: m_RootOrder

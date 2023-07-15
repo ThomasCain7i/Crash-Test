@@ -14,6 +14,10 @@ public class PlayerCustomizer : MonoBehaviour
     [SerializeField]
     private Material[] materials;
 
+    private void Start()
+    {
+        attackScript = GetComponent<AttackScript>();
+    }
     // Update is called once per frame
     void Update()
     {
