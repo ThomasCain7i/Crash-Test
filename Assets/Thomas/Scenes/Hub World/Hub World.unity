@@ -276,7 +276,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f96d92714dc21d241b6e4062b1b0f061, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,7 +319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319135216
 GameObject:
@@ -331,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1319135218}
   - component: {fileID: 1319135217}
+  - component: {fileID: 1319135219}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -413,8 +414,28 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1319135219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319135216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!4 &1628593201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3000264854289771821, guid: ddaec64711c29df4d8e0b510c8c8e08f, type: 3}
@@ -527,7 +548,7 @@ Transform:
   - {fileID: 1786807862245956425}
   - {fileID: 1786807863105541819}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &754251822767728360
 PrefabInstance:
@@ -547,7 +568,7 @@ PrefabInstance:
     - target: {fileID: 1786807861905112343, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e77383e4bfb5f19428925db574d3da34, type: 2}
+      objectReference: {fileID: 2100000, guid: 4474646329cab074fbdde59fdda4032d, type: 2}
     - target: {fileID: 1786807861905112344, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -641,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 135951703082119450, guid: 3e326b3654291584d996912c30104c14, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7c0c5b08ff61782499e68585965ffcb4, type: 2}
+      objectReference: {fileID: 2100000, guid: facfe28c04e5e994ca4d3ae9e7ed13e0, type: 2}
     - target: {fileID: 135951703082119451, guid: 3e326b3654291584d996912c30104c14, type: 3}
       propertyPath: m_Size.x
       value: 0.67
@@ -758,7 +779,7 @@ PrefabInstance:
     - target: {fileID: 4679343355974162622, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 28b825c88013e3d4ab9b20a4b5d5f835, type: 2}
+      objectReference: {fileID: 2100000, guid: ccc25cc5dd27b354581fb01a2f90ebd9, type: 2}
     - target: {fileID: 4679343355974162623, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
       propertyPath: m_Size.x
       value: 0.67
@@ -787,7 +808,11 @@ PrefabInstance:
     - target: {fileID: 8150518061403389595, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a805224cbdc897941a257d1950b73e96, type: 2}
+      objectReference: {fileID: 2100000, guid: 0774a1d4e7143b2418d1b86369355ec8, type: 2}
+    - target: {fileID: 8150518061779290377, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0774a1d4e7143b2418d1b86369355ec8, type: 2}
     - target: {fileID: 8150518061779290378, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
       propertyPath: m_Name
       value: Snow Door
@@ -848,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 7275164474529503476, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 966482d0180a61147a58f47aca5be573, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ea7f259e78273c438fb52564dd1f778, type: 2}
     - target: {fileID: 7275164474529503477, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
       propertyPath: m_Size.x
       value: 0.67
@@ -905,5 +930,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bonus Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7275164475358408550, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ea7f259e78273c438fb52564dd1f778, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}

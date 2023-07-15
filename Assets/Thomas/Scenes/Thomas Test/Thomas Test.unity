@@ -868,6 +868,10 @@ PrefabInstance:
       propertyPath: startDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2381312018870130212, guid: 6117bc8da0f1eab47a156e2e3eca9a0b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f96d92714dc21d241b6e4062b1b0f061, type: 2}
     - target: {fileID: 2381312018870130214, guid: 6117bc8da0f1eab47a156e2e3eca9a0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10.848
@@ -1743,6 +1747,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 390670835554913095, guid: 8971d5860dad1f047aa027b427d7adbb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc37e9209858f1c4486c5bbe1700c4b0, type: 2}
     - target: {fileID: 2638214938884879819, guid: 8971d5860dad1f047aa027b427d7adbb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4107,6 +4115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 6837737655870727560, guid: 57b155a98aae5884d8e45ed2ac34198c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0826a3bfd11c0234394723be56a3f4d4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b155a98aae5884d8e45ed2ac34198c, type: 3}
 --- !u!1001 &659212249
@@ -4434,6 +4446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4518,6 +4531,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 120, y: 0, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &705803620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6609,7 +6642,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -6640,6 +6673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2075805726}
     m_Modifications:
+    - target: {fileID: 2381312018870130212, guid: 6117bc8da0f1eab47a156e2e3eca9a0b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f96d92714dc21d241b6e4062b1b0f061, type: 2}
     - target: {fileID: 2381312018870130214, guid: 6117bc8da0f1eab47a156e2e3eca9a0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10.848
@@ -6823,6 +6860,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1171705610565365766, guid: 367d63f57df660e40aa24aa0111ae572, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db860a0d652fecf4a9b793a656d699af, type: 2}
     - target: {fileID: 7456776959716740014, guid: 367d63f57df660e40aa24aa0111ae572, type: 3}
       propertyPath: m_Name
       value: Speed Pickup
@@ -10531,6 +10572,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6450880974089198101, guid: b23ae064f9567cb48b16b23183b9f225, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78520f9f8f2c06c45b52c8d0f6fd72d6, type: 2}
+    - target: {fileID: 6563267509153690663, guid: b23ae064f9567cb48b16b23183b9f225, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78520f9f8f2c06c45b52c8d0f6fd72d6, type: 2}
     - target: {fileID: 8559477602868919855, guid: b23ae064f9567cb48b16b23183b9f225, type: 3}
       propertyPath: m_Name
       value: TimeSlow Pickup
