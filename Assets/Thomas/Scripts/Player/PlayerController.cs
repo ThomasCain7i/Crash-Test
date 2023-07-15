@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private AttackScript attackScript; // Reference to the Attack script 
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
+    private GameManager gameManager;
 
     void Start()
     {
@@ -87,11 +88,16 @@ public class PlayerController : MonoBehaviour
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
-        BonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
+
+        // Get ref to gameManager and load settings
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.LoadSettings();
     }
 
     void Update()
     {
+        BonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
+
         // MOVEMENT
         // Input system movement
         float moveHorizontal = Input.GetAxis("Horizontal");

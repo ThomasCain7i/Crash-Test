@@ -7,6 +7,7 @@ public class NextLevel : MonoBehaviour
 {
     [Header("References")]
     public PlayerController playerController;
+    public GameManager gameManager;
     public int bonusToCollect = 5;
     public int bonus;
 
@@ -14,18 +15,23 @@ public class NextLevel : MonoBehaviour
     [SerializeField]
     private bool hub;
     [SerializeField]
-    private bool water, sand, snow, fire, waterWin, sandWin, snowWin, fireWin, bonusLevel, bonusWin;
+    private bool water, waterWin, sand, sandWin, snow, snowWin, fire, fireWin, bonusLevel, bonusWin;
 
 
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        gameManager = FindObjectOfType<GameManager>();
         bonus = playerController.BonusCount;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        gameManager.SaveCollectables();
+        gameManager.SaveElements();
+        Debug.Log("Saved");
+
         if (other.tag == "Player")
         {
             if (hub)

@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52c313fd4c264c74a8af4e57d52afdd6, type: 2}
+  - {fileID: 2100000, guid: a805224cbdc897941a257d1950b73e96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 1}
+  m_Size: {x: 0.67, y: 0.67, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8150518061403389589
 MonoBehaviour:
@@ -113,11 +113,17 @@ MonoBehaviour:
   playerController: {fileID: 0}
   bonusToCollect: 5
   bonus: 0
-  Fire: 0
-  Water: 0
-  Sand: 0
-  Snow: 1
-  Bonus: 0
+  hub: 0
+  water: 0
+  waterWin: 0
+  sand: 0
+  sandWin: 0
+  snow: 1
+  snowWin: 0
+  fire: 0
+  fireWin: 0
+  bonusLevel: 0
+  bonusWin: 0
 --- !u!1 &8150518061779290378
 GameObject:
   m_ObjectHideFlags: 0

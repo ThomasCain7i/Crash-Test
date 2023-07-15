@@ -12,9 +12,15 @@ public class GameManager : MonoBehaviour
     private const string sandKey = "elementSand";
 
     public PlayerController playerController;
-    private const string bonusKey = "bonusCollected";
+    private const string sandBonusKey = "sandBonusCollected";
+    private const string waterBonusKey = "waterBonusCollected";
+    private const string fireBonusKey = "fireBonusCollected";
+    private const string snowBonusKey = "snowBonusCollected";
 
-    public bool test =  false;
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
 
     public void Start()
     {
@@ -33,23 +39,23 @@ public class GameManager : MonoBehaviour
 
     public void SaveCollectables()
     {
-        PlayerPrefs.SetInt(bonusKey, playerController.SandBonusCount);
-        PlayerPrefs.SetInt(bonusKey, playerController.WaterBonusCount);
-        PlayerPrefs.SetInt(bonusKey, playerController.FireBonusCount);
-        PlayerPrefs.SetInt(bonusKey, playerController.SnowBonusCount);
+        PlayerPrefs.SetInt(sandBonusKey, playerController.SandBonusCount);
+        PlayerPrefs.SetInt(waterBonusKey, playerController.WaterBonusCount);
+        PlayerPrefs.SetInt(fireBonusKey, playerController.FireBonusCount);
+        PlayerPrefs.SetInt(snowBonusKey, playerController.SnowBonusCount);
         PlayerPrefs.Save();
     }
 
     public void LoadSettings()
     {
         attackScript.fire = PlayerPrefs.GetInt("elementFire");
-        attackScript.fire = PlayerPrefs.GetInt("elementSnow");
-        attackScript.fire = PlayerPrefs.GetInt("elementWater");
-        attackScript.fire = PlayerPrefs.GetInt("elementSand");
-        playerController.SandBonusCount = PlayerPrefs.GetInt("bonusCollected");
-        playerController.FireBonusCount = PlayerPrefs.GetInt("bonusCollected");
-        playerController.WaterBonusCount = PlayerPrefs.GetInt("bonusCollected");
-        playerController.SnowBonusCount = PlayerPrefs.GetInt("bonusCollected");
+        attackScript.snow = PlayerPrefs.GetInt("elementSnow");
+        attackScript.water = PlayerPrefs.GetInt("elementWater");
+        attackScript.sand = PlayerPrefs.GetInt("elementSand");
+        playerController.SandBonusCount = PlayerPrefs.GetInt("sandBonusCollected");
+        playerController.FireBonusCount = PlayerPrefs.GetInt("fireBonusCollected");
+        playerController.WaterBonusCount = PlayerPrefs.GetInt("waterBonusCollected");
+        playerController.SnowBonusCount = PlayerPrefs.GetInt("snowBonusCollected");
     }
 
     public void ResetProgress()

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1786807861905112347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1.25}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1786807862197127815}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52c313fd4c264c74a8af4e57d52afdd6, type: 2}
+  - {fileID: 2100000, guid: e77383e4bfb5f19428925db574d3da34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 1}
+  m_Size: {x: 0.67, y: 0.67, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1786807861905112345
 MonoBehaviour:
@@ -113,11 +113,17 @@ MonoBehaviour:
   playerController: {fileID: 0}
   bonusToCollect: 5
   bonus: 0
-  Fire: 1
-  Water: 0
-  Sand: 0
-  Snow: 0
-  Bonus: 0
+  hub: 0
+  water: 0
+  waterWin: 0
+  sand: 0
+  sandWin: 0
+  snow: 0
+  snowWin: 0
+  fire: 1
+  fireWin: 0
+  bonusLevel: 0
+  bonusWin: 0
 --- !u!1 &1786807862197127814
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786807862197127814}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 1.6500001, z: 9}
   m_LocalScale: {x: 3, y: 3, z: 0.1}
   m_ConstrainProportionsScale: 0

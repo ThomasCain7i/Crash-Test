@@ -222,9 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threeD: 1
   twoD: 0
-  target: {fileID: 0}
+  target: {fileID: 1856205299}
   smoothSpeed: 0.125
-  threeOffset: {x: 0, y: 0, z: 0}
+  threeOffset: {x: 0, y: 2.5, z: -6}
   twoOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &985491482
 GameObject:
@@ -418,6 +418,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1856205299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7204915728332160285, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+  m_PrefabInstance: {fileID: 2029154494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029154494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,6 +474,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: FireBonusCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: SandBonusCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: SnowBonusCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: WaterBonusCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 858719592950674410, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_Name
       value: Player
@@ -518,30 +539,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
-    - target: {fileID: 1786807861905112342, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786807861905112342, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786807861905112343, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e77383e4bfb5f19428925db574d3da34, type: 2}
-    - target: {fileID: 1786807861905112344, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786807861905112344, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786807861905112345, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
-      propertyPath: fire
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1786807862197127814, guid: 2b541ac0700d45841ba93b0686d00e3b, type: 3}
       propertyPath: m_Name
       value: Fire Door
@@ -624,22 +621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
-    - target: {fileID: 135951703082119444, guid: 3e326b3654291584d996912c30104c14, type: 3}
-      propertyPath: water
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135951703082119450, guid: 3e326b3654291584d996912c30104c14, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7c0c5b08ff61782499e68585965ffcb4, type: 2}
-    - target: {fileID: 135951703082119451, guid: 3e326b3654291584d996912c30104c14, type: 3}
-      propertyPath: m_Size.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 135951703082119451, guid: 3e326b3654291584d996912c30104c14, type: 3}
-      propertyPath: m_Size.y
-      value: 0.67
-      objectReference: {fileID: 0}
     - target: {fileID: 135951703979165322, guid: 3e326b3654291584d996912c30104c14, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -745,22 +726,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sand Door
       objectReference: {fileID: 0}
-    - target: {fileID: 4679343355974162608, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
-      propertyPath: sand
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679343355974162622, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 28b825c88013e3d4ab9b20a4b5d5f835, type: 2}
-    - target: {fileID: 4679343355974162623, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
-      propertyPath: m_Size.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679343355974162623, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
-      propertyPath: m_Size.y
-      value: 0.67
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7b1923da3c57b4ea53a377ca7c9651, type: 3}
 --- !u!1001 &7624718099954460110
@@ -770,26 +735,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
-    - target: {fileID: 8150518061403389589, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
-      propertyPath: snow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150518061403389589, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
-      propertyPath: snowWin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150518061403389594, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
-      propertyPath: m_Size.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150518061403389594, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
-      propertyPath: m_Size.y
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150518061403389595, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a805224cbdc897941a257d1950b73e96, type: 2}
     - target: {fileID: 8150518061779290378, guid: df0e0d9c51ae29341ae80629e1723cde, type: 3}
       propertyPath: m_Name
       value: Snow Door
@@ -847,22 +792,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2125512910}
     m_Modifications:
-    - target: {fileID: 7275164474529503476, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 966482d0180a61147a58f47aca5be573, type: 2}
-    - target: {fileID: 7275164474529503477, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
-      propertyPath: m_Size.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7275164474529503477, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
-      propertyPath: m_Size.y
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7275164474529503482, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
-      propertyPath: bonusLevel
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7275164475358408548, guid: b9bfb5ab73426a844a3264d3eb325cad, type: 3}
       propertyPath: m_RootOrder
       value: 4
