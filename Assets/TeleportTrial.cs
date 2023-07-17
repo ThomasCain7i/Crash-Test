@@ -32,9 +32,9 @@ public class TeleportTrial : MonoBehaviour
         {
             secondCamera.SetActive(true);
             mainCamera.SetActive(false);
-            
 
 
+            player.transform.position = otherEnd.transform.position;
 
 
         }
@@ -59,7 +59,7 @@ public class TeleportTrial : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             mode2D = false;
-
+            
         }
 
     }
