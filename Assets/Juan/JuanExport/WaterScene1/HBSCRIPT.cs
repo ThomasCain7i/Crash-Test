@@ -11,10 +11,17 @@ public class HBSCRIPT : MonoBehaviour
     public float moveForce;
     public float turnTorque;
 
-    public int anything; 
-
     public Transform[] anchors = new Transform[4];
-    RaycastHit[] hits = new RaycastHit[4]; 
+    RaycastHit[] hits = new RaycastHit[4];
+
+    public Transform player;
+    public Transform ridePoint;
+
+
+    public PlayerControllerJuan playerScript;
+    public Animator playerAnimator; 
+
+
 
 
     // Start is called before the first frame update
@@ -47,14 +54,22 @@ public class HBSCRIPT : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        Debug.Log("Riding"); 
-    //        other.transform.SetParent(transform); 
-    //    }
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Riding");
+            playerAnimator.SetBool("IsRiding", true);
+            player.transform.position = ridePoint.transform.position;
+            player.transform.rotation = ridePoint.transform.rotation;
+            multiplier = 4f;
+            moveForce = 6000f;
+            turnTorque = 400f;
+            playerScript.moveSpeed = 0;
+            //playerScript.rotationSpeed = 400; 
+            
+        }
+    }
 
     //private void OnTriggerExit(Collider other)
     //{
