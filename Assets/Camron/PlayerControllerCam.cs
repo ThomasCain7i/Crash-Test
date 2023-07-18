@@ -58,6 +58,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Animation
     [Header("Animator")]
     public Animator animator;
+    private Vector3 direction;
 
     // References
     [Header("References")]
@@ -87,17 +88,22 @@ public class PlayerControllerCam : MonoBehaviour
         // Input system movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movementDirection = new Vector3(moveHorizontal, 0, moveVertical);
-        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
 
+        Vector3 camForward= cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        Vector3 forwardRelative = moveVertical * camForward;
+        Vector3 rightRelative = moveHorizontal * camRight;
+        Vector3 movementDirection = forwardRelative + rightRelative;
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
-        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
-        float speed = inputMagnitude * moveSpeed;
-        movementDirection.Normalize();
-        Vector3 velocity = movementDirection * speed;
-        
 
-        rb.velocity = new Vector3(movementDirection.x, velocity.y, movementDirection.z);
+        var targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+
+        rb.velocity = new Vector3(movementDirection.x, rb.velocity.y, movementDirection.z);
 
         // If the player isn't frozen, allow them to use movement
         if (!isFrozen)
@@ -133,8 +139,8 @@ public class PlayerControllerCam : MonoBehaviour
 
             if (movementDirection != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
             {
-                Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+               // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+              // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
                 
             }
