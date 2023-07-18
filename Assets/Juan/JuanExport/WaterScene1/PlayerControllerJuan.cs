@@ -199,29 +199,7 @@ public class PlayerControllerJuan : MonoBehaviour
 
             //HOVERBOARD - JUAN
 
-            if(isInHbArea == true)
-            {
-
-                if (Input.GetKeyDown(KeyCode.F))
-
-                {
-                    isRiding = true; 
-                    Debug.Log("TELEPORT");
-
-
-                    lechie.transform.position = hoverBoardPoint.transform.position;
-                    player.transform.SetParent(hoverBoard.transform);
-                    //player.transform.SetParent(hoverBoardPoint, false);
-                    moveSpeed = 0f;
-
-                    _hb.turnTorque = 400;
-                    _hb.moveForce = 5000;
-                    _hb.multiplier = 4;
-                } else
-                {
-                    isRiding = false; 
-                }
-            }
+            
                     
                     
 
