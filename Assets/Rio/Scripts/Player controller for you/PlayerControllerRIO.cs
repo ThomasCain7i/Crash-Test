@@ -12,7 +12,7 @@ public class PlayerControllerRIO : MonoBehaviour
     public int boneCount = 0;
     public float hitTimer;
     public GameObject damagedBarrier; // Shows temporary invincibility from getting hit
-    public GameObject PlayerLechie;
+    
 
     // Movement
     [Header("Movement")]
