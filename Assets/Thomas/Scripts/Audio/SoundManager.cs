@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] healing;
     public AudioClip[] pickUp;
     public AudioClip[] collectable;
+    public AudioClip[] elemental;
 
     [Header("Player")]
     public AudioClip[] jump;
@@ -49,12 +50,19 @@ public class SoundManager : MonoBehaviour
     [Header("Enemies")]
     public AudioClip[] enemyShot;
     public AudioClip[] enemyMelee;
+    public AudioClip[] enemyDamaged;
     public AudioClip[] enemyDeath;
 
     [Header("Volume")]
     [SerializeField]
     [Range(0.0f, 1f)]
     private float themeSlider;
+
+    [Header("Timer")]
+    [SerializeField]
+    private float walkTimer;
+    [SerializeField]
+    private float walkTimerNormal;
 
     [SerializeField]
     private float fullVolume = 1f, halfVolume = .5f, lowVolume = 0.1f;
@@ -69,6 +77,11 @@ public class SoundManager : MonoBehaviour
         {
             PlayAmbience();
         }
+    }
+
+    private void Update()
+    {
+        walkTimer -= Time.deltaTime;
     }
 
     public void PlayLevelComplete()
@@ -141,6 +154,49 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayThemeMusic()
+    {
+        if (volcanoTheme.Length > 0 && fire == true)
+        {
+            int randomIndex = Random.Range(0, volcanoTheme.Length);
+            audioSource.clip = volcanoTheme[randomIndex];
+            audioSource.volume = themeSlider;
+            audioSource.loop = true;
+            audioSource.Play();
+            Debug.Log("Play theme");
+        }
+
+        if (mountainTheme.Length > 0 && snow == true)
+        {
+            int randomIndex = Random.Range(0, mountainTheme.Length);
+            audioSource.clip = mountainTheme[randomIndex];
+            audioSource.volume = themeSlider;
+            audioSource.loop = true;
+            audioSource.Play();
+            Debug.Log("Play theme");
+        }
+
+        if (paradiseTheme.Length > 0 && water == true)
+        {
+            int randomIndex = Random.Range(0, paradiseTheme.Length);
+            audioSource.clip = paradiseTheme[randomIndex];
+            audioSource.volume = themeSlider;
+            audioSource.loop = true;
+            audioSource.Play();
+            Debug.Log("Play theme");
+        }
+
+        if (desertTheme.Length > 0 && sand == true)
+        {
+            int randomIndex = Random.Range(0, desertTheme.Length);
+            audioSource.clip = desertTheme[randomIndex];
+            audioSource.volume = themeSlider;
+            audioSource.loop = true;
+            audioSource.Play();
+            Debug.Log("Play theme");
+        }
+    }
+
     public void PlayHealing()
     {
         if (healing.Length > 0)
@@ -179,10 +235,11 @@ public class SoundManager : MonoBehaviour
 
     public void PlayWalk()
     {
-        if (walk.Length > 0)
+        if (walk.Length > 0 && sand == true && walkTimer <= 0)
         {
             int randomIndex = Random.Range(0, walk.Length);
             audioSource.PlayOneShot(walk[randomIndex], fullVolume);
+            walkTimer = walkTimerNormal;
         }
     }
 
