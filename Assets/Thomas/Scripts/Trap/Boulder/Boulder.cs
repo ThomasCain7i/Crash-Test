@@ -26,13 +26,8 @@ public class Boulder : MonoBehaviour
     {
         boulderTimer += Time.deltaTime;
 
-        if (boulderActive == true)
-        {
-          
-           
-        }
 
-        if (boulderTimer <= 12.0f)
+        if (boulderTimer <= 15.0f)
         {
             boulderActive = true;
 
@@ -44,7 +39,7 @@ public class Boulder : MonoBehaviour
             
         }
 
-        if (boulderTimer >= 12.0f)
+        if (boulderTimer >= 15.0f)
         {
             Respawn();
             boulderActive = false;

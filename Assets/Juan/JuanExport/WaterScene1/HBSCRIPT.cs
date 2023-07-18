@@ -62,12 +62,12 @@ public class HBSCRIPT : MonoBehaviour
             playerAnimator.SetBool("IsRiding", true);
             player.transform.position = ridePoint.transform.position;
             player.transform.rotation = ridePoint.transform.rotation;
-            multiplier = 4f;
+            multiplier = 3f;
             moveForce = 6000f;
-            turnTorque = 400f;
+            turnTorque = 500f;
             playerScript.moveSpeed = 0;
-            //playerScript.rotationSpeed = 400; 
-            
+            playerScript.rotationSpeed = 0;
+
         }
     }
 
