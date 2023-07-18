@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     // Health / Lives / Armor
@@ -73,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
     private GameManager gameManager;
+    private SoundManager soundManager;
 
     void Start()
     {
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
         attackScript = GetComponent<AttackScript>();
+        soundManager = FindObjectOfType<SoundManager>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -117,6 +118,9 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 isGrounded = false;
                 jumpsRemaining --;
+
+                Debug.Log("Sound");
+                soundManager.PlayJump();
             }
             else
             {
@@ -165,6 +169,7 @@ public class PlayerController : MonoBehaviour
             //PUNCH ATTACK - JUAN
             if (Input.GetMouseButtonDown(0))
             {
+                soundManager.PlayPunch();
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
                 animator.SetTrigger("Attack");
@@ -223,6 +228,7 @@ public class PlayerController : MonoBehaviour
         if (Armour < 1)
         {
             currentHealth -= amount;
+            soundManager.PlayDamaged();
             uiManager.ArmourUIoff();
             uiManager.HealthUI();
         }
@@ -236,6 +242,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
+                soundManager.PlayDeath();
                 // Respawn the player
                 Respawn();
             }
@@ -272,6 +279,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
+            soundManager.PlayHealing();
             currentHealth += 1;
         }
     }
@@ -287,6 +295,7 @@ public class PlayerController : MonoBehaviour
     // Respawns the player at the designated respawn point
     public void Respawn()
     {
+        soundManager.PlayRespawn();
         transform.position = respawnPoint;
         currentHealth = maxHealth;
         lives -= 1;
@@ -304,18 +313,22 @@ public class PlayerController : MonoBehaviour
     public void SandCollectedBonus()
     {
         SandBonusCount += 1;
+        soundManager.PlayCollectable();
     }
     public void WaterCollectedBonus()
     {
         WaterBonusCount += 1;
+        soundManager.PlayCollectable();
     }
     public void FireCollectedBonus()
     {
         FireBonusCount += 1;
+        soundManager.PlayCollectable();
     }
     public void SnowCollectedBonus()
     {
         SnowBonusCount += 1;
+        soundManager.PlayCollectable();
     }
 
     // POWER UPS
@@ -323,6 +336,7 @@ public class PlayerController : MonoBehaviour
     public void TripleJumpPowerUp()
     {
         uiManager.TripleJumpUI();
+        soundManager.PlayPickUp();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -331,6 +345,7 @@ public class PlayerController : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
+        soundManager.PlayPickUp();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
@@ -339,6 +354,7 @@ public class PlayerController : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
+        soundManager.PlayPickUp();
         uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;
