@@ -11,11 +11,53 @@ public class Boulder : MonoBehaviour
     [SerializeField]
     private Transform startPos;
 
+    public float boulderTimer;
+    public bool boulderActive;
+
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         trigger = FindObjectOfType<BoulderTrigger>();
+
+        boulderActive = true;
     }
+
+    public void Update()
+    {
+        boulderTimer += Time.deltaTime;
+
+        if (boulderActive == true)
+        {
+          
+           
+        }
+
+        if (boulderTimer <= 12.0f)
+        {
+            boulderActive = true;
+
+        }
+
+        if (boulderActive == false)
+        {
+            boulderTimer = 0;
+            
+        }
+
+        if (boulderTimer >= 12.0f)
+        {
+            Respawn();
+            boulderActive = false;
+            
+        }
+    }
+
+    public void Respawn()
+    {
+        transform.position = startPos.position;
+      
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
