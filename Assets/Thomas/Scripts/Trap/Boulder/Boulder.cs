@@ -21,36 +21,9 @@ public class Boulder : MonoBehaviour
 
         boulderActive = true;
     }
-
-    public void Update()
-    {
-        boulderTimer += Time.deltaTime;
-
-
-        if (boulderTimer <= 15.0f)
-        {
-            boulderActive = true;
-
-        }
-
-        if (boulderActive == false)
-        {
-            boulderTimer = 0;
-            
-        }
-
-        if (boulderTimer >= 15.0f)
-        {
-            Respawn();
-            boulderActive = false;
-            
-        }
-    }
-
     public void Respawn()
     {
         transform.position = startPos.position;
-      
     }
 
 
