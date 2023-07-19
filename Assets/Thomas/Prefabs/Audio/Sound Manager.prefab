@@ -45,14 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f101dba4d0e734396091a31ed384e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: 1
+  fire: 0
   sand: 0
   water: 0
   snow: 0
   levelComplete:
   - {fileID: 8300000, guid: 512b3aa947360c84297a6e012a3ca78d, type: 3}
-  butonClicked:
-  - {fileID: 8300000, guid: cb8af3448adf5f64a912ed20f57573df, type: 3}
+  buttonClicked: []
   bouncePad:
   - {fileID: 8300000, guid: 80ad62cdbe1f9874eb099afd47d052b9, type: 3}
   volcanoTheme:
@@ -75,7 +74,15 @@ MonoBehaviour:
   elemental: []
   jump:
   - {fileID: 8300000, guid: da33bac7a0af26f4ebadb62bb9304753, type: 3}
-  walk: []
+  walkSnow:
+  - {fileID: 8300000, guid: 29ef135ac076cde49ab101a4141445f7, type: 3}
+  - {fileID: 8300000, guid: bfb07fd2be08b6a45b498c16e8a408b8, type: 3}
+  walkSand:
+  - {fileID: 8300000, guid: b79cc1c51a47c3442b72cc907d22a7bb, type: 3}
+  - {fileID: 8300000, guid: c708098c73f91fe49bd182912763084e, type: 3}
+  walkStone:
+  - {fileID: 8300000, guid: e8a23a52a45d66a47acb345aa38ba4a4, type: 3}
+  - {fileID: 8300000, guid: c15455d3a9d9c044a994d3c32efd105a, type: 3}
   swim: []
   damaged:
   - {fileID: 8300000, guid: 33572b11e2e61024c88ec2b4cac6cd73, type: 3}
@@ -94,10 +101,28 @@ MonoBehaviour:
   enemyMelee: []
   enemyDamaged: []
   enemyDeath: []
-  themeSlider: 1
-  fullVolume: 1
-  halfVolume: 0.5
-  lowVolume: 0.1
+  levelCompleteV: 1
+  buttonClickedV: 1
+  bouncePadV: 1
+  ThemeMusicV: 1
+  AmbienceV: 1
+  healingV: 1
+  pickUpV: 1
+  collectableV: 1
+  elementalV: 1
+  jumpV: 1
+  walkV: 1
+  swimV: 1
+  damagedV: 1
+  deathV: 1
+  respawnV: 1
+  smashAttakV: 1
+  punchAttackV: 1
+  rangedAttackV: 1
+  enemyShotV: 1
+  enemyMeleeV: 1
+  enemyDamagedV: 1
+  enemyDeathV: 1
 --- !u!82 &1620367580435494369
 AudioSource:
   m_ObjectHideFlags: 0

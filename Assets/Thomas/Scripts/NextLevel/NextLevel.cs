@@ -8,6 +8,7 @@ public class NextLevel : MonoBehaviour
     [Header("References")]
     public PlayerController playerController;
     public GameManager gameManager;
+    private SoundManager soundManager;
     public int bonusToCollect = 5;
     public int bonus;
 
@@ -24,10 +25,12 @@ public class NextLevel : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         gameManager = FindObjectOfType<GameManager>();
         bonus = playerController.BonusCount;
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        soundManager.PlayLevelComplete();
         gameManager.SaveCollectables();
         gameManager.SaveElements();
         Debug.Log("Saved");

@@ -45,14 +45,14 @@ public class AttackScript : MonoBehaviour
 
     [Header("Animator")]
     public Animator animator;        // The Animator component for controlling animations
-    private SoundManager soundManager;
+    private SoundPlayer soundPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();   // Get the Rigidbody component from the character
         animator = GetComponent<Animator>();  // Get the Animator component from the character
-        soundManager = FindObjectOfType<SoundManager>();
+        soundPlayer = FindObjectOfType<SoundPlayer>();
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class AttackScript : MonoBehaviour
             // Bark Attack - Juan
             if (Input.GetKeyDown(KeyCode.R))
             {
-                soundManager.PlayRanged();
+                soundPlayer.PlayRanged();
                 animator.SetBool("IsBarking", true);  // Set the "IsBarking" parameter in the animator to true
                 // Spawn the bark attack from the specific point off the player
                 var bark = Instantiate(barkPrefab, barkSpawn.position, barkSpawn.rotation);
@@ -104,7 +104,7 @@ public class AttackScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && smashing == true)
         {
-            soundManager.PlaySmash();
+            soundPlayer.PlaySmash();
             // Spawn the impulse object at the specified point
             var impulse = Instantiate(smashPrefab, smashPoint.position, smashPoint.rotation);
             smashing = false;

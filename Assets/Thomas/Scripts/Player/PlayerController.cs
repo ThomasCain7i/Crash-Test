@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private int jumpsRemaining = 2;  // Number of jumps remaining for the player
     public float rotationSpeed;
     private bool thirdJump = false;
+    [SerializeField]
+    private bool isMoving;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
     private float speedTimer;  // Timer for the speed power-up
     private float tripleJumpTimer;  // Timer for the triple jump power-up
     private float timeSlowTimer;  // Timer for the Time Slow power-up
+    [SerializeField]
+    private float walkTimer;  // Timer for the Time Slow power-up
 
     // Debuffs
     [Header("Debuffs")]
@@ -72,7 +76,8 @@ public class PlayerController : MonoBehaviour
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
     private GameManager gameManager;
-    private SoundManager soundManager;
+    private SoundPlayer soundPlayer;
+    private SoundFootsteps soundFootsteps;
 
     void Start()
     {
@@ -81,7 +86,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
         attackScript = GetComponent<AttackScript>();
-        soundManager = FindObjectOfType<SoundManager>();
+        soundPlayer = FindObjectOfType<SoundPlayer>();
+        soundFootsteps = FindObjectOfType<SoundFootsteps>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -120,7 +126,7 @@ public class PlayerController : MonoBehaviour
                 jumpsRemaining --;
 
                 Debug.Log("Sound");
-                soundManager.PlayJump();
+                soundPlayer.PlayJump();
             }
             else
             {
@@ -153,23 +159,23 @@ public class PlayerController : MonoBehaviour
 
             if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
             {
+                isMoving = true;
                 Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
-                
             }
             else
             {
                 animator.SetBool("IsMoving", false);
                 animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsBarking", false);
-
+                isMoving = false;
             }
 
             //PUNCH ATTACK - JUAN
             if (Input.GetMouseButtonDown(0))
             {
-                soundManager.PlayPunch();
+                soundPlayer.PlayPunch();
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
                 animator.SetTrigger("Attack");
@@ -184,11 +190,18 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
+        if(isMoving && walkTimer <= 0)
+        {
+            soundFootsteps.PlayWalk();
+            walkTimer = .6f;
+        }
+
         // POWER UPS
         // Timer Control
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
         timeSlowTimer -= Time.deltaTime;
+        walkTimer -= Time.deltaTime;
 
         // Triple jump powerup
         if (tripleJumpTimer <= 0)
@@ -228,7 +241,7 @@ public class PlayerController : MonoBehaviour
         if (Armour < 1)
         {
             currentHealth -= amount;
-            soundManager.PlayDamaged();
+            soundPlayer.PlayDamaged();
             uiManager.ArmourUIoff();
             uiManager.HealthUI();
         }
@@ -242,7 +255,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
-                soundManager.PlayDeath();
+                soundPlayer.PlayDeath();
                 // Respawn the player
                 Respawn();
             }
@@ -279,7 +292,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            soundManager.PlayHealing();
+            soundPlayer.PlayHealing();
             currentHealth += 1;
         }
     }
@@ -295,7 +308,7 @@ public class PlayerController : MonoBehaviour
     // Respawns the player at the designated respawn point
     public void Respawn()
     {
-        soundManager.PlayRespawn();
+        soundPlayer.PlayRespawn();
         transform.position = respawnPoint;
         currentHealth = maxHealth;
         lives -= 1;
@@ -313,22 +326,22 @@ public class PlayerController : MonoBehaviour
     public void SandCollectedBonus()
     {
         SandBonusCount += 1;
-        soundManager.PlayCollectable();
+        soundPlayer.PlayCollectable();
     }
     public void WaterCollectedBonus()
     {
         WaterBonusCount += 1;
-        soundManager.PlayCollectable();
+        soundPlayer.PlayCollectable();
     }
     public void FireCollectedBonus()
     {
         FireBonusCount += 1;
-        soundManager.PlayCollectable();
+        soundPlayer.PlayCollectable();
     }
     public void SnowCollectedBonus()
     {
         SnowBonusCount += 1;
-        soundManager.PlayCollectable();
+        soundPlayer.PlayCollectable();
     }
 
     // POWER UPS
@@ -336,7 +349,7 @@ public class PlayerController : MonoBehaviour
     public void TripleJumpPowerUp()
     {
         uiManager.TripleJumpUI();
-        soundManager.PlayPickUp();
+        soundPlayer.PlayPickUp();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -345,7 +358,7 @@ public class PlayerController : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
-        soundManager.PlayPickUp();
+        soundPlayer.PlayPickUp();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
@@ -354,7 +367,7 @@ public class PlayerController : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
-        soundManager.PlayPickUp();
+        soundPlayer.PlayPickUp();
         uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;
