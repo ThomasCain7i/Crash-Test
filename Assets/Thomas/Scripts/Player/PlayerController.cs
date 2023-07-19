@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
-        if(isMoving && walkTimer <= 0)
+        if(isMoving && walkTimer <= 0 && isGrounded) 
         {
             soundFootsteps.PlayWalk();
             walkTimer = .6f;

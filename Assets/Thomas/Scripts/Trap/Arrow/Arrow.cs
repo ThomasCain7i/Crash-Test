@@ -5,11 +5,15 @@ public class Arrow : MonoBehaviour
     public float damage = 1;
     private float destoryTime = 5;
     public PlayerController playerController;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
+
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
     }
 
     private void Update()
