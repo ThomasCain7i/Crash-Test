@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private SoundPlayer soundPlayer;
     private SoundFootsteps soundFootsteps;
+    private CameraFollow cameraFollow;
 
     void Start()
     {
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
         attackScript = GetComponent<AttackScript>();
         soundPlayer = FindObjectOfType<SoundPlayer>();
         soundFootsteps = FindObjectOfType<SoundFootsteps>();
+        cameraFollow = FindObjectOfType<CameraFollow>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -255,6 +257,8 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
+                cameraFollow.threeD = true;
+                cameraFollow.twoD = false;
                 soundPlayer.PlayDeath();
                 // Respawn the player
                 Respawn();
