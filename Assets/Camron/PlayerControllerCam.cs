@@ -17,6 +17,10 @@ public class PlayerControllerCam : MonoBehaviour
     // Bones
     [Header("Bones")]
     public int bonusCount = 0;  // Number of collected bones
+    public int SandBonusCount = 0;  // Number of collected bones
+    public int WaterBonusCount = 0;  // Number of collected bones
+    public int SnowBonusCount = 0;  // Number of collected bones
+    public int FireBonusCount = 0;  // Number of collected bones
 
     // Movement
     [Header("Movement")]
@@ -84,10 +88,11 @@ public class PlayerControllerCam : MonoBehaviour
 
     void Update()
     {
+        bonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
         // MOVEMENT
         // Input system movement
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
+        float moveVertical = Input.GetAxis("Vertical") * moveSpeed;
 
         Vector3 camForward= cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
@@ -99,6 +104,7 @@ public class PlayerControllerCam : MonoBehaviour
         Vector3 rightRelative = moveHorizontal * camRight;
         Vector3 movementDirection = forwardRelative + rightRelative;
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
+        
 
         var targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
@@ -295,6 +301,23 @@ public class PlayerControllerCam : MonoBehaviour
     public void CollectedBone()
     {
         bonusCount += 1;
+    }
+
+    public void SandCollectedBonus()
+    {
+        SandBonusCount += 1;
+    }
+    public void WaterCollectedBonus()
+    {
+        WaterBonusCount += 1;
+    }
+    public void FireCollectedBonus()
+    {
+        FireBonusCount += 1;
+    }
+    public void SnowCollectedBonus()
+    {
+        SnowBonusCount += 1;
     }
 
     // POWER UPS
