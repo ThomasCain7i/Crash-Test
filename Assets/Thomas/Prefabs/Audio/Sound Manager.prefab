@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1620367580435494372
+--- !u!1 &2575085586230415608
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1620367580435494375}
-  - component: {fileID: 1620367580435494374}
-  - component: {fileID: 1620367580435494369}
+  - component: {fileID: 2575085586230415609}
+  - component: {fileID: 7371856838984227950}
+  - component: {fileID: 3301150002392803954}
   m_Layer: 0
   m_Name: Sound Manager
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1620367580435494375
+--- !u!4 &2575085586230415609
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620367580435494372}
+  m_GameObject: {fileID: 2575085586230415608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1620367580435494374
+--- !u!114 &7371856838984227950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620367580435494372}
+  m_GameObject: {fileID: 2575085586230415608}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75f101dba4d0e734396091a31ed384e3, type: 3}
@@ -49,46 +49,31 @@ MonoBehaviour:
   sand: 0
   water: 0
   snow: 0
-  levelComplete:
-  - {fileID: 8300000, guid: 512b3aa947360c84297a6e012a3ca78d, type: 3}
+  levelComplete: []
   buttonClicked: []
-  volcanoTheme:
-  - {fileID: 8300000, guid: a9f156dc292e5d1438c6e363e353f6f1, type: 3}
-  desertTheme: []
-  paradiseTheme: []
-  mountainTheme: []
-  volcanoAmbience:
-  - {fileID: 8300000, guid: 38738c2d3b1cc664d9bbe5bb57e0f60d, type: 3}
-  paradiseAmbience:
-  - {fileID: 8300000, guid: ba1bb09bf97b11047bce075bdbe3a1c5, type: 3}
-  mountainAmbience: []
-  desertAmbience: []
-  enemyShot:
-  - {fileID: 8300000, guid: 3514ea18f1126b54b97e03466f46ed28, type: 3}
+  enemyShot: []
   enemyMelee: []
   enemyDamaged: []
   enemyDeath: []
   levelCompleteV: 1
   buttonClickedV: 1
   bouncePadV: 1
-  ThemeMusicV: 1
-  AmbienceV: 1
   enemyShotV: 1
   enemyMeleeV: 1
   enemyDamagedV: 1
   enemyDeathV: 1
---- !u!82 &1620367580435494369
+--- !u!82 &3301150002392803954
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620367580435494372}
+  m_GameObject: {fileID: 2575085586230415608}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
