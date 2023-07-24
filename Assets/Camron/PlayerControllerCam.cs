@@ -13,10 +13,15 @@ public class PlayerControllerCam : MonoBehaviour
     [Header("Attacks")]
     public float barkDamage = 3;  // Damage caused by bark attack
     public float smashDamage = 3;  // Damage caused by smash attack
+    public float punchDamage = 3;  // Damage caused by smash attack
+    [SerializeField]
+    private GameObject punchPrefab;  // Speed for punch
+    [SerializeField]
+    private Transform punchPos; // Location of Punch
 
     // Bones
     [Header("Bones")]
-    public int bonusCount = 0;  // Number of collected bones
+    public int BonusCount = 0;  // Number of collected bones
     public int SandBonusCount = 0;  // Number of collected bones
     public int WaterBonusCount = 0;  // Number of collected bones
     public int SnowBonusCount = 0;  // Number of collected bones
@@ -26,13 +31,16 @@ public class PlayerControllerCam : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;  // Movement speed of the player
     public float normalMoveSpeed = 5f;  // Normal movement speed of the player
-    [SerializeField]
-    private Transform cameraTransform;
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
     [SerializeField]
     private int jumpsRemaining = 2;  // Number of jumps remaining for the player
     public float rotationSpeed;
+    private bool thirdJump = false;
+    [SerializeField]
+    private bool isMoving;
+    [SerializeField]
+    private Transform cameraTransform;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -48,6 +56,8 @@ public class PlayerControllerCam : MonoBehaviour
     private float speedTimer;  // Timer for the speed power-up
     private float tripleJumpTimer;  // Timer for the triple jump power-up
     private float timeSlowTimer;  // Timer for the Time Slow power-up
+    [SerializeField]
+    private float walkTimer;  // Timer for the Time Slow power-up
 
     // Debuffs
     [Header("Debuffs")]
@@ -62,13 +72,16 @@ public class PlayerControllerCam : MonoBehaviour
     // Animation
     [Header("Animator")]
     public Animator animator;
-    private Vector3 direction;
 
     // References
     [Header("References")]
     private AttackScript attackScript; // Reference to the Attack script 
     public UIManager uiManager;  // Reference to the UIManager script
     private BreakingPlatform breakingPlatform;  // Reference to the BreakingPlatform script
+    private GameManager gameManager;
+    private SoundPlayer soundPlayer;
+    private SoundFootsteps soundFootsteps;
+    private CameraFollow cameraFollow;
 
     void Start()
     {
@@ -77,6 +90,9 @@ public class PlayerControllerCam : MonoBehaviour
         animator = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>(); // Find and assign the UI Manager script in the scene
         attackScript = GetComponent<AttackScript>();
+        soundPlayer = FindObjectOfType<SoundPlayer>();
+        soundFootsteps = FindObjectOfType<SoundFootsteps>();
+        cameraFollow = FindObjectOfType<CameraFollow>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -84,17 +100,22 @@ public class PlayerControllerCam : MonoBehaviour
         // Set jumps and health to max
         jumpsRemaining = maxJumps;
         currentHealth = maxHealth;
+
+        // Get ref to gameManager and load settings
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.LoadSettings();
     }
 
     void Update()
     {
-        bonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
+        BonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
+
         // MOVEMENT
         // Input system movement
-        float moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
-        float moveVertical = Input.GetAxis("Vertical") * moveSpeed;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 camForward= cameraTransform.forward;
+        Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
 
         camForward.y = 0;
@@ -103,13 +124,13 @@ public class PlayerControllerCam : MonoBehaviour
         Vector3 forwardRelative = moveVertical * camForward;
         Vector3 rightRelative = moveHorizontal * camRight;
         Vector3 movementDirection = forwardRelative + rightRelative;
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
-        
+        Vector3 movement = movementDirection * moveSpeed;
+
 
         var targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
 
-        rb.velocity = new Vector3(movementDirection.x, rb.velocity.y, movementDirection.z);
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
         // If the player isn't frozen, allow them to use movement
         if (!isFrozen)
@@ -121,7 +142,10 @@ public class PlayerControllerCam : MonoBehaviour
 
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 isGrounded = false;
-                jumpsRemaining --;
+                jumpsRemaining--;
+
+                Debug.Log("Sound");
+                soundPlayer.PlayJump();
             }
             else
             {
@@ -137,34 +161,43 @@ public class PlayerControllerCam : MonoBehaviour
                 }
             }
 
-            if (jumpsRemaining <= 0 && attackScript.snow >= 1 && Input.GetButtonDown("Jump") && attackScript.platform == false)
+            if (attackScript.snow == 1 && Input.GetButtonDown("Jump") && attackScript.platform == false && thirdJump == true)
             {
                 attackScript.platform = true;
                 Instantiate(attackScript.snowPrefab, attackScript.smashPoint.position, attackScript.smashPoint.rotation);
             }
 
+            if (jumpsRemaining == 0)
+            {
+                thirdJump = true;
+            }
+            else
+            {
+                thirdJump = false;
+            }
+
             if (movementDirection != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
             {
-               // Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-              // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+                isMoving = true;
+                Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
                 animator.SetBool("IsMoving", true);
-                
             }
             else
             {
                 animator.SetBool("IsMoving", false);
                 animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsBarking", false);
-
+                isMoving = false;
             }
 
             //PUNCH ATTACK - JUAN
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
+                soundPlayer.PlayPunch();
                 Debug.Log("PUNCH ATTACK");
                 animator.SetBool("IsAttacking", true);
                 animator.SetTrigger("Attack");
-
             }
             else
             {
@@ -176,11 +209,18 @@ public class PlayerControllerCam : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
+        if (isMoving && walkTimer <= 0 && isGrounded)
+        {
+            soundFootsteps.PlayWalk();
+            walkTimer = .6f;
+        }
+
         // POWER UPS
         // Timer Control
         tripleJumpTimer -= Time.deltaTime;
         speedTimer -= Time.deltaTime;
         timeSlowTimer -= Time.deltaTime;
+        walkTimer -= Time.deltaTime;
 
         // Triple jump powerup
         if (tripleJumpTimer <= 0)
@@ -220,6 +260,7 @@ public class PlayerControllerCam : MonoBehaviour
         if (Armour < 1)
         {
             currentHealth -= amount;
+            soundPlayer.PlayDamaged();
             uiManager.ArmourUIoff();
             uiManager.HealthUI();
         }
@@ -233,6 +274,9 @@ public class PlayerControllerCam : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
+                cameraFollow.threeD = true;
+                cameraFollow.twoD = false;
+                soundPlayer.PlayDeath();
                 // Respawn the player
                 Respawn();
             }
@@ -269,6 +313,7 @@ public class PlayerControllerCam : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
+            soundPlayer.PlayHealing();
             currentHealth += 1;
         }
     }
@@ -284,6 +329,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Respawns the player at the designated respawn point
     public void Respawn()
     {
+        soundPlayer.PlayRespawn();
         transform.position = respawnPoint;
         currentHealth = maxHealth;
         lives -= 1;
@@ -298,26 +344,25 @@ public class PlayerControllerCam : MonoBehaviour
 
     // COLLECTING BONES METHOD- Camron
     // Increases the player's bone count by 1
-    public void CollectedBone()
-    {
-        bonusCount += 1;
-    }
-
     public void SandCollectedBonus()
     {
         SandBonusCount += 1;
+        soundPlayer.PlayCollectable();
     }
     public void WaterCollectedBonus()
     {
         WaterBonusCount += 1;
+        soundPlayer.PlayCollectable();
     }
     public void FireCollectedBonus()
     {
         FireBonusCount += 1;
+        soundPlayer.PlayCollectable();
     }
     public void SnowCollectedBonus()
     {
         SnowBonusCount += 1;
+        soundPlayer.PlayCollectable();
     }
 
     // POWER UPS
@@ -325,6 +370,7 @@ public class PlayerControllerCam : MonoBehaviour
     public void TripleJumpPowerUp()
     {
         uiManager.TripleJumpUI();
+        soundPlayer.PlayPickUp();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -333,6 +379,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
+        soundPlayer.PlayPickUp();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
@@ -341,6 +388,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
+        soundPlayer.PlayPickUp();
         uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;
@@ -361,16 +409,4 @@ public class PlayerControllerCam : MonoBehaviour
             transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
         }
     }
-
-    //private void OnApplicationFocus(bool focus)
-    //{
-       // if (focus)
-       // {
-      //      Cursor.lockstate = CursorLockMode.Locked;
-      //  }
-     //   else
-     //   {
-     //       Cursor.lockstate = CursorLockMode.None;
-      //  }
-   // }
 }
