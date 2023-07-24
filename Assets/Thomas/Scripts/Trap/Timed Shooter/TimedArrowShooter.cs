@@ -10,6 +10,7 @@ public class TimedArrowShooter : MonoBehaviour
     //Cooldown
     public float coolDownTime;
     public float startCoolDownTime;
+    public float coolDownTimeNormal;
 
     // Update is called once per frame
     void Update()
@@ -28,7 +29,7 @@ public class TimedArrowShooter : MonoBehaviour
                 ability.GetComponent<Rigidbody>().velocity = arrowSpawn.forward * arrowSpeed;
 
                 //COOLDOWN FOR THE ABILITY 
-                coolDownTime = 5f;
+                coolDownTime = coolDownTimeNormal;
             }
         }
 

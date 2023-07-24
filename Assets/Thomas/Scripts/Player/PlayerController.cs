@@ -257,8 +257,9 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
-                cameraFollow.threeD = true;
+                cameraFollow.oneD = true;
                 cameraFollow.twoD = false;
+                cameraFollow.threeD = false;
                 soundPlayer.PlayDeath();
                 // Respawn the player
                 Respawn();

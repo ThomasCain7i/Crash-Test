@@ -51,12 +51,12 @@ public class PlatformMove : MonoBehaviour
         timeToWaypoint = distanceToWaypoint / speed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         other.transform.SetParent(transform);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
         other.transform.SetParent(null);
     }

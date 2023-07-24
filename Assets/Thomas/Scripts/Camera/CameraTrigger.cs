@@ -5,26 +5,73 @@ public class CameraTrigger : MonoBehaviour
     private CameraFollow cameraFollow;
 
     [SerializeField]
-    private bool two, three, happend;
+    private bool one, two, three, happend;
+    [SerializeField]
+    private bool countDownStart = false;
+
+    [SerializeField]
+    private float countDown, countDown2, countDown3;
 
     private void Start()
     {
         cameraFollow = FindObjectOfType<CameraFollow>();
     }
 
+    private void Update()
+    {
+        if (countDownStart == true)
+        {
+            countDown -= Time.deltaTime;
+            countDown2 -= Time.deltaTime;
+            countDown3 -= Time.deltaTime;
+
+            if (countDown < 0 && two)
+            {
+                cameraFollow.oneD = false;
+                cameraFollow.twoD = false;
+                cameraFollow.threeD = true;
+                cameraFollow.fourD = false;
+            }
+
+            if (countDown2 < 0 && two)
+            {
+                cameraFollow.oneD = false;
+                cameraFollow.twoD = false;
+                cameraFollow.threeD = false;
+                cameraFollow.fourD = true;
+            }
+
+            if (countDown3 < 0)
+            {
+                cameraFollow.oneD = true;
+                cameraFollow.twoD = false;
+                cameraFollow.threeD = false;
+                cameraFollow.fourD = false;
+                countDownStart = false;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (two && !happend)
+        countDownStart = true;
+
+        if (one)
         {
-            cameraFollow.twoD = true;
+            cameraFollow.oneD = true;
+            cameraFollow.twoD = false;
             cameraFollow.threeD = false;
-            happend = true;
+            cameraFollow.fourD = false;
+            countDownStart = false;
         }
 
-        if(three)
+        if (two && !happend)
         {
-            cameraFollow.twoD = false;
-            cameraFollow.threeD = true;
+            cameraFollow.oneD = false;
+            cameraFollow.twoD = true;
+            cameraFollow.threeD = false;
+            cameraFollow.fourD = false;
+            happend = true;
         }
     }
 }
