@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Bonus : MonoBehaviour
+public class BonusC : MonoBehaviour
 {
     // Start is called before the first frame update
     public int rotateSpeed;
@@ -24,10 +26,10 @@ public class Bonus : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("dog got bone");
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            
+            PlayerControllerCam playerController = other.GetComponent<PlayerControllerCam>();
+
             if (playerController != null && water == true)
             {
                 playerController.WaterCollectedBonus();
