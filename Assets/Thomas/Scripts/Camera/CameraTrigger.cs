@@ -7,10 +7,10 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField]
     private bool one, two, three, happend;
     [SerializeField]
-    private bool countDownStart = false;
+    private bool countDownStart = false, alanis, alanisStart, mazeIN, mazeOUT;
 
     [SerializeField]
-    private float countDown, countDown2, countDown3;
+    private float countDown, countDown2, countDown3, alanisDown;
 
     private void Start()
     {
@@ -50,11 +50,38 @@ public class CameraTrigger : MonoBehaviour
                 countDownStart = false;
             }
         }
+
+        if (alanisStart == true)
+        {
+            alanisDown -= Time.deltaTime;
+
+            cameraFollow.oneD = false;
+            cameraFollow.twoD = false;
+            cameraFollow.threeD = false;
+            cameraFollow.fourD = false;
+            countDownStart = false;
+            cameraFollow.alanis = true;
+
+            if (alanisDown < 0)
+            {
+                alanisStart = false;
+                cameraFollow.maze = true;
+                cameraFollow.alanis = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        countDownStart = true;
+        if(!alanis)
+        {
+            countDownStart = true;
+        }
+
+        if(alanis)
+        {
+            alanisStart = true;
+        }
 
         if (one)
         {
@@ -72,6 +99,24 @@ public class CameraTrigger : MonoBehaviour
             cameraFollow.threeD = false;
             cameraFollow.fourD = false;
             happend = true;
+        }
+
+        if (mazeIN)
+        {
+            cameraFollow.oneD = false;
+            cameraFollow.twoD = false;
+            cameraFollow.threeD = false;
+            cameraFollow.fourD = false;
+            cameraFollow.maze = true;
+        }
+
+        if (mazeOUT)
+        {
+            cameraFollow.oneD = true;
+            cameraFollow.twoD = false;
+            cameraFollow.threeD = false;
+            cameraFollow.fourD = false;
+            cameraFollow.maze = false;
         }
     }
 }
