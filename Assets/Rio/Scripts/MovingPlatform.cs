@@ -27,19 +27,19 @@ public class MovingPlatform : MonoBehaviour
 
         if (isMovingLR)
         {
-            if (moveTimer <= 5.0f)
+            if (moveTimer <= 8.0f)
             {
             //Platform moves right - Rio
-            transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(1.5f * Time.deltaTime, 0, 0));
 
             }
-            else if (moveTimer <= 10.0f)
+            else if (moveTimer <= 16.0f)
             {
             //Platform moves left- Rio
-            transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(-1.5f * Time.deltaTime, 0, 0));
 
             }
-            else if (moveTimer >= 10.0f)
+            else if (moveTimer >= 16.0f)
             {
             // resets timer - Rio
             moveTimer = 0;
@@ -48,19 +48,19 @@ public class MovingPlatform : MonoBehaviour
 
         if (isMovingFB)
         {
-            if (moveTimer <= 5.0f)
+            if (moveTimer <= 8.0f)
             {
             //Platform moves forwards - Rio
-            transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+            transform.Translate(new Vector3(0, 0, 1.5f * Time.deltaTime));
 
             }
-            else if (moveTimer <= 10.0f)
+            else if (moveTimer <= 16.0f)
             {
             //Platform moves backwards - Rio
-            transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+            transform.Translate(new Vector3(0, 0, -1.5f * Time.deltaTime));
 
             }
-            else if (moveTimer >= 10.0f)
+            else if (moveTimer >= 16.0f)
             {
             // resets timer - Rio
             moveTimer = 0;

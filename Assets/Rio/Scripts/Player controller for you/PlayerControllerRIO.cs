@@ -300,11 +300,11 @@ public class PlayerControllerRIO : MonoBehaviour
         }
 
         // Player runs for a few seconds and starts dashing - Rio
-        if (runTimer >= 2.5f)
+        if (runTimer >= 2f)
         {
             SpeedBoost(2);
         }
-        else if (runTimer <= 2.5f)
+        else if (runTimer <= 2f)
         {
             SpeedBoost(0);
         }
@@ -626,47 +626,47 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             //Player moves along the platform - Rio
 
-            if (movingPlatform.moveTimer <= 5.0f)
+            if (movingPlatform.moveTimer <= 7.0f)
             {
                 // Player moves right changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
-                    transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, -1.5f * Time.deltaTime));
                 }
                 else if (isFacingRight == true)
                 {
-                    transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, 1.5f * Time.deltaTime));
                 }
                 else if (isFacingBackwards == true)
                 {
-                    transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(-1.5f * Time.deltaTime, 0, 0));
                 }
                 else if (isFacingForwards == true)
                 {
-                    transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(1.5f * Time.deltaTime, 0, 0));
                 }
 
             }
-            else if (movingPlatform.moveTimer <= 10.0f)
+            else if (movingPlatform.moveTimer <= 14.0f)
             {
                 // Player moves left changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
-                    transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, 1.5f * Time.deltaTime));
                 }
                 else if (isFacingRight == true)
                 {
-                    transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, -1.5f * Time.deltaTime));
                 }
                 else if (isFacingBackwards == true)
                 {
-                    transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(1.5f * Time.deltaTime, 0, 0));
                 }
                 else if (isFacingForwards == true)
                 {
-                    transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(-1.5f * Time.deltaTime, 0, 0));
                 }
 
             }
@@ -676,30 +676,30 @@ public class PlayerControllerRIO : MonoBehaviour
         else if (collision.gameObject.tag == "MovingPlatformFB")
         {
 
-            if (movingPlatform.moveTimer <= 5.0f)
+            if (movingPlatform.moveTimer <= 7.0f)
             {
                 // Player moves forward changes from direction they are facing - Rio
 
                 if (isFacingLeft == true)
                 {
-                    transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(1.5f * Time.deltaTime, 0, 0));
                 }
                 else if (isFacingRight == true)
                 {
-                    transform.Translate(new Vector3(-1 * Time.deltaTime, 0, 0));
+                    transform.Translate(new Vector3(-1.5f * Time.deltaTime, 0, 0));
                 }
                 else if (isFacingBackwards == true)
                 {
-                    transform.Translate(new Vector3(0, 0, -1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, -1.5f * Time.deltaTime));
                 }
                 else if (isFacingForwards == true)
                 {
-                    transform.Translate(new Vector3(0, 0, 1 * Time.deltaTime));
+                    transform.Translate(new Vector3(0, 0, 1.5f * Time.deltaTime));
                 }
 
 
             }
-            else if (movingPlatform.moveTimer <= 10.0f)
+            else if (movingPlatform.moveTimer <= 14.0f)
             {
                 // Player moves backwards changes from direction they are facing - Rio
 
