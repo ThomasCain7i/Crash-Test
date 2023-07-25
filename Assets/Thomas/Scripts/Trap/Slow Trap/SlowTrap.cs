@@ -5,11 +5,13 @@ public class SlowTrap : MonoBehaviour
     public PlayerController playerController;
     [SerializeField]
     private int slowness = 3;
+    public PlayerControllerCam pc;
 
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        pc = FindObjectOfType<PlayerControllerCam>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +23,8 @@ public class SlowTrap : MonoBehaviour
             //collects powerup by setting the players bool to true
             playerController.moveSpeed -= slowness;
             playerController.isSlowed = true;
+            pc.moveSpeed -= slowness;
+            pc.isSlowed = true;
         }
     }
 
@@ -33,6 +37,8 @@ public class SlowTrap : MonoBehaviour
             //collects powerup by setting the players bool to true
             playerController.moveSpeed += slowness;
             playerController.isSlowed = false;
+            pc.moveSpeed += slowness;
+            pc.isSlowed = false;
         }
     }
 }
