@@ -366,7 +366,7 @@ public class PlayerController : MonoBehaviour
         soundPlayer.PlayPickUp();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
-        moveSpeed = 8f;
+        moveSpeed += 2;
     }
 
     // Activates the time slow power-up for a certain duration
