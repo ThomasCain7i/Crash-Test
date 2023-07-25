@@ -9,6 +9,7 @@ public class NextLevel : MonoBehaviour
     public PlayerController playerController;
     public GameManager gameManager;
     private SoundManager soundManager;
+    private AttackScript attackScript;
     public int bonusToCollect = 5;
     public int bonus;
 
@@ -24,6 +25,7 @@ public class NextLevel : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
         gameManager = FindObjectOfType<GameManager>();
+        attackScript = FindObjectOfType<AttackScript>();
         bonus = playerController.BonusCount;
         soundManager = FindObjectOfType<SoundManager>();
     }
@@ -42,7 +44,7 @@ public class NextLevel : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
 
-            if (water)
+            if (water && attackScript.water == 1)
             {
                 SceneManager.LoadScene(2);
             }
@@ -52,7 +54,7 @@ public class NextLevel : MonoBehaviour
                 SceneManager.LoadScene(3);
             }
 
-            if (sand)
+            if (sand && attackScript.sand == 1)
             {
                 SceneManager.LoadScene(4);
             }
@@ -62,7 +64,7 @@ public class NextLevel : MonoBehaviour
                 SceneManager.LoadScene(5);
             }
 
-            if (snow)
+            if (snow && attackScript.snow == 1)
             {
                 SceneManager.LoadScene(6);
             }
@@ -72,7 +74,7 @@ public class NextLevel : MonoBehaviour
                 SceneManager.LoadScene(7);
             }
 
-            if (fire)
+            if (fire && attackScript.fire == 1)
             {
                 SceneManager.LoadScene(8);
             }
