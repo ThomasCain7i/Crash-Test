@@ -5,6 +5,8 @@ public class Boulder : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
     [SerializeField]
+    private PlayerControllerCam pc;
+    [SerializeField]
     private BoulderTrigger trigger;
     [SerializeField]
     private float damage = 5;
@@ -17,6 +19,7 @@ public class Boulder : MonoBehaviour
     private void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        pc = FindObjectOfType<PlayerControllerCam>();
         trigger = FindObjectOfType<BoulderTrigger>();
 
         boulderActive = true;
@@ -35,6 +38,8 @@ public class Boulder : MonoBehaviour
             Debug.Log("Player touched the boulder");
             playerController.Armour = 0;
             playerController.TakeDamage(damage);
+            pc.Armour = 0;
+            pc.TakeDamage(damage);
             trigger.floor.SetActive(true);
             transform.position = startPos.position;
         }

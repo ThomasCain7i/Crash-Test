@@ -64,7 +64,7 @@ public class HBSCRIPT : MonoBehaviour
             player.transform.rotation = ridePoint.transform.rotation;
             multiplier = 3f;
             moveForce = 6000f;
-            turnTorque = 500f;
+            turnTorque = 700f;
             playerScript.moveSpeed = 0;
             playerScript.rotationSpeed = 0;
 

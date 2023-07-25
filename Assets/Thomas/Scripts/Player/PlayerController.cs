@@ -80,6 +80,12 @@ public class PlayerController : MonoBehaviour
     private SoundFootsteps soundFootsteps;
     private CameraFollow cameraFollow;
 
+
+    //SWIMMING BOOLS - JUAN
+
+    private bool isFloating;
+    private bool isSwimming;
+
     void Start()
     {
         // Get the Rigidbody and animator components of the player
@@ -101,6 +107,11 @@ public class PlayerController : MonoBehaviour
         // Get ref to gameManager and load settings
         gameManager = FindObjectOfType<GameManager>();
         gameManager.LoadSettings();
+
+        //SWIMMING BOOLS - JUAN
+
+        isFloating = false;
+        isSwimming = false;
     }
 
     void Update()
@@ -143,6 +154,27 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("IsDoubleJumping", true);
                 }
             }
+
+            //SWIMMING JUAN
+
+
+            if (isFloating == true)
+            {
+                if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
+                {
+                    Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+                    animator.SetBool("IsSwimming", true);
+                    isSwimming = true;
+
+                }
+                else
+                {
+                    isSwimming = false;
+                    animator.SetBool("IsSwimming", false);
+                }
+            }
+
 
             if (attackScript.snow == 1 && Input.GetButtonDown("Jump") && attackScript.platform == false && thirdJump == true)
             {
@@ -288,6 +320,21 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpsRemaining += 1;
             attackScript.smashing = false;
+        }
+        //SWIMMING - JUAN
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            GetComponent<CapsuleCollider>().direction = 2;
+            isFloating = true;
+
+            animator.SetBool("IsFloating", true);
+        }
+        else
+        {
+            GetComponent<CapsuleCollider>().direction = 1;
+            isFloating = false;
+            animator.SetBool("IsFloating", false);
+            animator.SetBool("IsSwimming", false);
         }
     }
 
