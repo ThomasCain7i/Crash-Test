@@ -310,7 +310,7 @@ Rigidbody:
   m_GameObject: {fileID: 1537089943527733119}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -381,7 +381,7 @@ MonoBehaviour:
   distanceFromPlayer: 1.5
   countdownTimer: 0
   countdownBool: 0
-  sightRange: 5
+  sightRange: 10
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
