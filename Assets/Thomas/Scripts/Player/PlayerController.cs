@@ -360,10 +360,12 @@ public class PlayerController : MonoBehaviour
     // Respawns the player at the designated respawn point
     public void Respawn()
     {
-        soundPlayer.PlayRespawn();
+        
         transform.position = respawnPoint;
+        soundPlayer.PlayRespawn();
         currentHealth = maxHealth;
         lives -= 1;
+
     }
 
     // SETTING THE SPAWN POINT METHOD
