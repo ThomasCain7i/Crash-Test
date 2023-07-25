@@ -9582,13 +9582,33 @@ PrefabInstance:
       value: -13.8
       objectReference: {fileID: 0}
     - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.7540934
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.7540934
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.7540934
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21355426
+      value: 0.21355
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.345001
       objectReference: {fileID: 0}
     - target: {fileID: 5711979237346934673, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.236149
+      value: 25.236
       objectReference: {fileID: 0}
+    - target: {fileID: 5711979237346934675, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0782a8a05b220344fab35eba86011ed4, type: 2}
     - target: {fileID: 5711979237403359049, guid: 59f52194be0b577449536a3f2290d7dc, type: 3}
       propertyPath: m_Name
       value: Boulder Trap
@@ -10909,12 +10929,12 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 50
-    m_AccelTime: 0.1
+    m_MaxSpeed: 60
+    m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
-    m_InvertInput: 1
+    m_InvertInput: 0
     m_MinValue: -180
     m_MaxValue: 180
     m_Wrap: 1
