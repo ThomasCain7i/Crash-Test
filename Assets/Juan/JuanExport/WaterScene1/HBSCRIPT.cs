@@ -60,8 +60,12 @@ public class HBSCRIPT : MonoBehaviour
         {
             Debug.Log("Riding");
             playerAnimator.SetBool("IsRiding", true);
+
             player.transform.position = ridePoint.transform.position;
             player.transform.rotation = ridePoint.transform.rotation;
+
+
+
             multiplier = 3f;
             moveForce = 6000f;
             turnTorque = 700f;
