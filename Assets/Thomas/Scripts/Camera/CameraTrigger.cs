@@ -54,7 +54,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!mazeIN && !!mazeOUT)
+        if(!mazeIN && !mazeOUT)
         {
             countDownStart = true;
         }
