@@ -8,6 +8,11 @@ public class DistanceScript : MonoBehaviour
     float stopDist = 100f;
 
     // Update is called once per frame
+    private void Start()
+    {
+        enabled = true; 
+    }
+
     void Update()
     {
         float distance = CalcDistBetweenVector3(player.transform.position, transform.position);
