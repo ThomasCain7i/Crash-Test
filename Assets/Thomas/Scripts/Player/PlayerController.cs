@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
     private Rigidbody rb;  // Reference to the Rigidbody component of the player
-    private bool isGrounded;  // Indicates if the player is currently grounded
+    public bool isGrounded;  // Indicates if the player is currently grounded
 
     // Powerups
     [Header("Power Ups")]
@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
 
     //SWIMMING BOOLS - JUAN
 
-    private bool isFloating;
-    private bool isSwimming;
+    public bool isFloating;
+    public bool isSwimming;
 
     void Start()
     {

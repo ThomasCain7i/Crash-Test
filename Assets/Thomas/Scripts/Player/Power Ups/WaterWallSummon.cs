@@ -11,6 +11,8 @@ public class WaterWallSummon : MonoBehaviour
     [SerializeField]
     private AttackScript attackScript;
 
+    public PlayerController player; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +26,14 @@ public class WaterWallSummon : MonoBehaviour
         {
             wallCooldown -= Time.deltaTime;
         }
-
-        if(attackScript.water == 1 && wallCooldown <= 0 && Input.GetKeyDown(KeyCode.T))
+        if (player.isGrounded)
         {
-            Instantiate(waterWall, wallTransform.position, wallTransform.rotation);
-            wallCooldown = wallCooldownNormal;
+            if (attackScript.water == 1 && wallCooldown <= 0 && Input.GetKeyDown(KeyCode.T))
+            {
+                Instantiate(waterWall, wallTransform.position, wallTransform.rotation);
+                wallCooldown = wallCooldownNormal;
+            }
         }
+        
     }
 }
