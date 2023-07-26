@@ -68,6 +68,10 @@ public class PlayerControllerCam : MonoBehaviour
     // Respawn point
     [Header("Respawn Point")]
     public Vector3 respawnPoint;  // Position where the player respawns after dying
+    [SerializeField]
+    private Transform SecondCheckpoint;
+    [SerializeField]
+    private Transform startCheckpoint;
 
     // Animation
     [Header("Animator")]
