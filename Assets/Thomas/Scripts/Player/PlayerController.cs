@@ -292,6 +292,8 @@ public class PlayerController : MonoBehaviour
                 cameraFollow.oneD = true;
                 cameraFollow.twoD = false;
                 cameraFollow.threeD = false;
+                cameraFollow.fourD = false;
+                cameraFollow.maze = false;
                 soundPlayer.PlayDeath();
                 // Respawn the player
                 Respawn();
