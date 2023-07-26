@@ -842,7 +842,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
             Vector3 point = new Vector3(6.5f,0f,18.6f); // Based on position of rotating platform - Rio
             Vector3 axis =  new Vector3(0,-1f,0);
-            transform.RotateAround(point, axis, Time.deltaTime * rotatingObject.rotateSpeed);
+            transform.RotateAround(point, axis, Time.deltaTime * 40);
         }
 
        
@@ -866,6 +866,30 @@ public class PlayerControllerRIO : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "EnergyBeam")
+        {
+             // Player takes damage - Rio
+            if (hitTimer >= 3 && starPowerup == false)
+            {
+                TakeDamage(1);
+                hitTimer = 0;
+                damagedBarrier.SetActive(false);
+                starGlow.SetActive(false);
+            }
+            // Player is invincible after hit - Rio
+            if (hitTimer <= 3)
+            {
+                TakeDamage(0);
+                damagedBarrier.SetActive(true);
+            }
+
+            if (starPowerup == true)
+            {
+                TakeDamage(0);
+                starGlow.SetActive(true);
+            }
+        }
+
+         if (collider.gameObject.tag == "EnemyProjectile")
         {
              // Player takes damage - Rio
             if (hitTimer >= 3 && starPowerup == false)
