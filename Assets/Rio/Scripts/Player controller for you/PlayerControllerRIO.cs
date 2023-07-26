@@ -178,7 +178,7 @@ public class PlayerControllerRIO : MonoBehaviour
         // Turn the player depending on how they move - Thomas
         if (moveHorizontal < 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+            
             isFacingLeft = true;
             isFacingRight = false;
             isFacingBackwards = false;
@@ -186,7 +186,7 @@ public class PlayerControllerRIO : MonoBehaviour
         }
         else if (moveHorizontal > 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            
             isFacingRight = true;
             isFacingLeft = false;
             isFacingBackwards = false;
@@ -194,7 +194,7 @@ public class PlayerControllerRIO : MonoBehaviour
         }
         else if (moveVertical < 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+           
             isFacingBackwards = true;
             isFacingRight = false;
             isFacingLeft = false;
@@ -202,7 +202,7 @@ public class PlayerControllerRIO : MonoBehaviour
         }
         else if (moveVertical > 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            
             isFacingForwards = true;
             isFacingRight = false;
             isFacingBackwards = false;
@@ -626,7 +626,7 @@ public class PlayerControllerRIO : MonoBehaviour
         {
             //Player moves along the platform - Rio
 
-            if (movingPlatform.moveTimer <= 7.0f)
+            if (movingPlatform.moveTimer <= 8.0f)
             {
                 // Player moves right changes from direction they are facing - Rio
 
@@ -648,7 +648,7 @@ public class PlayerControllerRIO : MonoBehaviour
                 }
 
             }
-            else if (movingPlatform.moveTimer <= 14.0f)
+            else if (movingPlatform.moveTimer <= 16.0f)
             {
                 // Player moves left changes from direction they are facing - Rio
 
@@ -676,7 +676,7 @@ public class PlayerControllerRIO : MonoBehaviour
         else if (collision.gameObject.tag == "MovingPlatformFB")
         {
 
-            if (movingPlatform.moveTimer <= 7.0f)
+            if (movingPlatform.moveTimer <= 8.0f)
             {
                 // Player moves forward changes from direction they are facing - Rio
 
@@ -699,7 +699,7 @@ public class PlayerControllerRIO : MonoBehaviour
 
 
             }
-            else if (movingPlatform.moveTimer <= 14.0f)
+            else if (movingPlatform.moveTimer <= 16.0f)
             {
                 // Player moves backwards changes from direction they are facing - Rio
 
