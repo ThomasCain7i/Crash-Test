@@ -263,10 +263,15 @@ public class PlayerControllerCam : MonoBehaviour
     {
         if (Armour < 1)
         {
+            Debug.Log("0");
             currentHealth -= amount;
+            Debug.Log("1");
             soundPlayer.PlayDamaged();
+            Debug.Log("2");
             uiManager.ArmourUIoff();
+            Debug.Log("3");
             uiManager.HealthUI();
+            Debug.Log("4");
         }
         else
         {
@@ -324,10 +329,10 @@ public class PlayerControllerCam : MonoBehaviour
 
     // TAKING DAMAGE METHOD
     // Decreases the player's health by the specified damage amount
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-    }
+    //public void TakeDamage(int damage)
+    //{
+    //    currentHealth -= damage;
+    //}
 
     // RESPAWNING METHOD
     // Respawns the player at the designated respawn point

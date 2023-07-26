@@ -274,10 +274,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Armour < 1)
         {
+            Debug.Log("0");
             currentHealth -= amount;
+            Debug.Log("1");
             soundPlayer.PlayDamaged();
+            Debug.Log("2");
             uiManager.ArmourUIoff();
+            Debug.Log("3");
             uiManager.HealthUI();
+            Debug.Log("4");
         }
         else
         {
