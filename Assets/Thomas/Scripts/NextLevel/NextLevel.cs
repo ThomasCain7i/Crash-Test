@@ -11,6 +11,7 @@ public class NextLevel : MonoBehaviour
     public GameManager gameManager;
     private MenuSoundManager menuSoundManager;
     private AttackScript attackScript;
+    private LevelLoader levelLoader;
     public int bonusToCollect = 5;
     public int bonus;
     public int bonusC;
@@ -29,6 +30,7 @@ public class NextLevel : MonoBehaviour
         pc = FindObjectOfType<PlayerControllerCam>();
         gameManager = FindObjectOfType<GameManager>();
         attackScript = FindObjectOfType<AttackScript>();
+        levelLoader = FindObjectOfType<LevelLoader>();
         bonus = playerController.BonusCount;
 
         menuSoundManager = FindObjectOfType<MenuSoundManager>();
@@ -46,57 +48,57 @@ public class NextLevel : MonoBehaviour
         {
             if (hub)
             {
-                SceneManager.LoadScene(1);
+                levelLoader.LoadLevel(1);
             }
 
             if (water)
             {
-                SceneManager.LoadScene(2);
+                levelLoader.LoadLevel(2);
             }
 
             if (waterWin && attackScript.water == 1)
             {
-                SceneManager.LoadScene(3);
+                levelLoader.LoadLevel(3);
             }
 
             if (sand)
             {
-                SceneManager.LoadScene(4);
+                levelLoader.LoadLevel(4);
             }
 
             if (sandWin && attackScript.sand == 1)
             {
-                SceneManager.LoadScene(5);
+                levelLoader.LoadLevel(5);
             }
 
             if (snow)
             {
-                SceneManager.LoadScene(6);
+                levelLoader.LoadLevel(6);
             }
 
             if (snowWin && attackScript.snow == 1)
             {
-                SceneManager.LoadScene(7);
+                levelLoader.LoadLevel(7);
             }
 
             if (fire)
             {
-                SceneManager.LoadScene(8);
+                levelLoader.LoadLevel(8);
             }
 
             if (fireWin && attackScript.fire == 1)
             {
-                SceneManager.LoadScene(9);
+                levelLoader.LoadLevel(9);
             }
 
             if (bonusLevel && bonus == bonusToCollect)
             {
-                SceneManager.LoadScene(10);
+                levelLoader.LoadLevel(10);
             }
 
             if (bonusLevel && bonusC == bonusToCollect)
             {
-                SceneManager.LoadScene(10);
+                levelLoader.LoadLevel(10);
             }
         }
     }
