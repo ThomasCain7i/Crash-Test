@@ -9,7 +9,7 @@ public class NextLevel : MonoBehaviour
     public PlayerController playerController;
     public PlayerControllerCam pc;
     public GameManager gameManager;
-    private SoundManager soundManager;
+    private MenuSoundManager menuSoundManager;
     private AttackScript attackScript;
     public int bonusToCollect = 5;
     public int bonus;
@@ -31,14 +31,15 @@ public class NextLevel : MonoBehaviour
         attackScript = FindObjectOfType<AttackScript>();
         bonus = playerController.BonusCount;
 
-        soundManager = FindObjectOfType<SoundManager>();
+        menuSoundManager = FindObjectOfType<MenuSoundManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        soundManager.PlayLevelComplete();
+        menuSoundManager.PlayLevelComplete();
         gameManager.SaveCollectables();
         gameManager.SaveElements();
+
         Debug.Log("Saved");
 
         if (other.tag == "Player")

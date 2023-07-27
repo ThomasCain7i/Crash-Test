@@ -12,7 +12,7 @@ public class UIWin : MonoBehaviour
 
     public void ContinueGame()
     {
-        gameManager.LoadSettings();
+        //gameManager.LoadSettings();
         SceneManager.LoadScene(1);
     }
 }
