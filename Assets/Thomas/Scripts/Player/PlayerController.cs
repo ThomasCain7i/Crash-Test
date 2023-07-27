@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     private bool thirdJump = false;
     [SerializeField]
-    private bool isMoving;
+    private bool isMoving, isBouncing;
+    public float bounceTimer;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -447,6 +448,31 @@ public class PlayerController : MonoBehaviour
         {
             // Player moves down with the platform
             transform.Translate(new Vector3(0, -1 * breakingPlatform.fallSpeed * Time.deltaTime, 0));
+        }
+
+        if (collision.gameObject.CompareTag("BouncePad"))
+        {
+
+            bounceTimer += Time.deltaTime;
+
+            if (bounceTimer >= 0.1)
+            {
+                // Boost the player when they touch the bounce pad for a brief moment - Rio
+                rb.AddForce(Vector3.up * jumpForce * 0.9f, ForceMode.VelocityChange);
+                jumpsRemaining = maxJumps - 1;
+            }
+
+            if (bounceTimer >= 0.05)
+            {
+                isGrounded = false;
+                isBouncing = true;
+            }
+
+            //Reset jumps and set grounded true - Thomas
+
+            isGrounded = true;
+            isBouncing = false;
+
         }
     }
 }

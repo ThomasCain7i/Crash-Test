@@ -23,7 +23,7 @@ public class RotatingObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -61,6 +61,15 @@ public class RotatingObject : MonoBehaviour
       {
          transform.Rotate (new Vector3 (0, 0, -1* rotateSpeed) * Time.deltaTime);
       }
-
    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        other.transform.SetParent(transform);
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        other.transform.SetParent(null);
+    }
 }

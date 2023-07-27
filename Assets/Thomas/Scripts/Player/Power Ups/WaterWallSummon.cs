@@ -26,6 +26,7 @@ public class WaterWallSummon : MonoBehaviour
         {
             wallCooldown -= Time.deltaTime;
         }
+
         if (player.isGrounded)
         {
             if (attackScript.water == 1 && wallCooldown <= 0 && Input.GetKeyDown(KeyCode.T))

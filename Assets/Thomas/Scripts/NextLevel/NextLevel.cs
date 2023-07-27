@@ -30,7 +30,6 @@ public class NextLevel : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         attackScript = FindObjectOfType<AttackScript>();
         bonus = playerController.BonusCount;
-        bonusC = pc.BonusCount;
 
         soundManager = FindObjectOfType<SoundManager>();
     }
@@ -49,42 +48,42 @@ public class NextLevel : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
 
-            if (water && attackScript.water == 1)
+            if (water)
             {
                 SceneManager.LoadScene(2);
             }
 
-            if (waterWin)
+            if (waterWin && attackScript.water == 1)
             {
                 SceneManager.LoadScene(3);
             }
 
-            if (sand && attackScript.sand == 1)
+            if (sand)
             {
                 SceneManager.LoadScene(4);
             }
 
-            if (sandWin)
+            if (sandWin && attackScript.sand == 1)
             {
                 SceneManager.LoadScene(5);
             }
 
-            if (snow && attackScript.snow == 1)
+            if (snow)
             {
                 SceneManager.LoadScene(6);
             }
 
-            if (snowWin)
+            if (snowWin && attackScript.snow == 1)
             {
                 SceneManager.LoadScene(7);
             }
 
-            if (fire && attackScript.fire == 1)
+            if (fire)
             {
                 SceneManager.LoadScene(8);
             }
 
-            if (fireWin)
+            if (fireWin && attackScript.fire == 1)
             {
                 SceneManager.LoadScene(9);
             }
