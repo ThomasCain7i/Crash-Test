@@ -7,6 +7,7 @@ public class NextLevel : MonoBehaviour
 {
     [Header("References")]
     public PlayerController playerController;
+    public PlayerControllerCam pc;
     public GameManager gameManager;
     private SoundManager soundManager;
     private AttackScript attackScript;
@@ -24,9 +25,12 @@ public class NextLevel : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        pc = FindObjectOfType<PlayerControllerCam>();
         gameManager = FindObjectOfType<GameManager>();
         attackScript = FindObjectOfType<AttackScript>();
         bonus = playerController.BonusCount;
+        bonusC = pc.BonusCount;
+
         soundManager = FindObjectOfType<SoundManager>();
     }
 
@@ -85,6 +89,11 @@ public class NextLevel : MonoBehaviour
             }
 
             if (bonusLevel && bonus == bonusToCollect)
+            {
+                SceneManager.LoadScene(10);
+            }
+
+            if (bonusLevel && bonusC == bonusToCollect)
             {
                 SceneManager.LoadScene(10);
             }
