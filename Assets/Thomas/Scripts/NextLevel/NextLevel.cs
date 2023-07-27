@@ -13,6 +13,7 @@ public class NextLevel : MonoBehaviour
     private AttackScript attackScript;
     public int bonusToCollect = 5;
     public int bonus;
+    public int bonusC;
 
     [Header("Bools")]
     [SerializeField]
