@@ -39,8 +39,8 @@ public class NextLevel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         menuSoundManager.PlayLevelComplete();
-        gameManager.SaveCollectables();
-        gameManager.SaveElements();
+        //gameManager.SaveCollectables();
+        //gameManager.SaveElements();
 
         Debug.Log("Saved");
 
@@ -48,46 +48,55 @@ public class NextLevel : MonoBehaviour
         {
             if (hub)
             {
+                Debug.Log("Hub");
                 levelLoader.LoadLevel(1);
             }
 
             if (water)
             {
+                Debug.Log("Water");
                 levelLoader.LoadLevel(2);
             }
 
             if (waterWin && attackScript.water == 1)
             {
+                Debug.Log("WaterWin");
                 levelLoader.LoadLevel(3);
             }
 
             if (sand)
             {
+                Debug.Log("Sand");
                 levelLoader.LoadLevel(4);
             }
 
             if (sandWin && attackScript.sand == 1)
             {
+                Debug.Log("SandWin");
                 levelLoader.LoadLevel(5);
             }
 
             if (snow)
             {
+                Debug.Log("SnowWin");
                 levelLoader.LoadLevel(6);
             }
 
             if (snowWin && attackScript.snow == 1)
             {
+                Debug.Log("SnowWin");
                 levelLoader.LoadLevel(7);
             }
 
             if (fire)
             {
+                Debug.Log("Fire");
                 levelLoader.LoadLevel(8);
             }
 
             if (fireWin && attackScript.fire == 1)
             {
+                Debug.Log("FireWin");
                 levelLoader.LoadLevel(9);
             }
 

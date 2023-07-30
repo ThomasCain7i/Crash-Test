@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 3;  // Maximum health the player can have
     public float currentHealth = 3;  // Current health of the player
     public int Armour = 0;
+    [SerializeField]
+    private bool isAlive = true;
 
     // Attacks
     [Header("Attacks")]
@@ -66,6 +68,11 @@ public class PlayerController : MonoBehaviour
     // Respawn point
     [Header("Respawn Point")]
     public Vector3 respawnPoint;  // Position where the player respawns after dying
+
+    //UI
+    [Header("UI")]
+    [SerializeField]
+    private GameObject deathScreen;
 
     // Animation
     [Header("Animator")]
@@ -250,7 +257,7 @@ public class PlayerController : MonoBehaviour
             isFrozen = false;
         }
 
-        if (timeSlowTimer < 0)
+        if (timeSlowTimer < 0 && isAlive)
         {
             Time.timeScale = 1f;
         }
@@ -275,15 +282,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Armour < 1)
         {
-            Debug.Log("0");
             currentHealth -= amount;
-            Debug.Log("1");
             soundPlayer.PlayDamaged();
-            Debug.Log("2");
             uiManager.ArmourUIoff();
-            Debug.Log("3");
             uiManager.HealthUI();
-            Debug.Log("4");
         }
         else
         {
@@ -307,6 +309,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            isAlive = false;
+            Time.timeScale = 0f;
+            deathScreen.SetActive(true);
             // End game
             Debug.Log("Game over - Lives depleted");
         }
