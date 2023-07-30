@@ -32,6 +32,12 @@ public class RangedEnemy : MonoBehaviour
     public float attackRange; // Range for attacking the player
     public bool playerInSightRange, playerInAttackRange; // Flags indicating if the player is within sight range and attack range
 
+    public Animator animator;
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); 
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform; // Find and assign the player's transform
@@ -55,49 +61,72 @@ public class RangedEnemy : MonoBehaviour
 
     private void Patroling()
     {
+        
+
         if (patrolPoints.Length == 0)
         {
             Debug.LogWarning("No patrol points assigned!"); // Log a warning if no patrol points are assigned
             return;
+            //ANIMATIONS
+            
         }
+
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             // Reached the current patrol point, move to the next one
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length; // Increment the patrol point index
+
             agent.SetDestination(patrolPoints[currentPatrolIndex].position); // Set the destination to the next patrol point
+            
+            
+
         }
     }
 
     private void ChasePlayer()
     {
         agent.SetDestination(player.position); // Set the destination to the player's position
+        animator.SetBool("IsAttacking", true);
+
     }
 
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position); // Set the destination to the current position of the enemy
-
         transform.LookAt(player); // Make the enemy face the player
+        
+
+
 
         if (!alreadyAttacked)
         {
             ///Attack code here
             // Instantiate the projectile and get its Rigidbody component
+
+            
+
             Rigidbody rb = Instantiate(projectile, rangedAttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse); // Add force to the projectile in the forward direction
             rb.AddForce(transform.up * 4f, ForceMode.Impulse); // Add upward force to the projectile for trajectory
+
+            
             ///End of attack code
+
 
             alreadyAttacked = true; // Set the alreadyAttacked flag to true
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Call ResetAttack method after the specified time
+            animator.SetBool("IsAttacking", true);
+
         }
     }
 
     private void ResetAttack()
     {
         alreadyAttacked = false; // Reset the alreadyAttacked flag
+        
+
     }
 
     private void OnDrawGizmosSelected()
