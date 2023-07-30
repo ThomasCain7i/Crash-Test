@@ -3,6 +3,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public float damage = 1;
+    public float timer = 5;
     public PlayerController playerController;
     private AudioSource audioSource;
 
@@ -13,6 +14,16 @@ public class Arrow : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         audioSource.pitch = Random.Range(0.8f, 1.2f);
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+
+        if (timer < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
