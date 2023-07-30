@@ -78,9 +78,6 @@ public class RangedEnemy : MonoBehaviour
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length; // Increment the patrol point index
 
             agent.SetDestination(patrolPoints[currentPatrolIndex].position); // Set the destination to the next patrol point
-            
-            
-
         }
     }
 
