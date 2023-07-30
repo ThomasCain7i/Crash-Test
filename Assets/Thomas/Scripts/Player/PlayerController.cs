@@ -307,13 +307,17 @@ public class PlayerController : MonoBehaviour
                 Respawn();
             }
         }
-        else
+
+        if (lives == 0)
         {
-            isAlive = false;
-            Time.timeScale = 0f;
-            deathScreen.SetActive(true);
-            // End game
-            Debug.Log("Game over - Lives depleted");
+            if (currentHealth <= 0)
+            {
+                isAlive = false;
+                Time.timeScale = 0f;
+                deathScreen.SetActive(true);
+                // End game
+                Debug.Log("Game over - Lives depleted");
+            }
         }
     }
 
