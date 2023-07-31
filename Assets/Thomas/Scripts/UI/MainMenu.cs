@@ -12,16 +12,15 @@ public class MainMenu : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
     }
+    public void NewGame()
+    {
+        gameManager.ResetProgress();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 10);
+    }
 
     public void ContinueGame()
     {
         gameManager.LoadSettings();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void NewGame()
-    {
-        gameManager.ResetProgress();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
