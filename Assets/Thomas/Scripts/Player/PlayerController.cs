@@ -461,6 +461,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BouncePad"))
         {
+            soundPlayer.PlayBouncePad();
 
             bounceTimer += Time.deltaTime;
 
