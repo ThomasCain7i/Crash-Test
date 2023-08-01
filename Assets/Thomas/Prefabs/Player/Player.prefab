@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: 0
-  sand: 0
+  sand: 1
   water: 0
   snow: 0
   walkSnow:
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: 0
-  sand: 0
+  sand: 1
   water: 0
   snow: 0
   bouncePad:
@@ -953,23 +953,24 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 3
   Armour: 0
+  isAlive: 1
   barkDamage: 3
   smashDamage: 1
-  punchDamage: 2
-  punchPrefab: {fileID: 347686843956605273, guid: fd30895dc1e6b264994762551786f34f, type: 3}
-  punchPos: {fileID: 609558585}
   BonusCount: 0
   SandBonusCount: 0
   WaterBonusCount: 0
   SnowBonusCount: 0
   FireBonusCount: 0
   moveSpeed: 5
-  normalMoveSpeed: 5
-  jumpForce: 5
+  normalMoveSpeed: 7.5
+  jumpForce: 4.6
   maxJumps: 2
   jumpsRemaining: 0
   rotationSpeed: 980
   isMoving: 0
+  isBouncing: 0
+  bounceTimer: 0
+  isGrounded: 0
   normalSpeedTimer: 10
   normalTripleJumpTimer: 10
   normalTimeSlowTimer: 5
@@ -979,8 +980,11 @@ MonoBehaviour:
   isFrozen: 0
   frozenTimer: 0
   respawnPoint: {x: 0, y: 0, z: 0}
+  deathScreen: {fileID: 0}
   animator: {fileID: 0}
   uiManager: {fileID: 0}
+  isFloating: 0
+  isSwimming: 0
 --- !u!114 &516683852824315882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,7 +1009,7 @@ MonoBehaviour:
   barkSpeed: 7
   coolDownTime: 1
   nextBarkTime: 0
-  smashForce: 10
+  smashForce: 20
   smashPoint: {fileID: 7530351594621568438}
   smashPrefab: {fileID: 164787254633409713, guid: b123bbe8bc0735743b017af88327d6e4, type: 3}
   smashing: 0
@@ -1026,7 +1030,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   attackScript: {fileID: 0}
   dashTime: 0.5
-  dashSpeed: 15
+  dashSpeed: 10
   dashCooldown: 0
   dashCooldownNormal: 3
   dashParticle: {fileID: 7141153890326628683, guid: 2d98bdcdd77ca66438e1551c38a5b366, type: 3}

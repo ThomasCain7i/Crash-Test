@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject optionsMenu, mainMenu, playMenu, creditsMenu;
+    public GameObject optionsMenu, mainMenu, playMenu, creditsMenu, assetsMenu;
     public GameManager gameManager;
 
     public void Start()
@@ -56,6 +56,18 @@ public class MainMenu : MonoBehaviour
         optionsMenu.SetActive(false);
         creditsMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void OpenAssets()
+    {
+        assetsMenu.SetActive(true);
+        creditsMenu.SetActive(false);
+    }
+
+    public void CloseAssets()
+    {
+        assetsMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
 
     public void QuitGame()

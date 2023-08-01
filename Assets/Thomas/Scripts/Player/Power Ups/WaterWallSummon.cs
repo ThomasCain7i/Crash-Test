@@ -11,12 +11,13 @@ public class WaterWallSummon : MonoBehaviour
     [SerializeField]
     private AttackScript attackScript;
 
-    public PlayerController playerController; 
+    private PlayerController playerController; 
 
     // Start is called before the first frame update
     void Start()
     {
         attackScript = GetComponent<AttackScript>();
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

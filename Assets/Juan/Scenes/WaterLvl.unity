@@ -3341,7 +3341,7 @@ PrefabInstance:
       objectReference: {fileID: 1463765407}
     - target: {fileID: 566443620, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: wallCooldownNormal
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 958922439, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_RootOrder
@@ -11280,6 +11280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Element (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 578304660854697815, guid: fa63ee9f589a2fd40944326f3c1d710b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: facfe28c04e5e994ca4d3ae9e7ed13e0, type: 2}
     - target: {fileID: 2848112696539796115, guid: fa63ee9f589a2fd40944326f3c1d710b, type: 3}
       propertyPath: m_RootOrder
       value: 2

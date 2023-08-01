@@ -14,11 +14,6 @@ public class PlayerController : MonoBehaviour
     [Header("Attacks")]
     public float barkDamage = 3;  // Damage caused by bark attack
     public float smashDamage = 3;  // Damage caused by smash attack
-    public float punchDamage = 3;  // Damage caused by smash attack
-    [SerializeField]
-    private GameObject punchPrefab;  // Speed for punch
-    [SerializeField]
-    private Transform punchPos; // Location of Punch
 
     // Bones
     [Header("Bones")]
@@ -216,19 +211,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsAttacking", false);
                 animator.SetBool("IsBarking", false);
                 isMoving = false;
-            }
-
-            //PUNCH ATTACK - JUAN
-            if (Input.GetMouseButtonDown(0))
-            {
-                soundPlayer.PlayPunch();
-                Debug.Log("PUNCH ATTACK");
-                animator.SetBool("IsAttacking", true);
-                animator.SetTrigger("Attack");
-            }
-            else
-            {
-                animator.SetBool("IsAttacking", false);
             }
         }
         else
