@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     private const string fireBonusKey = "fireBonusCollected";
     private const string snowBonusKey = "snowBonusCollected";
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(transform.gameObject);
-    }
+    //private void Awake()
+    //{
+    //    DontDestroyOnLoad(transform.gameObject);
+    //}
 
     public void Start()
     {
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(waterKey, attackScript.water);
         PlayerPrefs.SetInt(sandKey, attackScript.sand);
         PlayerPrefs.Save();
+
+        Debug.Log("Saved Elements");
     }
 
     public void SaveCollectables()
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(fireBonusKey, playerController.FireBonusCount);
         PlayerPrefs.SetInt(snowBonusKey, playerController.SnowBonusCount);
         PlayerPrefs.Save();
+
+        Debug.Log("Saved Collectables");
     }
 
     public void LoadSettings()
@@ -56,11 +60,15 @@ public class GameManager : MonoBehaviour
         playerController.FireBonusCount = PlayerPrefs.GetInt("fireBonusCollected");
         playerController.WaterBonusCount = PlayerPrefs.GetInt("waterBonusCollected");
         playerController.SnowBonusCount = PlayerPrefs.GetInt("snowBonusCollected");
+
+        Debug.Log("Loaded Settings");
     }
 
     public void ResetProgress()
     {
         // Rester all saves
         PlayerPrefs.DeleteAll();
+
+        Debug.Log("Reset Everything");
     }
 }

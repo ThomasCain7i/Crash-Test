@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private SoundPlayer soundPlayer;
     private SoundFootsteps soundFootsteps;
     private CameraFollow cameraFollow;
+    private PauseMenu pauseMenu;
 
 
     //SWIMMING BOOLS - JUAN
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
         soundPlayer = FindObjectOfType<SoundPlayer>();
         soundFootsteps = FindObjectOfType<SoundFootsteps>();
         cameraFollow = FindObjectOfType<CameraFollow>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
 
         //Health UI
         uiManager.healthText.text = "Health: " + currentHealth.ToString();
@@ -115,6 +117,8 @@ public class PlayerController : MonoBehaviour
         // Get ref to gameManager and load settings
         gameManager = FindObjectOfType<GameManager>();
         gameManager.LoadSettings();
+
+        Debug.Log("Loaded Player Controller");
 
         //SWIMMING BOOLS - JUAN
 
@@ -257,7 +261,7 @@ public class PlayerController : MonoBehaviour
             isFrozen = false;
         }
 
-        if (timeSlowTimer < 0 && isAlive)
+        if (timeSlowTimer < 0 && isAlive && !pauseMenu.isPaused)
         {
             Time.timeScale = 1f;
         }

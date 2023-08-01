@@ -39,8 +39,8 @@ public class NextLevel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         menuSoundManager.PlayLevelComplete();
-        //gameManager.SaveCollectables();
-        //gameManager.SaveElements();
+        gameManager.SaveCollectables();
+        gameManager.SaveElements();
 
         Debug.Log("Saved");
 

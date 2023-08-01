@@ -46,6 +46,7 @@ public class AttackScript : MonoBehaviour
     [Header("Animator")]
     public Animator animator;        // The Animator component for controlling animations
     private SoundPlayer soundPlayer;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,10 @@ public class AttackScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();   // Get the Rigidbody component from the character
         animator = GetComponent<Animator>();  // Get the Animator component from the character
         soundPlayer = FindObjectOfType<SoundPlayer>();
+        gameManager = FindObjectOfType<GameManager>();
+
+        gameManager.LoadSettings();
+        Debug.Log("Loaded Attack Script");
     }
 
     // Update is called once per frame
