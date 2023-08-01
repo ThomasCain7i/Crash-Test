@@ -263,14 +263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: 0
-  sand: 1
+  sand: 0
   water: 0
   snow: 0
   bouncePad:
   - {fileID: 8300000, guid: 80ad62cdbe1f9874eb099afd47d052b9, type: 3}
   jump:
   - {fileID: 8300000, guid: da33bac7a0af26f4ebadb62bb9304753, type: 3}
-  land: []
+  land:
+  - {fileID: 8300000, guid: f5269ab7e87ab4f468cf2c7a4bbf6d6a, type: 3}
   swim: []
   splash:
   - {fileID: 8300000, guid: ba0ec7edbed36b444ac1c53ee2f63ef8, type: 3}
@@ -278,24 +279,43 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 33572b11e2e61024c88ec2b4cac6cd73, type: 3}
   death:
   - {fileID: 8300000, guid: 8f275fd49a8207644823239aefbca3d2, type: 3}
-  respawn: []
+  respawn:
+  - {fileID: 8300000, guid: 1ac5d1c30f44fd74c8c88f19879f7198, type: 3}
   healing:
   - {fileID: 8300000, guid: 16090232d2513e845939e6c4189637ce, type: 3}
+  speed:
+  - {fileID: 8300000, guid: fed1957bd16157140a9d4b03859acb4e, type: 3}
+  triple:
+  - {fileID: 8300000, guid: 26a2744acd6f94443ab11cb2d93dab18, type: 3}
+  slowMo:
+  - {fileID: 8300000, guid: 934910d3fb0c230438bd64f2cbefc224, type: 3}
   pickUp:
   - {fileID: 8300000, guid: b041f76092023e64abd2eaf789ef4693, type: 3}
   collectable:
   - {fileID: 8300000, guid: 0fb055d1ac38d844892df6f2f719f691, type: 3}
-  elemental: []
+  fireE:
+  - {fileID: 8300000, guid: 192c917c4b6c7e7439c65882db91013c, type: 3}
+  waterE:
+  - {fileID: 8300000, guid: 14ff92d3be1b6b946b8e11b298469418, type: 3}
+  snowE:
+  - {fileID: 8300000, guid: 3b7d6c1d7b93ba7409c9d2ba3de1ad9d, type: 3}
+  sandE:
+  - {fileID: 8300000, guid: 7ccc8aa81e7ce8944bc67751ce94e733, type: 3}
   smashAttack:
-  - {fileID: 8300000, guid: 02190fb3bcbca01469696390e8bd26c6, type: 3}
+  - {fileID: 8300000, guid: ba8873711e379da40bb59553c9eee5a6, type: 3}
   punchAttack:
   - {fileID: 8300000, guid: 6ee0344cae5e7c344860a5c64da41bd3, type: 3}
   rangedAttack: []
   bouncePadV: 1
   healingV: 1
   pickUpV: 1
-  collectableV: 1
-  elementalV: 1
+  speedV: 1
+  tripleV: 1
+  slowMoV: 1
+  fireV: 1
+  waterV: 1
+  sandV: 1
+  snowV: 1
   jumpV: 1
   walkV: 1
   swimV: 1
@@ -305,6 +325,7 @@ MonoBehaviour:
   smashAttakV: 1
   punchAttackV: 1
   rangedAttackV: 1
+  landV: 1
 --- !u!82 &1604682590
 AudioSource:
   m_ObjectHideFlags: 0
@@ -955,6 +976,7 @@ MonoBehaviour:
   Armour: 0
   isAlive: 1
   barkDamage: 3
+  fireBarkDamage: 3
   smashDamage: 1
   BonusCount: 0
   SandBonusCount: 0

@@ -10,7 +10,7 @@ public class FireBarkScript : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();  // Find and assign the PlayerController component in the scene
-        damage = playerController.barkDamage;
+        damage = playerController.fireBarkDamage;
     }
 
     private void Awake()

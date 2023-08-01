@@ -22,9 +22,10 @@ public class SoundPlayer : MonoBehaviour
 
     [Header("Power Ups")]
     public AudioClip[] healing;
-    public AudioClip[] pickUp;
-    public AudioClip[] collectable;
-    public AudioClip[] elemental;
+    public AudioClip[] speed;
+    public AudioClip[] triple;
+    public AudioClip[] slowMo;
+    public AudioClip[] fireE, waterE, snowE, sandE;
 
     [Header("Attacks")]
     public AudioClip[] smashAttack;
@@ -35,7 +36,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField]
     private float bouncePadV;
     [SerializeField]
-    private float healingV, pickUpV, collectableV, elementalV, jumpV, walkV, swimV, damagedV, deathV, respawnV, smashAttakV, punchAttackV, rangedAttackV;
+    private float healingV, pickUpV, speedV, tripleV, slowMoV, fireV, waterV, sandV, snowV, jumpV, walkV, swimV, damagedV, deathV, respawnV, smashAttakV, punchAttackV, rangedAttackV, landV;
 
     private AudioSource audioSource;
 
@@ -63,21 +64,30 @@ public class SoundPlayer : MonoBehaviour
         }
     }
 
-    public void PlayPickUp()
+    public void PlaySpeedBoost()
     {
-        if (healing.Length > 0)
+        if (speed.Length > 0)
         {
-            int randomIndex = Random.Range(0, pickUp.Length);
-            audioSource.PlayOneShot(pickUp[randomIndex], pickUpV);
+            int randomIndex = Random.Range(0, speed.Length);
+            audioSource.PlayOneShot(speed[randomIndex], speedV);
         }
     }
 
-    public void PlayCollectable()
+    public void PlayTripleJump()
     {
-        if (healing.Length > 0)
+        if (triple.Length > 0)
         {
-            int randomIndex = Random.Range(0, collectable.Length);
-            audioSource.PlayOneShot(collectable[randomIndex], collectableV);
+            int randomIndex = Random.Range(0, triple.Length);
+            audioSource.PlayOneShot(triple[randomIndex], tripleV);
+        }
+    }
+
+    public void PlaySlowMo()
+    {
+        if (slowMo.Length > 0)
+        {
+            int randomIndex = Random.Range(0, slowMo.Length);
+            audioSource.PlayOneShot(slowMo[randomIndex], slowMoV);
         }
     }
 
@@ -152,5 +162,41 @@ public class SoundPlayer : MonoBehaviour
             int randomIndex = Random.Range(0, rangedAttack.Length);
             audioSource.PlayOneShot(rangedAttack[randomIndex], rangedAttackV);
         }
+    }
+
+    public void PlayLand()
+    {
+        if (land.Length > 0)
+        {
+            int randomIndex = Random.Range(0, land.Length);
+            audioSource.PlayOneShot(land[randomIndex], landV);
+        }
+    }
+
+    public void PlayElemental()
+    {
+            if (fire)
+            {
+                int randomIndex = Random.Range(0, fireE.Length);
+                audioSource.PlayOneShot(fireE[randomIndex], fireV);
+            }
+
+            if (snow)
+            {
+                int randomIndex = Random.Range(0, snowE.Length);
+                audioSource.PlayOneShot(snowE[randomIndex], snowV);
+            }
+
+            if (water)
+            {
+                int randomIndex = Random.Range(0, waterE.Length);
+                audioSource.PlayOneShot(waterE[randomIndex], waterV);
+            }
+
+            if (sand)
+            {
+                int randomIndex = Random.Range(0, sandE.Length);
+                audioSource.PlayOneShot(sandE[randomIndex], sandV);
+            }
     }
 }

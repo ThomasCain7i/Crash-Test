@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     // Attacks
     [Header("Attacks")]
     public float barkDamage = 3;  // Damage caused by bark attack
+    public float fireBarkDamage = 3;  // Damage caused by bark attack
     public float smashDamage = 3;  // Damage caused by smash attack
 
     // Bones
@@ -312,7 +313,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // Reset jumps and set grounded to true
+            soundPlayer.PlayLand();
+            Debug.Log("Play Land");
+
             isGrounded = true;
             jumpsRemaining = maxJumps;
             attackScript.platform = false;
@@ -320,6 +323,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("SnowGround"))
         {
+            if (!attackScript.smashing)
+            {
+                soundPlayer.PlayLand();
+            }
+
             isGrounded = true;
             jumpsRemaining += 1;
             attackScript.smashing = false;
@@ -383,22 +391,22 @@ public class PlayerController : MonoBehaviour
     public void SandCollectedBonus()
     {
         SandBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void WaterCollectedBonus()
     {
         WaterBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void FireCollectedBonus()
     {
         FireBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void SnowCollectedBonus()
     {
         SnowBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
 
     // POWER UPS
@@ -406,7 +414,7 @@ public class PlayerController : MonoBehaviour
     public void TripleJumpPowerUp()
     {
         uiManager.TripleJumpUI();
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlayTripleJump();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -415,7 +423,7 @@ public class PlayerController : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlaySpeedBoost();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed += 2;
@@ -424,7 +432,7 @@ public class PlayerController : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlaySlowMo();
         uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;

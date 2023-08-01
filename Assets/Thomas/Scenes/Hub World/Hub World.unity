@@ -3164,6 +3164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseMenuUI: {fileID: 1584069440}
+  areYouSureUI: {fileID: 0}
+  Main: {fileID: 0}
   levelLoader: {fileID: 297076202}
 --- !u!1001 &1534737077
 PrefabInstance:
@@ -4115,6 +4117,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: landV
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: land.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: land.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f5269ab7e87ab4f468cf2c7a4bbf6d6a, type: 3}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: respawn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: respawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ac5d1c30f44fd74c8c88f19879f7198, type: 3}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: smashAttack.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: rangedAttack.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: smashAttack.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8873711e379da40bb59553c9eee5a6, type: 3}
+    - target: {fileID: 1604682591, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: rangedAttack.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 52fc4b1e11b752b45b166ac153b2564f, type: 3}
     - target: {fileID: 45344164770900304, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_RootOrder
       value: 3

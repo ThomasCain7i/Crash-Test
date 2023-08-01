@@ -356,22 +356,22 @@ public class PlayerControllerCam : MonoBehaviour
     public void SandCollectedBonus()
     {
         SandBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void WaterCollectedBonus()
     {
         WaterBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void FireCollectedBonus()
     {
         FireBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
     public void SnowCollectedBonus()
     {
         SnowBonusCount += 1;
-        soundPlayer.PlayCollectable();
+        soundPlayer.PlayElemental();
     }
 
     // POWER UPS
@@ -379,7 +379,7 @@ public class PlayerControllerCam : MonoBehaviour
     public void TripleJumpPowerUp()
     {
         uiManager.TripleJumpUI();
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlayTripleJump();
         tripleJumpTimer = normalTripleJumpTimer;
         maxJumps = 3;
         jumpsRemaining = maxJumps;
@@ -388,7 +388,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Activates the speed power-up for a certain duration
     public void SpeedPowerUp()
     {
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlaySpeedBoost();
         uiManager.SpeedUI();
         speedTimer = normalSpeedTimer;
         moveSpeed = 8f;
@@ -397,7 +397,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Activates the time slow power-up for a certain duration
     public void TimeSlowPowerUp()
     {
-        soundPlayer.PlayPickUp();
+        soundPlayer.PlaySlowMo();
         uiManager.SlowMoUI();
         timeSlowTimer = normalTimeSlowTimer;
         Time.timeScale = timeSlow;
