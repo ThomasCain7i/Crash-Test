@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028359, g: 0.22571385, b: 0.30692258, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10996,7 +10996,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349202892}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0746034a2527f4abec000b5108b514, type: 3}
   m_Name: 
@@ -11016,6 +11016,7 @@ MonoBehaviour:
   SnowBonusCount: 0
   FireBonusCount: 0
   moveSpeed: 5
+  movement: {x: 0, y: 0, z: 0}
   normalMoveSpeed: 5
   jumpForce: 5
   maxJumps: 2
@@ -11023,6 +11024,7 @@ MonoBehaviour:
   rotationSpeed: 0
   isMoving: 0
   cameraTransform: {fileID: 963194228}
+  lava: 0
   normalSpeedTimer: 10
   normalTripleJumpTimer: 10
   normalTimeSlowTimer: 2.5
@@ -11415,7 +11417,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437661805}
-  m_LocalRotation: {x: 0.036731295, y: 0.9709407, z: -0.16383755, w: 0.17053522}
+  m_LocalRotation: {x: 0.03673131, y: 0.9709407, z: -0.16383757, w: 0.17053518}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17053,7 +17055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: uiManager
@@ -17063,6 +17065,10 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 1711932661}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 963194228}
     - target: {fileID: 858719592950674410, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_Name
       value: Player

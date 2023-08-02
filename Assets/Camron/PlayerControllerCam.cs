@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerControllerCam : MonoBehaviour
 {
     // Health / Lives / Armor
@@ -30,6 +30,7 @@ public class PlayerControllerCam : MonoBehaviour
     // Movement
     [Header("Movement")]
     public float moveSpeed = 5f;  // Movement speed of the player
+    public Vector3 movement;
     public float normalMoveSpeed = 5f;  // Normal movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
     public int maxJumps = 2;  // Maximum number of jumps the player can perform
@@ -41,6 +42,7 @@ public class PlayerControllerCam : MonoBehaviour
     private bool isMoving;
     [SerializeField]
     private Transform cameraTransform;
+    public bool lava;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -58,6 +60,7 @@ public class PlayerControllerCam : MonoBehaviour
     private float timeSlowTimer;  // Timer for the Time Slow power-up
     [SerializeField]
     private float walkTimer;  // Timer for the Time Slow power-up
+
 
     // Debuffs
     [Header("Debuffs")]
@@ -89,6 +92,10 @@ public class PlayerControllerCam : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Camron Scene")
+        {
+            lava = true;
+        }
         // Get the Rigidbody and animator components of the player
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -114,10 +121,13 @@ public class PlayerControllerCam : MonoBehaviour
     {
         BonusCount = FireBonusCount + SandBonusCount + WaterBonusCount + SnowBonusCount;
 
+
         // MOVEMENT
         // Input system movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
+
 
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
@@ -128,14 +138,22 @@ public class PlayerControllerCam : MonoBehaviour
         Vector3 forwardRelative = moveVertical * camForward;
         Vector3 rightRelative = moveHorizontal * camRight;
         Vector3 movementDirection = forwardRelative + rightRelative;
-        Vector3 movement = movementDirection * moveSpeed;
 
 
         var targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+        if (lava)
+        {
+           movement = movementDirection * moveSpeed;
+        }
+        else {
+           movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
+        }
+        
 
+  
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
-
+        
         // If the player isn't frozen, allow them to use movement
         if (!isFrozen)
         {

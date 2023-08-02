@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     // Health / Lives / Armor
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     [Header("Movement")]
+    public Vector3 movement;
     public float moveSpeed = 5f;  // Movement speed of the player
     public float normalMoveSpeed = 5f;  // Normal movement speed of the player
     public float jumpForce = 5f;  // Force applied when the player jumps
@@ -37,6 +39,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool isMoving, isBouncing;
     public float bounceTimer;
+    [SerializeField]
+    private Transform cameraTransform;
+    public bool lava;
 
     // Rigidbody / Ground test
     [Header("Rigidbody / Ground Test")]
@@ -93,6 +98,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Camron Scene")
+        {
+            lava = true;
+        }
         // Get the Rigidbody and animator components of the player
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -128,10 +137,33 @@ public class PlayerController : MonoBehaviour
 
         // MOVEMENT
         // Input system movement
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        Vector3 forwardRelative = moveVertical * camForward;
+        Vector3 rightRelative = moveHorizontal * camRight;
+        Vector3 movementDirection = forwardRelative + rightRelative;
+
+
+        var targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+
+        if (lava)
+        {
+            movement = movementDirection * moveSpeed;
+        }
+        else
+        {
+            movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed;
+        }
+        
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
         // If the player isn't frozen, allow them to use movement
@@ -169,6 +201,23 @@ public class PlayerController : MonoBehaviour
             if (isFloating == true)
             {
                 if (movement != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
+                {
+                    Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
+                    animator.SetBool("IsSwimming", true);
+                    isSwimming = true;
+
+                }
+                else
+                {
+                    isSwimming = false;
+                    animator.SetBool("IsSwimming", false);
+                }
+            }
+
+            if ((isFloating == true) && lava)
+            {
+                if (movementDirection != Vector3.zero) //CHARACTER ROTATION //Setting up the rotation for the character
                 {
                     Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); //Specifying how I want the character to rotate
