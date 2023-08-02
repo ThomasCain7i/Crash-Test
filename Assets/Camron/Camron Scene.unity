@@ -11139,11 +11139,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &173979674 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 609558585, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
-  m_PrefabInstance: {fileID: 1963060025}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184082615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23808,26 +23803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43b2d29d074dae44ad7d63c65b3ab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 8
-  speed: 8
-  damage: 3
-  patrolPoints: []
-  explosionPrefab: {fileID: 164787254633409713, guid: aa08cee92fd3160408b691ad13f0e043, type: 3}
-  targetTransform: {fileID: 1382189611}
-  distanceFromPlayer: 1.5
-  countdownTimer: 0
-  countdownBool: 0
-  sightRange: 10
-  attackRange: 3
-  playerInSightRange: 0
-  playerInAttackRange: 0
 --- !u!114 &602459295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25306,7 +25281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc38a258d45a3438a119e8b1956a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!114 &726301980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25642,7 +25616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee95f4a28c4cc49997ddc009e09f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!114 &736293622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26935,8 +26908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0805930217363b44880917c43e709953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  playerController: {fileID: 0}
 --- !u!114 &821700624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29106,7 +29077,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.018186076, y: 0.019376965, z: 0.0003525155, w: 0.99964684}
+  m_LocalRotation: {x: -0.018186076, y: 0.019377038, z: 0.0003525168, w: 0.99964684}
   m_LocalPosition: {x: -110.618774, y: 23.907999, z: 335.12677}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31220,8 +31191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0805930217363b44880917c43e709953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  playerController: {fileID: 0}
 --- !u!114 &1168312881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42187,43 +42156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0746034a2527f4abec000b5108b514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
-  maxHealth: 3
-  currentHealth: 3
-  Armour: 0
-  barkDamage: 3
-  smashDamage: 3
-  punchDamage: 3
-  punchPrefab: {fileID: 347686843956605273, guid: fd30895dc1e6b264994762551786f34f, type: 3}
-  punchPos: {fileID: 173979674}
-  BonusCount: 0
-  SandBonusCount: 0
-  WaterBonusCount: 0
-  SnowBonusCount: 0
-  FireBonusCount: 0
-  moveSpeed: 5
-  movement: {x: 0, y: 0, z: 0}
-  normalMoveSpeed: 5
-  jumpForce: 5
-  maxJumps: 2
-  jumpsRemaining: 2
-  rotationSpeed: 0
-  isMoving: 0
-  cameraTransform: {fileID: 963194228}
-  lava: 0
-  normalSpeedTimer: 10
-  normalTripleJumpTimer: 10
-  normalTimeSlowTimer: 2.5
-  timeSlow: 0.75
-  walkTimer: 0
-  isSlowed: 0
-  isFrozen: 0
-  frozenTimer: 0
-  respawnPoint: {x: -110.27, y: 21.98, z: 344.12}
-  SecondCheckpoint: {fileID: 0}
-  startCheckpoint: {fileID: 0}
-  animator: {fileID: 0}
-  uiManager: {fileID: 0}
 --- !u!4 &1351518775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9197649493743569630, guid: 85b47ad6740adbc44a5b51092fc32712, type: 3}
@@ -42294,7 +42226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6200fc8b879be4b86bcfcba58d4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!114 &1355351948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44098,7 +44029,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491475995}
-  m_LocalRotation: {x: 0.039819006, y: 0.96780866, z: -0.18142489, w: 0.16984084}
+  m_LocalRotation: {x: 0.039819017, y: 0.96780866, z: -0.18142489, w: 0.1698408}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62519,8 +62450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0805930217363b44880917c43e709953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  playerController: {fileID: 0}
 --- !u!114 &1855052632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68512,8 +68441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0805930217363b44880917c43e709953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  playerController: {fileID: 0}
 --- !u!114 &1942646495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79746,7 +79673,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 60
+    m_MaxSpeed: 100
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X

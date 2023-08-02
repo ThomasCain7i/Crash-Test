@@ -7,7 +7,6 @@ public class NextLevel : MonoBehaviour
 {
     [Header("References")]
     public PlayerController playerController;
-    public PlayerControllerCam pc;
     public GameManager gameManager;
     private MenuSoundManager menuSoundManager;
     private AttackScript attackScript;
@@ -27,7 +26,6 @@ public class NextLevel : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        pc = FindObjectOfType<PlayerControllerCam>();
         gameManager = FindObjectOfType<GameManager>();
         attackScript = FindObjectOfType<AttackScript>();
         levelLoader = FindObjectOfType<LevelLoader>();
@@ -105,10 +103,7 @@ public class NextLevel : MonoBehaviour
                 levelLoader.LoadLevel(10);
             }
 
-            if (bonusLevel && bonusC == bonusToCollect)
-            {
-                levelLoader.LoadLevel(10);
-            }
+           
         }
     }
 }
