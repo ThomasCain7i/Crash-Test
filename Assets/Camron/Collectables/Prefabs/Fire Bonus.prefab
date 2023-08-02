@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7675612297486019895}
   - component: {fileID: 4640004594188342978}
   - component: {fileID: 6330682060832507151}
-  - component: {fileID: 7137214391395222902}
   m_Layer: 0
   m_Name: Fire Bonus
   m_TagString: Collectable
@@ -93,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4905717735139982370}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe6a05634dcd8b4c9eaf67c19190154, type: 3}
   m_Name: 
@@ -116,20 +115,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7137214391395222902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905717735139982370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78465a7cd24f1b64da57101ad72634f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  sand: 0
-  snow: 0
-  fire: 0
-  water: 0

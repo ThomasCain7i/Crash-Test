@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 953129260245944913}
   - component: {fileID: 953129260244735487}
   - component: {fileID: 3195199399280862283}
-  - component: {fileID: 1020200508121997638}
   - component: {fileID: 8620645388389508203}
   m_Layer: 0
   m_Name: F Bomb
@@ -93,23 +92,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953129260242775633}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6093519a0a0a464d9ba690d72f81e46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 3
-  damage: 3
---- !u!114 &1020200508121997638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953129260242775633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0cea8586a65494da2dda46f02ed50a, type: 3}
+  m_Script: {fileID: 11500000, guid: c6093519a0a0a464d9ba690d72f81e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 3
