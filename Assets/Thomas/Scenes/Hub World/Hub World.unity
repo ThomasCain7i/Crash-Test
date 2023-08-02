@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028359, g: 0.22571385, b: 0.30692258, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4963,6 +4963,10 @@ PrefabInstance:
       propertyPath: WaterBonusCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 337711466}
     - target: {fileID: 858719592950674410, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: m_Name
       value: Player

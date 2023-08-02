@@ -1840,6 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9f8b27d25a48f48990a5f636a0b17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObject: {fileID: 0}
   gameManager: {fileID: 0}
   levelLoader: {fileID: 0}
   fire: 0
@@ -10084,6 +10085,10 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 1900477773}
+    - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 848377698}
     - target: {fileID: 516683852824315881, guid: 7f8da51c85aa9924ebc099bf3cda54da, type: 3}
       propertyPath: normalMoveSpeed
       value: 8
