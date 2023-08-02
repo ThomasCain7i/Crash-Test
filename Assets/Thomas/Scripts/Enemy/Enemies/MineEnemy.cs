@@ -41,11 +41,14 @@ public class MineEnemy : MonoBehaviour
     {
         // Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is within sight range
+        Debug.Log("playerInSightRange");
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer); // Check if the player is within attack range
+        Debug.Log("playerInAttackRange");
 
         if (playerInAttackRange)
         {
             AttackPlayer(); // If the player is in attack range and sight range, attack the player
+            Debug.Log("Attack Player");
         }
 
         if (countdownTimer > 0)
@@ -55,6 +58,7 @@ public class MineEnemy : MonoBehaviour
             if (countdownTimer < 0)
             {
                 Explode(); // Call the Explode method
+                Debug.Log("do the expolde");
             }
         }
     }
@@ -65,6 +69,7 @@ public class MineEnemy : MonoBehaviour
         if (countdownBool == false)
         {
             Countdown(); // Start the countdown if it is not already active
+            Debug.Log("countdown");
         }
     }
 
@@ -79,6 +84,7 @@ public class MineEnemy : MonoBehaviour
     void Explode()
     {
         Instantiate(explosionPrefab, targetTransform.position, Quaternion.identity); // Spawn the explosion prefab at the target transform's position
+        Debug.Log("expolde");
         Destroy(gameObject); // Destroy the enemy game object
     }
 

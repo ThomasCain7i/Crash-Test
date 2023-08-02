@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class UIWin : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gameObject;
     public GameManager gameManager;
     public LevelLoader levelLoader;
     [SerializeField]
@@ -27,24 +29,28 @@ public class UIWin : MonoBehaviour
         {
             Time.timeScale = 1f;
             levelLoader.LoadLevel(2);
+            gameObject.SetActive(false);
         }
 
         if (sand)
         {
             Time.timeScale = 1f;
             levelLoader.LoadLevel(4);
+            gameObject.SetActive(false);
         }
 
         if (snow)
         {
             Time.timeScale = 1f;
             levelLoader.LoadLevel(6);
+            gameObject.SetActive(false);
         }
 
         if (fire)
         {
             Time.timeScale = 1f;
             levelLoader.LoadLevel(8);
+            gameObject.SetActive(false);
         }
     }
 }

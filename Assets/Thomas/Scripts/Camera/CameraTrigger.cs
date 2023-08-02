@@ -84,8 +84,12 @@ public class CameraTrigger : MonoBehaviour
             cameraFollow.threeD = false;
             cameraFollow.fourD = false;
             cameraFollow.maze = true;
+            Debug.Log("IN");
         }
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
         if (mazeOUT)
         {
             cameraFollow.oneD = true;
@@ -93,6 +97,7 @@ public class CameraTrigger : MonoBehaviour
             cameraFollow.threeD = false;
             cameraFollow.fourD = false;
             cameraFollow.maze = false;
+            Debug.Log("oUT");
         }
     }
 }
