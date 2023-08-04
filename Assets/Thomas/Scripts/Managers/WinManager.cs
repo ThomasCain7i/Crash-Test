@@ -5,7 +5,7 @@ public class WinManager : MonoBehaviour
     [SerializeField]
     private bool sand, fire, water, snow;
 
-    private PlayerController playerController;
+    private winPlayer winPlayer;
 
     [SerializeField]
     private float SceneTimer;
@@ -21,17 +21,18 @@ public class WinManager : MonoBehaviour
 
     private void Start()
     {
-        playerController = FindObjectOfType<PlayerController>(); // Assign the PlayerController component to the playerController variable
-        sandCollectables = playerController.SandBonusCount;
-        fireCollectables = playerController.FireBonusCount;
-        waterCollectables = playerController.WaterBonusCount;
-        snowCollectables = playerController.SnowBonusCount;
+        winPlayer = FindObjectOfType<winPlayer>(); // Assign the PlayerController component to the playerController variable
     }
 
     // Update is called once per frame
     void Update()
     {
         SceneTimer -= Time.deltaTime;
+
+        sandCollectables = winPlayer.sandCount;
+        fireCollectables = winPlayer.fireCount;
+        waterCollectables = winPlayer.waterCount;
+        snowCollectables = winPlayer.snowCount;
 
         if (sand)
         {

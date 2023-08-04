@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 2137436048545300413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 40}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2137436046729317651}
@@ -317,6 +317,7 @@ MonoBehaviour:
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
+  animator: {fileID: 0}
 --- !u!1 &4477193773599073600
 GameObject:
   m_ObjectHideFlags: 0

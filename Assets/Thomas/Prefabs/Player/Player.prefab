@@ -289,10 +289,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 26a2744acd6f94443ab11cb2d93dab18, type: 3}
   slowMo:
   - {fileID: 8300000, guid: 934910d3fb0c230438bd64f2cbefc224, type: 3}
-  pickUp:
-  - {fileID: 8300000, guid: b041f76092023e64abd2eaf789ef4693, type: 3}
-  collectable:
-  - {fileID: 8300000, guid: 0fb055d1ac38d844892df6f2f719f691, type: 3}
   fireE:
   - {fileID: 8300000, guid: 192c917c4b6c7e7439c65882db91013c, type: 3}
   waterE:
@@ -983,6 +979,7 @@ MonoBehaviour:
   WaterBonusCount: 0
   SnowBonusCount: 0
   FireBonusCount: 0
+  movement: {x: 0, y: 0, z: 0}
   moveSpeed: 5
   normalMoveSpeed: 7.5
   jumpForce: 4.6
@@ -992,6 +989,8 @@ MonoBehaviour:
   isMoving: 0
   isBouncing: 0
   bounceTimer: 0
+  cameraTransform: {fileID: 0}
+  lava: 0
   isGrounded: 0
   normalSpeedTimer: 10
   normalTripleJumpTimer: 10
@@ -1023,15 +1022,15 @@ MonoBehaviour:
   snow: 0
   sand: 0
   water: 0
-  firePrefab: {fileID: 3207441660266906599, guid: dab3d0f085201f44d9f61dbfe5412abb, type: 3}
+  firePrefab: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
   snowPrefab: {fileID: 7526792519714545252, guid: 899ad40cae314774c9828b2c5a71c9e7, type: 3}
   waterPrefab: {fileID: 4161812592812162489, guid: 360037990c537f3488dbad1d32379cb6, type: 3}
   barkSpawn: {fileID: 2235626716876732178}
-  barkPrefab: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
+  barkPrefab: {fileID: 2175780060634702022, guid: ea4aec7dea83d8f479ef566a8934d7d2, type: 3}
   barkSpeed: 7
-  coolDownTime: 1
+  coolDownTime: 2
   nextBarkTime: 0
-  smashForce: 20
+  smashForce: 15
   smashPoint: {fileID: 7530351594621568438}
   smashPrefab: {fileID: 164787254633409713, guid: b123bbe8bc0735743b017af88327d6e4, type: 3}
   smashing: 0
@@ -1054,7 +1053,7 @@ MonoBehaviour:
   dashTime: 0.5
   dashSpeed: 10
   dashCooldown: 0
-  dashCooldownNormal: 3
+  dashCooldownNormal: 4
   dashParticle: {fileID: 7141153890326628683, guid: 2d98bdcdd77ca66438e1551c38a5b366, type: 3}
   dashParticlePos: {fileID: 7530351595350274818}
 --- !u!114 &566443620

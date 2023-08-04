@@ -1648,9 +1648,8 @@ GameObject:
   - component: {fileID: 2384263723199884118}
   - component: {fileID: 2384263723199884117}
   - component: {fileID: 2384263723199884200}
-  - component: {fileID: 2384263723199884119}
-  - component: {fileID: 2384263723199884116}
   - component: {fileID: 2755422333115677722}
+  - component: {fileID: 3549557992124040035}
   m_Layer: 3
   m_Name: WinPlayer
   m_TagString: Player
@@ -1728,74 +1727,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2384263723199884119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303375933697023828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7dfeb25438c81847ac88e49143b30dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 3
-  maxHealth: 3
-  currentHealth: 3
-  Armour: 0
-  barkDamage: 3
-  smashDamage: 1
-  punchDamage: 3
-  punchPrefab: {fileID: 347686843956605273, guid: fd30895dc1e6b264994762551786f34f, type: 3}
-  punchPos: {fileID: 2755422333471476871}
-  bonusCount: 0
-  moveSpeed: 5
-  normalMoveSpeed: 5
-  jumpForce: 5
-  maxJumps: 2
-  jumpsRemaining: 0
-  rotationSpeed: 980
-  normalSpeedTimer: 10
-  normalTripleJumpTimer: 10
-  normalTimeSlowTimer: 5
-  timeSlow: 0.75
-  isSlowed: 0
-  isFrozen: 0
-  frozenTimer: 0
-  respawnPoint: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
-  uiManager: {fileID: 0}
---- !u!114 &2384263723199884116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303375933697023828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692aed0ad5e872d4b851c8aa1b61062b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire: 0
-  snow: 1
-  sand: 0
-  water: 1
-  firePrefab: {fileID: 3207441660266906599, guid: dab3d0f085201f44d9f61dbfe5412abb, type: 3}
-  snowPrefab: {fileID: 7526792519714545252, guid: 899ad40cae314774c9828b2c5a71c9e7, type: 3}
-  waterPrefab: {fileID: 0}
-  barkSpawn: {fileID: 4124084102764993452}
-  barkPrefab: {fileID: 3207441660266906599, guid: c334977757c62464d88318e626664f1f, type: 3}
-  barkSpeed: 7
-  coolDownTime: 1
-  nextBarkTime: 0
-  smashForce: 10
-  smashPoint: {fileID: 5673432599593019656}
-  smashPrefab: {fileID: 164787254633409713, guid: b123bbe8bc0735743b017af88327d6e4, type: 3}
-  smashing: 0
-  platform: 0
-  animator: {fileID: 0}
 --- !u!114 &2755422333115677722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,6 +1765,18 @@ MonoBehaviour:
   - {fileID: 823155289499641920}
   - {fileID: 3401046594785014754}
   materials: []
+--- !u!114 &3549557992124040035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303375933697023828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df52435fcbc85749b3ef2edae2ce8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3320168485487918095
 GameObject:
   m_ObjectHideFlags: 0
