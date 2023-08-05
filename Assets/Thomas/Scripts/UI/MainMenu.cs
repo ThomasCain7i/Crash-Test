@@ -7,21 +7,29 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject optionsMenu, mainMenu, playMenu, creditsMenu, assetsMenu;
     public GameManager gameManager;
+    public LevelLoader levelLoader;
 
     public void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        levelLoader = FindObjectOfType<LevelLoader>();
     }
+
+    public void Tutorial()
+    {
+        levelLoader.LoadLevel(11);
+    }
+
     public void NewGame()
     {
         gameManager.ResetProgress();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 10);
+        levelLoader.LoadLevel(10);
     }
 
     public void ContinueGame()
     {
         gameManager.LoadSettings();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        levelLoader.LoadLevel(1);
     }
 
     public void OpenPlayGame()
