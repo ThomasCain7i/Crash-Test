@@ -32,6 +32,12 @@ public class FreezeEnemy : MonoBehaviour
     public float attackRange; // Range for attacking the player
     public bool playerInSightRange, playerInAttackRange; // Flags indicating if the player is within sight range and attack range
 
+    public Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Awake()
     {
         player = GameObject.Find("Player").transform; // Find and assign the player's transform
@@ -66,12 +72,14 @@ public class FreezeEnemy : MonoBehaviour
             // Reached the current patrol point, move to the next one
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length; // Increment the patrol point index
             agent.SetDestination(patrolPoints[currentPatrolIndex].position); // Set the destination to the next patrol point
+            
         }
     }
 
     private void ChasePlayer()
     {
         agent.SetDestination(player.position); // Set the destination to the player's position
+        animator.SetBool("IsAttacking", true);
     }
 
     private void AttackPlayer()
@@ -92,6 +100,8 @@ public class FreezeEnemy : MonoBehaviour
 
             alreadyAttacked = true; // Set the alreadyAttacked flag to true
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Call ResetAttack method after the specified time
+
+            animator.SetBool("IsAttacking", true);
         }
     }
 
