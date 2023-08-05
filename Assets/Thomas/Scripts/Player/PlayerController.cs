@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isFloating;
     public bool isSwimming;
-
+    public bool game2D; 
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Camron Scene")
@@ -129,6 +129,8 @@ public class PlayerController : MonoBehaviour
 
         isFloating = false;
         isSwimming = false;
+
+        
     }
 
     void Update()

@@ -16,8 +16,9 @@ public class TeleportTrial : MonoBehaviour
 
     public Vector3 threeOffset;
     public float smoothSpeed = 0.125f;
-    private bool mode2D; 
+    private bool mode2D;
 
+    public PlayerController playerScript; 
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class TeleportTrial : MonoBehaviour
     {
         if (mode2D == true)
         {
+            
             secondCamera.SetActive(true);
             mainCamera.SetActive(false);
 
