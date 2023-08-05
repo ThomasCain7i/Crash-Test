@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
         // MOVEMENT
         // Input system movement
-
+        
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -196,6 +196,9 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("IsDoubleJumping", true);
                 }
             }
+
+
+            
 
             //SWIMMING JUAN
 
