@@ -21,5 +21,9 @@ public class DeadlyWater : MonoBehaviour
         {
             playerController.TakeDamage(damage);
         }
+        if(other.tag == "hbi")
+        {
+            playerController.currentHealth = 0; 
+        }
     }
 }

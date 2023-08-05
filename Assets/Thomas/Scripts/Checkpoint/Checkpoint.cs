@@ -5,12 +5,15 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public PlayerController playerController; // Reference to the PlayerController script
+    public HBSCRIPT hoverBoard; 
     
 
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>(); // Find and assign the PlayerController component in the scene
+
+        hoverBoard = FindAnyObjectByType<HBSCRIPT>(); 
         
     }
 
@@ -22,5 +25,6 @@ public class Checkpoint : MonoBehaviour
             playerController.SetSpawnPoint(transform.position); // Call the SetSpawnPoint method in PlayerController and pass the current checkpoint's position
             
         }
+        
     }
 }
