@@ -18,7 +18,8 @@ public class HBSCRIPT : MonoBehaviour
     public Transform ridePoint;
 
 
-    public PlayerControllerJuan playerScript;
+
+    public PlayerController playerScript;
     public Animator playerAnimator; 
 
 
@@ -58,19 +59,24 @@ public class HBSCRIPT : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Riding");
-            playerAnimator.SetBool("IsRiding", true);
 
-            player.transform.position = ridePoint.transform.position;
-            player.transform.rotation = ridePoint.transform.rotation;
+            
+                Debug.Log("Riding");
+                playerAnimator.SetBool("IsRiding", true);
+
+                player.transform.position = ridePoint.transform.position;
+                player.transform.rotation = ridePoint.transform.rotation;
 
 
 
-            multiplier = 3f;
-            moveForce = 6000f;
-            turnTorque = 700f;
-            playerScript.moveSpeed = 0;
-            playerScript.rotationSpeed = 0;
+                multiplier = 3f;
+                moveForce = 5000f;
+                turnTorque = 800f;
+                playerScript.moveSpeed = 0;
+            //playerScript.rotationSpeed = 0;
+
+           
+
 
         }
     }
