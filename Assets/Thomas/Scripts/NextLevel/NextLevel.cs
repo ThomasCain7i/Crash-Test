@@ -17,9 +17,9 @@ public class NextLevel : MonoBehaviour
 
     [Header("Bools")]
     [SerializeField]
-    private bool hub;
+    private bool menu;
     [SerializeField]
-    private bool water, waterWin, sand, sandWin, snow, snowWin, fire, fireWin, bonusLevel, bonusWin;
+    private bool hub, water, waterWin, sand, sandWin, snow, snowWin, fire, fireWin, bonusLevel, bonusWin;
 
 
     // Start is called before the first frame update
@@ -44,6 +44,12 @@ public class NextLevel : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            if (menu)
+            {
+                Debug.Log("Menu");
+                levelLoader.LoadLevel(0);
+            }
+
             if (hub)
             {
                 Debug.Log("Hub");
