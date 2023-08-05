@@ -5,6 +5,7 @@ public class UIWin : MonoBehaviour
 {
     [SerializeField]
     private GameObject gameObject;
+
     public GameManager gameManager;
     public LevelLoader levelLoader;
     [SerializeField]
