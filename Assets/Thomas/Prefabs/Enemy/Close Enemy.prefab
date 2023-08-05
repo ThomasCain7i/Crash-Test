@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5849288638532907525}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 32.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5849288639409406123}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
+  tutorialWall: {fileID: 0}
 --- !u!1 &5849288639409406122
 GameObject:
   m_ObjectHideFlags: 0

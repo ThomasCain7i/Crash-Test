@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1537089943527733117}
   - component: {fileID: 1537089943527733062}
   - component: {fileID: 7907864572967092180}
-  - component: {fileID: 4639347637981498332}
+  - component: {fileID: 686988806647584325}
   m_Layer: 0
   m_Name: SelfDestuctEnemy
   m_TagString: Enemy
@@ -353,7 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
---- !u!114 &4639347637981498332
+  tutorialWall: {fileID: 0}
+--- !u!114 &686988806647584325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +363,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537089943527733119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43b2d29d074dae44ad7d63c65b3ab09, type: 3}
+  m_Script: {fileID: 11500000, guid: 54002c7e0e8944245b14c34b4b5cf8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
@@ -373,16 +374,16 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
-  speed: 8
-  damage: 3
+  speed: 7
+  damage: 5
   patrolPoints: []
-  explosionPrefab: {fileID: 164787254633409713, guid: aa08cee92fd3160408b691ad13f0e043, type: 3}
-  targetTransform: {fileID: 3985536844819063866}
-  distanceFromPlayer: 1.5
+  explosionPrefab: {fileID: 0}
+  targetTransform: {fileID: 0}
+  distanceFromPlayer: 0
   countdownTimer: 0
   countdownBool: 0
-  sightRange: 10
-  attackRange: 3
+  sightRange: 0
+  attackRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &3292598852442713776
