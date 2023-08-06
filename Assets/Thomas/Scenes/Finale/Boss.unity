@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e77a29bb2593754185018662914835d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2072898691282662654, guid: e53dbd0a123138647bae4b92fc13cda2, type: 3}
+  projectilePrefabs:
+  - {fileID: 2072898691282662654, guid: e53dbd0a123138647bae4b92fc13cda2, type: 3}
   spawnPoints:
   - {fileID: 444576725}
   - {fileID: 1127261529}
@@ -180,7 +181,7 @@ MonoBehaviour:
   - {fileID: 269460038}
   - {fileID: 1136228765}
   projectileSpeed: 5
-  spawnInterval: 3
+  shootInterval: 3
   boss: {fileID: 1032618817}
   bossPhase4: {fileID: 1326569806}
 --- !u!1 &206880565
@@ -1050,7 +1051,7 @@ MonoBehaviour:
   - {fileID: 269460038}
   - {fileID: 1136228765}
   projectileSpeed: 5
-  spawnInterval: 3
+  shootInterval: 3
 --- !u!1 &623282155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,7 +2726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f64b2b56ef4540ac7084954e8b571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2072898691282662654, guid: ccfc5c73614f70348a4dc5b1c1ed56c0, type: 3}
+  projectilePrefabs:
+  - {fileID: 2072898691282662654, guid: ccfc5c73614f70348a4dc5b1c1ed56c0, type: 3}
   spawnPoints:
   - {fileID: 444576725}
   - {fileID: 1127261529}
@@ -2733,7 +2735,7 @@ MonoBehaviour:
   - {fileID: 269460038}
   - {fileID: 1136228765}
   projectileSpeed: 5
-  spawnInterval: 3
+  shootInterval: 3
   boss: {fileID: 1032618817}
   bossPhase3: {fileID: 72533197}
 --- !u!1 &1311653823
@@ -2856,7 +2858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbf41809f9e249428d581401773c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2072898691282662654, guid: 3ef39ff58f219924d8a875acb86372b0, type: 3}
+  projectilePrefabs:
+  - {fileID: 2072898691282662654, guid: 3ef39ff58f219924d8a875acb86372b0, type: 3}
   spawnPoints:
   - {fileID: 444576725}
   - {fileID: 1127261529}
@@ -2864,7 +2867,7 @@ MonoBehaviour:
   - {fileID: 269460038}
   - {fileID: 1136228765}
   projectileSpeed: 5
-  spawnInterval: 3
+  shootInterval: 3
   boss: {fileID: 1032618817}
   bossPhase5: {fileID: 536980290}
 --- !u!1 &1335387844
