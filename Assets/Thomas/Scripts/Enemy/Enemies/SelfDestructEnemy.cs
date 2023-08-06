@@ -87,11 +87,6 @@ public class SelfDestructEnemy : MonoBehaviour
     {
         Vector3 targetPosition = player.position - (transform.forward * distanceFromPlayer); // Calculate the target position to chase the player
         agent.SetDestination(targetPosition); // Set the destination to the target position
-
-        if (countdownBool == false)
-        {
-            Countdown(); // Start the countdown if it is not already active
-        }
     }
 
     // Attacking the player
@@ -101,6 +96,12 @@ public class SelfDestructEnemy : MonoBehaviour
         agent.SetDestination(targetPosition); // Set the destination to the target position
 
         transform.LookAt(player); // Rotate to face the player
+
+
+        if (countdownBool == false)
+        {
+            Countdown(); // Start the countdown if it is not already active
+        }
     }
 
     // Start the countdown timer
