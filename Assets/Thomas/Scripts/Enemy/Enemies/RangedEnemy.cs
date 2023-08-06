@@ -30,7 +30,7 @@ public class RangedEnemy : MonoBehaviour
     [Header("States")]
     public float sightRange; // Range for detecting the player
     public float attackRange; // Range for attacking the player
-    public bool playerInSightRange, playerInAttackRange; // Flags indicating if the player is within sight range and attack range
+    public bool playerInSightRange, playerInAttackRange, canSee; // Flags indicating if the player is within sight range and attack range
 
     public Animator animator;
     private void Start()
@@ -57,12 +57,28 @@ public class RangedEnemy : MonoBehaviour
             ChasePlayer(); // If the player is in sight range but not attack range, chase the player
         else if (playerInAttackRange && playerInSightRange)
             AttackPlayer(); // If the player is in attack range and sight range, attack the player
+
+        // Perform raycast
+        RaycastHit hit;
+        Vector3 direction = player.position - rangedAttackPoint.position;
+        if (Physics.Raycast(rangedAttackPoint.position, direction, out hit, attackRange))
+        {
+            // Check if the raycast hits the player
+            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Collectable"))
+            {
+                // Player is hit, do something
+                canSee = true;
+            }
+            else
+            {
+                // There is an obstacle between the player and sniper, do something else
+                canSee = false;
+            }
+        }
     }
 
     private void Patroling()
     {
-        
-
         if (patrolPoints.Length == 0)
         {
             Debug.LogWarning("No patrol points assigned!"); // Log a warning if no patrol points are assigned
@@ -70,7 +86,6 @@ public class RangedEnemy : MonoBehaviour
             //ANIMATIONS
             
         }
-
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -83,38 +98,31 @@ public class RangedEnemy : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position); // Set the destination to the player's position
-        animator.SetBool("IsAttacking", true);
-
+            agent.SetDestination(player.position); // Set the destination to the player's position
+            animator.SetBool("IsAttacking", true);
     }
 
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position); // Set the destination to the current position of the enemy
-        transform.LookAt(player); // Make the enemy face the player
-        
+            //Make sure enemy doesn't move
+            agent.SetDestination(transform.position); // Set the destination to the current position of the enemy
+            transform.LookAt(player); // Make the enemy face the player
 
-
-
-        if (!alreadyAttacked)
+        if (canSee)
         {
-            ///Attack code here
-            // Instantiate the projectile and get its Rigidbody component
-
+            if (!alreadyAttacked)
+            {
+                //Attack code here
+                // Instantiate the projectile and get its Rigidbody component
+                Rigidbody rb = Instantiate(projectile, rangedAttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse); // Add force to the projectile in the forward direction
+                rb.AddForce(transform.up * 4f, ForceMode.Impulse); // Add upward force to the projectile for trajectory
             
-
-            Rigidbody rb = Instantiate(projectile, rangedAttackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse); // Add force to the projectile in the forward direction
-            rb.AddForce(transform.up * 4f, ForceMode.Impulse); // Add upward force to the projectile for trajectory
-
-            
-            ///End of attack code
-
-
-            alreadyAttacked = true; // Set the alreadyAttacked flag to true
-            Invoke(nameof(ResetAttack), timeBetweenAttacks); // Call ResetAttack method after the specified time
-            animator.SetBool("IsAttacking", true);
+                ///End of attack code
+                alreadyAttacked = true; // Set the alreadyAttacked flag to true
+                Invoke(nameof(ResetAttack), timeBetweenAttacks); // Call ResetAttack method after the specified time
+                animator.SetBool("IsAttacking", true);
+            }
 
         }
     }
@@ -122,8 +130,6 @@ public class RangedEnemy : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false; // Reset the alreadyAttacked flag
-        
-
     }
 
     private void OnDrawGizmosSelected()
