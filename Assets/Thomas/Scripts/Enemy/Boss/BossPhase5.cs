@@ -5,43 +5,53 @@ public class BossPhase5 : State
     public GameObject[] projectilePrefabs; // Array of projectile prefabs
     public Transform[] spawnPoints;         // The positions where the projectiles will be spawned
     public float projectileSpeed = 5f;      // The speed at which the projectiles move
-    public float spawnInterval = 3f;        // The interval between spawning projectiles
+    public float shootInterval = 3f;        // The interval between shooting projectiles
 
-    private float timeSinceLastSpawn = 0f;
-    private int currentSpawnPointIndex = 0;
+    private float timeSinceLastShot = 0f;
 
     public override State RunCurrentState()
     {
-        // Update timers
-        timeSinceLastSpawn += Time.deltaTime;
+            // Update timers
+            timeSinceLastShot += Time.deltaTime;
 
-        // Check if it's time to spawn projectiles
-        if (timeSinceLastSpawn >= spawnInterval)
-        {
-            SpawnProjectiles();
-            timeSinceLastSpawn = 0f;
-        }
+            // Check if it's time to shoot projectiles
+            if (timeSinceLastShot >= shootInterval)
+            {
+                ShootProjectiles();
+                timeSinceLastShot = 0f;
+            }
 
-        return this; // Stay in the same phase for now
+            return this; // Stay in the same phase for now
     }
 
-    private void SpawnProjectiles()
+    private void ShootProjectiles()
     {
-        foreach (Transform spawnPoint in spawnPoints)
+        // Shuffle the spawn points array using Fisher-Yates shuffle algorithm
+        for (int i = spawnPoints.Length - 1; i > 0; i--)
         {
-            int randomProjectileIndex = Random.Range(0, projectilePrefabs.Length);
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = spawnPoints[i];
+            spawnPoints[i] = spawnPoints[randomIndex];
+            spawnPoints[randomIndex] = temp;
+        }
 
-            GameObject newProjectile = Instantiate(projectilePrefabs[randomProjectileIndex], spawnPoint.position, Quaternion.identity);
-            Rigidbody projectileRb = newProjectile.GetComponent<Rigidbody>();
-
-            if (projectileRb != null)
+        for (int i = 0; i < Mathf.Min(4, spawnPoints.Length); i++)
+        {
+            if (projectilePrefabs.Length > 0)
             {
-                // Calculate the direction for the projectile to move
-                Vector3 direction = spawnPoint.forward;
-
-                // Set the velocity of the projectile
-                projectileRb.velocity = direction * projectileSpeed;
+                int randomProjectileIndex = Random.Range(0, projectilePrefabs.Length);
+                GameObject selectedPrefab = projectilePrefabs[randomProjectileIndex];
+                Transform spawnPoint = spawnPoints[i]; // Take the next shuffled spawn point
+                SpawnPrefab(selectedPrefab, spawnPoint);
             }
         }
+    }
+
+    private void SpawnPrefab(GameObject prefab, Transform spawnPoint)
+    {
+        GameObject newProjectile = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        Rigidbody projectileRb = newProjectile.GetComponent<Rigidbody>();
+
+        // No need to set velocity here, as the projectile's own script should handle movement.
     }
 }

@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossPhase3 : State
 {
-    public GameObject projectilePrefab; // The prefab of the projectile to spawn
-    public Transform[] spawnPoints;     // The positions where the projectiles will be spawned
-    public float projectileSpeed = 5f;  // The speed at which the projectiles move
-    public float spawnInterval = 3f;    // The interval between spawning projectiles
+    public GameObject[] projectilePrefabs; // Array of projectile prefabs
+    public Transform[] spawnPoints;         // The positions where the projectiles will be spawned
+    public float projectileSpeed = 5f;      // The speed at which the projectiles move
+    public float shootInterval = 3f;        // The interval between shooting projectiles
 
     [SerializeField]
     private Boss boss;
     [SerializeField]
     private BossPhase4 bossPhase4;
 
-    private float timeSinceLastSpawn = 0f;
-    private int currentSpawnPointIndex = 0;
+    private float timeSinceLastShot = 0f;
 
     public override State RunCurrentState()
     {
@@ -26,35 +23,47 @@ public class BossPhase3 : State
         else
         {
             // Update timers
-            timeSinceLastSpawn += Time.deltaTime;
+            timeSinceLastShot += Time.deltaTime;
 
-            // Check if it's time to spawn a projectile
-            if (timeSinceLastSpawn >= spawnInterval)
+            // Check if it's time to shoot projectiles
+            if (timeSinceLastShot >= shootInterval)
             {
-                SpawnProjectiles();
-                timeSinceLastSpawn = 0f;
+                ShootProjectiles();
+                timeSinceLastShot = 0f;
             }
 
             return this; // Stay in the same phase for now
         }
     }
 
-    private void SpawnProjectiles()
+    private void ShootProjectiles()
     {
-        // Choose a random spawn point
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        // Shuffle the spawn points array using Fisher-Yates shuffle algorithm
+        for (int i = spawnPoints.Length - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = spawnPoints[i];
+            spawnPoints[i] = spawnPoints[randomIndex];
+            spawnPoints[randomIndex] = temp;
+        }
 
-        // Instantiate the projectile at the chosen spawn point
-        GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
+        for (int i = 0; i < Mathf.Min(4, spawnPoints.Length); i++)
+        {
+            if (projectilePrefabs.Length > 0)
+            {
+                int randomProjectileIndex = Random.Range(0, projectilePrefabs.Length);
+                GameObject selectedPrefab = projectilePrefabs[randomProjectileIndex];
+                Transform spawnPoint = spawnPoints[i]; // Take the next shuffled spawn point
+                SpawnPrefab(selectedPrefab, spawnPoint);
+            }
+        }
+    }
+
+    private void SpawnPrefab(GameObject prefab, Transform spawnPoint)
+    {
+        GameObject newProjectile = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         Rigidbody projectileRb = newProjectile.GetComponent<Rigidbody>();
 
-        if (projectileRb != null)
-        {
-            // Calculate the direction for the projectile to move
-            Vector3 direction = spawnPoint.forward;
-
-            // Set the velocity of the projectile
-            projectileRb.velocity = direction * projectileSpeed;
-        }
+        // No need to set velocity here, as the projectile's own script should handle movement.
     }
 }
