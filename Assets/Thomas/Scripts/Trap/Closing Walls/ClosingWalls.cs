@@ -5,7 +5,8 @@ public class ClosingWalls : MonoBehaviour
 {
     public Transform startPosition; // Starting position of the wall
     public Transform endPosition; // Ending position of the wall
-    public float movementSpeed = 1f; // Speed at which the wall moves
+    public float movementSpeed = 0.2f; // Speed at which the wall moves
+    public float movementSpeedNormal = 0.2f; // Speed at which the wall moves
     public float delay = 2f; // Delay in seconds before moving back to the start position
 
     private bool isMoving = false; // Flag to check if the wall is currently moving
@@ -28,6 +29,7 @@ public class ClosingWalls : MonoBehaviour
 
             if (movingTowardsPlayer)
             {
+                movementSpeed = 0.2f;
                 // Move the wall towards the end position using Lerp
                 transform.position = Vector3.Lerp(transform.position, endPosition.position, step);
 
@@ -40,6 +42,7 @@ public class ClosingWalls : MonoBehaviour
             }
             else
             {
+                movementSpeed = 10;
                 // Move the wall towards the start position using Lerp
                 transform.position = Vector3.Lerp(transform.position, startPosition.position, step);
 

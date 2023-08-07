@@ -11,6 +11,8 @@ public class DeathFloor : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("Player touched the death floor");
+            other.gameObject.GetComponent<PlayerController>().hitTimer = 0;
+            other.gameObject.GetComponent<PlayerController>().Armour = 0;
             other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
