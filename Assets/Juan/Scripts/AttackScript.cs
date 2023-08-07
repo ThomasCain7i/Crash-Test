@@ -60,7 +60,7 @@ public class AttackScript : MonoBehaviour
         soundPlayer = FindObjectOfType<SoundPlayer>();
         gameManager = FindObjectOfType<GameManager>();
 
-        if (load)
+        if (load == true)
         {
             gameManager.LoadSettings();
             Debug.Log("Loaded Attack Script");
