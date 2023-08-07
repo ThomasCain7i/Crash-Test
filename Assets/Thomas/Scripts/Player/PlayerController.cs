@@ -497,6 +497,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = timeSlow;
     }
 
+
+
     // DEBUFFS
     // Freezes the player for a specified duration
     public void Frozen()

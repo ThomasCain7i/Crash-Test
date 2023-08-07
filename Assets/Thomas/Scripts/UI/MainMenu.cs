@@ -17,19 +17,19 @@ public class MainMenu : MonoBehaviour
 
     public void Tutorial()
     {
-        levelLoader.LoadLevel(11);
+        levelLoader.LoadLevel(1);
     }
 
     public void NewGame()
     {
         gameManager.ResetProgress();
-        levelLoader.LoadLevel(10);
+        levelLoader.LoadLevel(2);
     }
 
     public void ContinueGame()
     {
         gameManager.LoadSettings();
-        levelLoader.LoadLevel(1);
+        levelLoader.LoadLevel(3);
     }
 
     public void OpenPlayGame()

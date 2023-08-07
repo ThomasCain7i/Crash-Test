@@ -5,7 +5,7 @@ public class BossPhase1 : State
     public GameObject[] projectilePrefabs; // Array of projectile prefabs
     public Transform[] spawnPoints;         // The positions where the projectiles will be spawned
     public float projectileSpeed = 5f;      // The speed at which the projectiles move
-    public float shootInterval = 3f;        // The interval between shooting projectiles
+    public float shootInterval = 4f;        // The interval between shooting projectiles
 
     [SerializeField]
     private Boss boss;

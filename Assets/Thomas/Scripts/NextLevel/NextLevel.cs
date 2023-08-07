@@ -19,7 +19,7 @@ public class NextLevel : MonoBehaviour
     [SerializeField]
     private bool menu;
     [SerializeField]
-    private bool hub, water, waterWin, sand, sandWin, snow, snowWin, fire, fireWin, bonusLevel, bonusWin;
+    private bool hub, water, waterWin, sand, sandWin, snow, snowWin, fire, fireWin, boss, ending;
 
 
     // Start is called before the first frame update
@@ -53,62 +53,66 @@ public class NextLevel : MonoBehaviour
             if (hub)
             {
                 Debug.Log("Hub");
-                levelLoader.LoadLevel(1);
+                levelLoader.LoadLevel(3);
             }
 
             if (water)
             {
                 Debug.Log("Water");
-                levelLoader.LoadLevel(2);
+                levelLoader.LoadLevel(4);
             }
 
             if (waterWin && attackScript.water == 1)
             {
                 Debug.Log("WaterWin");
-                levelLoader.LoadLevel(3);
+                levelLoader.LoadLevel(5);
             }
 
             if (sand)
             {
                 Debug.Log("Sand");
-                levelLoader.LoadLevel(4);
+                levelLoader.LoadLevel(6);
             }
 
             if (sandWin && attackScript.sand == 1)
             {
                 Debug.Log("SandWin");
-                levelLoader.LoadLevel(5);
+                levelLoader.LoadLevel(7);
             }
 
             if (snow)
             {
                 Debug.Log("SnowWin");
-                levelLoader.LoadLevel(6);
+                levelLoader.LoadLevel(8);
             }
 
             if (snowWin && attackScript.snow == 1)
             {
                 Debug.Log("SnowWin");
-                levelLoader.LoadLevel(7);
+                levelLoader.LoadLevel(9);
             }
 
             if (fire)
             {
                 Debug.Log("Fire");
-                levelLoader.LoadLevel(8);
+                levelLoader.LoadLevel(10);
             }
 
             if (fireWin && attackScript.fire == 1)
             {
                 Debug.Log("FireWin");
-                levelLoader.LoadLevel(9);
+                levelLoader.LoadLevel(11);
             }
 
-            if (bonusLevel && bonus == bonusToCollect)
+            if (boss && attackScript.fire == 1 && attackScript.snow == 1 && attackScript.water == 1 && attackScript.fire == 1)
             {
-                levelLoader.LoadLevel(10);
+                levelLoader.LoadLevel(12);
             }
 
+            if (ending)
+            {
+                levelLoader.LoadLevel(13);
+            }
            
         }
     }
