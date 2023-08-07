@@ -71,7 +71,7 @@ public class HBSCRIPT : MonoBehaviour
 
                 multiplier = 3f;
                 moveForce = 5000f;
-                turnTorque = 800f;
+                turnTorque = 200;
                 playerScript.moveSpeed = 0;
             //playerScript.rotationSpeed = 0;
 
