@@ -73,6 +73,7 @@ public class SquashTrap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !isReturning) 
         {
             Debug.Log("Player touched closing walls");
+            playerController.hitTimer = 0;
             playerController.Armour = 0;
             playerController.TakeDamage(damage);
 

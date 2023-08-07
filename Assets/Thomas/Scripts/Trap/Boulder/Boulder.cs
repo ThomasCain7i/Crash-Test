@@ -22,11 +22,6 @@ public class Boulder : MonoBehaviour
 
         boulderActive = true;
     }
-    public void Respawn()
-    {
-        transform.position = startPos.position;
-    }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -34,6 +29,7 @@ public class Boulder : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player touched the boulder");
+            playerController.hitTimer = 0;
             playerController.Armour = 0;
             playerController.TakeDamage(damage);
            

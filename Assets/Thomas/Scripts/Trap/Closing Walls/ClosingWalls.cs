@@ -80,6 +80,7 @@ public class ClosingWalls : MonoBehaviour
         // Check if the wall collides with the player
         if (collision.gameObject.CompareTag("Player"))
         {
+            playerController.hitTimer = 0;
             Debug.Log("Player touched closing walls");
             playerController.Armour = 0;
             playerController.TakeDamage(damage);

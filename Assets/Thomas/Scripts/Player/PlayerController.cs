@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public int Armour = 0;
     [SerializeField]
     private bool isAlive = true;
+    [SerializeField]
+    public float hitTimer;
 
     // Attacks
     [Header("Attacks")]
@@ -285,6 +287,7 @@ public class PlayerController : MonoBehaviour
         speedTimer -= Time.deltaTime;
         timeSlowTimer -= Time.deltaTime;
         walkTimer -= Time.deltaTime;
+        hitTimer -= Time.deltaTime;
 
         // Triple jump powerup
         if (tripleJumpTimer <= 0)
@@ -321,14 +324,16 @@ public class PlayerController : MonoBehaviour
     // Decreases the player's health by the specified amount
     public void TakeDamage(float amount)
     {
-        if (Armour < 1)
+        if (Armour < 1 && hitTimer <= 0)
         {
             currentHealth -= amount;
             soundPlayer.PlayDamaged();
             uiManager.ArmourUIoff();
             uiManager.HealthUI();
+            hitTimer = 2;
         }
-        else
+        
+        if (Armour == 1)
         {
             Armour = 0;
             uiManager.ArmourBrokenUI();
