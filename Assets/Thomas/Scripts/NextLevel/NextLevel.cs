@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
+    // save or not
+    [SerializeField]
+    private bool save;
+
     [Header("References")]
     public PlayerController playerController;
     public GameManager gameManager;
@@ -37,10 +41,15 @@ public class NextLevel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         menuSoundManager.PlayLevelComplete();
-        gameManager.SaveCollectables();
-        gameManager.SaveElements();
 
-        Debug.Log("Saved");
+        if(save)
+        {
+            gameManager.SaveCollectables();
+            gameManager.SaveElements();
+
+            Debug.Log("Saved");
+        }
+
 
         if (other.tag == "Player")
         {

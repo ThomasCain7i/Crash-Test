@@ -21,7 +21,7 @@ public class UIWin : MonoBehaviour
     {
         Time.timeScale = 1f;
         //gameManager.LoadSettings();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void RetryGame()
@@ -29,28 +29,28 @@ public class UIWin : MonoBehaviour
         if (water)
         {
             Time.timeScale = 1f;
-            levelLoader.LoadLevel(2);
+            levelLoader.LoadLevel(4);
             gameObject.SetActive(false);
         }
 
         if (sand)
         {
             Time.timeScale = 1f;
-            levelLoader.LoadLevel(4);
+            levelLoader.LoadLevel(6);
             gameObject.SetActive(false);
         }
 
         if (snow)
         {
             Time.timeScale = 1f;
-            levelLoader.LoadLevel(6);
+            levelLoader.LoadLevel(8);
             gameObject.SetActive(false);
         }
 
         if (fire)
         {
             Time.timeScale = 1f;
-            levelLoader.LoadLevel(8);
+            levelLoader.LoadLevel(10);
             gameObject.SetActive(false);
         }
     }

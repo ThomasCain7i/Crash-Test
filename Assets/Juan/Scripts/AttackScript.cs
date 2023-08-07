@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
+    // load or not
+    [SerializeField]
+    private bool load;
+
     // Elemental Buffs
     [Header("Elemental Buffs")]
     public int fire = 0;    // Indicates if the fire buff is active
@@ -56,8 +60,12 @@ public class AttackScript : MonoBehaviour
         soundPlayer = FindObjectOfType<SoundPlayer>();
         gameManager = FindObjectOfType<GameManager>();
 
-        gameManager.LoadSettings();
-        Debug.Log("Loaded Attack Script");
+        if (load)
+        {
+            gameManager.LoadSettings();
+            Debug.Log("Loaded Attack Script");
+        }
+
     }
 
     // Update is called once per frame

@@ -4440,6 +4440,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1227377083}
     m_Modifications:
+    - target: {fileID: 1108187526383236613, guid: 5314a57088f97694c89adb7fbbe0538e, type: 3}
+      propertyPath: hub
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108187526383236613, guid: 5314a57088f97694c89adb7fbbe0538e, type: 3}
+      propertyPath: menu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1108187526383236614, guid: 5314a57088f97694c89adb7fbbe0538e, type: 3}
       propertyPath: m_Name
       value: NextLevel

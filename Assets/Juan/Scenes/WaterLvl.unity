@@ -7286,6 +7286,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1108187526383236613, guid: 5314a57088f97694c89adb7fbbe0538e, type: 3}
+      propertyPath: save
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108187526383236613, guid: 5314a57088f97694c89adb7fbbe0538e, type: 3}
       propertyPath: water
       value: 0
       objectReference: {fileID: 0}
@@ -10352,7 +10356,7 @@ Transform:
   - {fileID: 1631062538}
   - {fileID: 769058908}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &572791287
 PrefabInstance:
@@ -19429,7 +19433,7 @@ Transform:
   m_Children:
   - {fileID: 988008453}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1115327045
 PrefabInstance:
@@ -25539,7 +25543,7 @@ Transform:
   m_Children:
   - {fileID: 275137961}
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466188706
 PrefabInstance:
@@ -29621,7 +29625,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 48.159, y: 309.573, z: -15.507}
 --- !u!114 &1762086904
 MonoBehaviour:
@@ -32771,7 +32775,7 @@ Transform:
   - {fileID: 1151795305}
   - {fileID: 1801416108}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1906497687
 GameObject:
@@ -35012,7 +35016,7 @@ Transform:
   - {fileID: 2125232868}
   - {fileID: 38240495}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2078846290 stripped
 Transform:
@@ -35234,7 +35238,7 @@ Transform:
   - {fileID: 978597926}
   - {fileID: 275389764}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2097332928 stripped
 Transform:
@@ -35506,7 +35510,7 @@ Transform:
   - {fileID: 872663003}
   - {fileID: 1847457882}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2123527159 stripped
 Transform:
