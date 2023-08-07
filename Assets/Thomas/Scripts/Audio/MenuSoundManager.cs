@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class MenuSoundManager : MonoBehaviour
 {
-    [Header("What Level")]
-    public bool hub = true;
-
     [Header("Audio Clips")]
     [Header("Misc")]
     public AudioClip[] levelComplete;
