@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SnowProjectile : MonoBehaviour
 {
-    public float speed, timer = 1f; // The speed at which the projectile moves
+    public float speed, timer = 1f, destroyTimer; // The speed at which the projectile moves
     [SerializeField]
     private Boss boss;
 
@@ -14,6 +14,7 @@ public class SnowProjectile : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime;
+        destroyTimer -= Time.deltaTime;
 
         speed = boss.projectileSpeed;
 
@@ -21,6 +22,11 @@ public class SnowProjectile : MonoBehaviour
         {
             // Move the projectile forward
             transform.Translate(Vector3.back * speed * Time.deltaTime);
+        }
+
+        if (destroyTimer <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

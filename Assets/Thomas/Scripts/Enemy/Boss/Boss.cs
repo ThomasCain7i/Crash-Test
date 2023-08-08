@@ -17,7 +17,7 @@ public class Boss : MonoBehaviour
         if (phase1Reached)
         {
             currentState = new BossPhase1();
-            Vector3 newPosition = new Vector3(0f, 1f, 100f);
+            Vector3 newPosition = new Vector3(15f, 1f, 100f);
             transform.position = newPosition;
             projectileSpeed = 20;
         }
@@ -25,7 +25,7 @@ public class Boss : MonoBehaviour
         if (phase2Reached)
         {
             currentState = new BossPhase2();
-            Vector3 newPosition = new Vector3(0f, 1f, 200f);
+            Vector3 newPosition = new Vector3(15f, 1f, 200f);
             transform.position = newPosition;
             projectileSpeed = 25;
         }
@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour
         if (phase3Reached)
         {
             currentState = new BossPhase3();
-            Vector3 newPosition = new Vector3(0f, 1f, 300f);
+            Vector3 newPosition = new Vector3(15f, 1f, 300f);
             transform.position = newPosition;
             projectileSpeed = 30;
 
@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
         if (phase4Reached)
         {
             currentState = new BossPhase4();
-            Vector3 newPosition = new Vector3(0f, 1f, 400f);
+            Vector3 newPosition = new Vector3(15f, 1f, 400f);
             transform.position = newPosition;
             projectileSpeed = 35;
         }
@@ -50,7 +50,7 @@ public class Boss : MonoBehaviour
         if (phase5Reached)
         {
             currentState = new BossPhase5();
-            Vector3 newPosition = new Vector3(0f, 1f, 500f);
+            Vector3 newPosition = new Vector3(15f, 1f, 500f);
             transform.position = newPosition;
             projectileSpeed = 40;
         }
