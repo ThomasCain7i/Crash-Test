@@ -15,9 +15,12 @@ public class NextLevel : MonoBehaviour
     private MenuSoundManager menuSoundManager;
     private AttackScript attackScript;
     private LevelLoader levelLoader;
+    private BossNextLevel bossNextLevel;
     public int bonusToCollect = 5;
     public int bonus;
     public int bonusC;
+    [SerializeField]
+    public GameObject gameObject;
 
     [Header("Bools")]
     [SerializeField]
@@ -33,6 +36,7 @@ public class NextLevel : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         attackScript = FindObjectOfType<AttackScript>();
         levelLoader = FindObjectOfType<LevelLoader>();
+        bossNextLevel = FindObjectOfType<BossNextLevel>();
         bonus = playerController.BonusCount;
 
         menuSoundManager = FindObjectOfType<MenuSoundManager>();
@@ -116,6 +120,12 @@ public class NextLevel : MonoBehaviour
             if (boss && attackScript.fire == 1 && attackScript.snow == 1 && attackScript.water == 1 && attackScript.fire == 1)
             {
                 levelLoader.LoadLevel(12);
+            }
+
+            if (boss && attackScript.fire == 0 || attackScript.water == 0 || attackScript.sand == 0 || attackScript.snow == 0)
+            {
+                gameObject.SetActive(true);
+                bossNextLevel.Paused();
             }
 
             if (ending)
