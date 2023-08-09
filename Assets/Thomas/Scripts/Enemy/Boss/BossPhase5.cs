@@ -9,8 +9,20 @@ public class BossPhase5 : State
 
     private float timeSinceLastShot = 0f;
 
+    [SerializeField]
+    private Boss boss;
+    [SerializeField]
+    private BossPhase6 bossPhase6;
+
+
     public override State RunCurrentState()
     {
+        if (boss.phase6Reached)
+        {
+            return bossPhase6;
+        }
+        else
+        {
             // Update timers
             timeSinceLastShot += Time.deltaTime;
 
@@ -22,6 +34,7 @@ public class BossPhase5 : State
             }
 
             return this; // Stay in the same phase for now
+        }
     }
 
     private void ShootProjectiles()

@@ -26,7 +26,6 @@ public class FireElement : MonoBehaviour
         if (other.tag == "Player")
         {
             attackScript.fire = 1;  // Set fire bool to true
-            gameManager.SaveElements();
             Destroy(gameObject);
         }
     }

@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     public bool phase3Reached = false;
     public bool phase4Reached = false;
     public bool phase5Reached = false;
+    public bool phase6Reached = false;
 
     public float projectileSpeed;
 
@@ -51,6 +52,14 @@ public class Boss : MonoBehaviour
         {
             currentState = new BossPhase5();
             Vector3 newPosition = new Vector3(15f, 1f, 500f);
+            transform.position = newPosition;
+            projectileSpeed = 40;
+        }
+
+        if (phase6Reached)
+        {
+            //currentState = new BossPhase6();
+            Vector3 newPosition = new Vector3(15f, 1f, 600);
             transform.position = newPosition;
             projectileSpeed = 40;
         }

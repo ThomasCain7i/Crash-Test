@@ -26,7 +26,6 @@ public class WaterElement : MonoBehaviour
         if (other.tag == "Player")
         {
             attackScript.water = 1;  // Set fire bool to true
-            gameManager.SaveElements();
             Destroy(gameObject);
         }
     }

@@ -5,7 +5,7 @@ public class BossTriggers : MonoBehaviour
     private Boss boss;
 
     [SerializeField]
-    private bool one,two,three,four,five;
+    private bool one,two,three,four,five, six;
 
     private void Start()
     {
@@ -24,6 +24,7 @@ public class BossTriggers : MonoBehaviour
                 boss.phase3Reached = false;
                 boss.phase4Reached = false;
                 boss.phase5Reached = false;
+                boss.phase6Reached = false;
             }
         }
 
@@ -37,6 +38,7 @@ public class BossTriggers : MonoBehaviour
                 boss.phase3Reached = false;
                 boss.phase4Reached = false;
                 boss.phase5Reached = false;
+                boss.phase6Reached = false;
             }
         }
 
@@ -50,6 +52,7 @@ public class BossTriggers : MonoBehaviour
                 boss.phase3Reached = true;
                 boss.phase4Reached = false;
                 boss.phase5Reached = false;
+                boss.phase6Reached = false;
             }
         }
 
@@ -63,6 +66,7 @@ public class BossTriggers : MonoBehaviour
                 boss.phase3Reached = false;
                 boss.phase4Reached = true;
                 boss.phase5Reached = false;
+                boss.phase6Reached = false;
         }
         }
 
@@ -76,8 +80,24 @@ public class BossTriggers : MonoBehaviour
                 boss.phase3Reached = false;
                 boss.phase4Reached = false;
                 boss.phase5Reached = true;
+                boss.phase6Reached = false;
         }
         }
+
+        if (this.six)
+        {
+            if (other.CompareTag("Player") && !boss.phase6Reached)
+            {
+                Debug.Log("Phase 5 hit");
+                boss.phase1Reached = false;
+                boss.phase2Reached = false;
+                boss.phase3Reached = false;
+                boss.phase4Reached = false;
+                boss.phase5Reached = false;
+                boss.phase6Reached = true;
+            }
+        }
+
 
     }
 }

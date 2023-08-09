@@ -26,7 +26,6 @@ public class SnowElement : MonoBehaviour
         if (other.tag == "Player")
         {
             attackScript.snow = 1;  // Set fire bool to true
-            gameManager.SaveElements();
             Destroy(gameObject);
         }
     }

@@ -26,7 +26,7 @@ public class SandElement : MonoBehaviour
         if (other.tag == "Player")
         {
             attackScript.sand = 1;  // Set fire bool to true
-            gameManager.SaveElements();
+
             Destroy(gameObject);
         }
     }
