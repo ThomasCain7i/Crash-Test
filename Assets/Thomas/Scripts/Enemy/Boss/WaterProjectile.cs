@@ -38,7 +38,6 @@ public class WaterProjectile : MonoBehaviour
         {
             Debug.Log("Player touched the enemy projectile");
             other.gameObject.GetComponent<PlayerController>().Frozen(); // Call the Frozen method of the PlayerController component attached to the player
-            new Vector3 = gameObject.transform.position(-100, 0, 0);
             Destroy(gameObject); // Destroy the projectile
         }
     }
